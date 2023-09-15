@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head> </head>
+  <body>
+    <header></header>
+    <section class="container-flude px-0">
+      <div class="row">
+        <!-- 특정 길이 안에서는 작아짐 -->
+        <!-- content 영역 -->
+        <main class="col-1 col-sm-8 col-lg-9">
+          <div id="floating_button"></div>
+        </main>
+
+        <!-- sidebar 영역-->
+        <aside class="col-11 col-sm-4 col-lg-3 px-0 open"></aside>
+      </div>
+    </section>
+
+    <footer></footer>
+  </body>
+  <div id="foot"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+  <script>
+    window.addEventListener("load", async function () {
+      $("header").load("./layout/header.html");
+      $("#floating_button").load("./component/floating-button.html");
+      $("head").load("./include/header.html");
+      // $("aside").load("./layout/sidebar.html");
+      // $("aside").load("./layout/profile.html");
+      $("#foot").load("./include/footer.html");
+      $("main").load("./layout/content.html");
+      $("footer").load("./layout/footer.html");
+    });
+  </script>
+</html>
