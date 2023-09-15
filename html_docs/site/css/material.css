@@ -1,0 +1,21 @@
+body {
+    overflow-y: hidden;
+}
+/* 헤더(탑 네비게이션  */
+.cs-main-nav-bg{
+    background-color: #F8EBE6;
+}
+/* 메인 컨텐츠 백그라운드 색상 */
+.cs-main-content-bg{
+    background-color: #FFF8F5;
+}
+/* header 67 , footer 12 */
+.cs-content {
+    height:calc(100vh - 82px); 
+    max-height:calc(100vh - 82px);
+    overflow-y: auto;
+}
+
+.cs-left-sidebar-open {
+
+}

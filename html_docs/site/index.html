@@ -4,15 +4,16 @@
   <body>
     <header></header>
     <section class="container-flude px-0">
-      <div class="row">
-        <!-- 특정 길이 안에서는 작아짐 -->
+      <div class="row justify-content-end">
+        <!-- 좌측 사이드바 영역-->
+        <div id="left_sidebar"></div>
+        <div class="d-lg-block col-lg-4"></div>
         <!-- content 영역 -->
-        <main class="col-1 col-sm-8 col-lg-9">
-          <div id="floating_button"></div>
+        
+        <main>   
         </main>
 
-        <!-- sidebar 영역-->
-        <aside class="col-11 col-sm-4 col-lg-3 px-0 open"></aside>
+        <div id="floating_button"></div>
       </div>
     </section>
 
@@ -23,15 +24,27 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
   <script>
+    function load(ele,url){
+        $.ajax({
+          url,success : function(data){
+              $(ele)[0].outerHTML = data;
+              // $(ele).html(data);
+
+          },
+          async:false
+        })
+    }
     window.addEventListener("load", async function () {
-      $("header").load("./layout/header.html");
-      $("#floating_button").load("./component/floating-button.html");
-      $("head").load("./include/header.html");
-      // $("aside").load("./layout/sidebar.html");
-      // $("aside").load("./layout/profile.html");
+      load("header","./layout/header.html");
+      load("#floating_button","./component/floating-button.html");
+      load("#left_sidebar","./layout/left-sidebar.html");
+      // load("aside","./layout/sidebar.html");
+      // load("aside","./layout/profile.html");
+      load("main","./layout/content-text.html");
+      load("footer","./layout/footer.html");
+
       $("#foot").load("./include/footer.html");
-      $("main").load("./layout/content.html");
-      $("footer").load("./layout/footer.html");
+      $("head").load("./include/header.html");
     });
   </script>
 </html>
