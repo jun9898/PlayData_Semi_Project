@@ -8,7 +8,7 @@
         <!-- 좌측 사이드바 영역-->
         <div id="left_sidebar"></div>
         <!-- 사이드바 위치 보조 div-->
-        <div class="d-lg-block col-lg-4"></div>
+        <!-- <div class="d-lg-block col-lg-4"></div> -->
         <!-- content 영역 -->
         <main></main>
       </div>
@@ -19,7 +19,7 @@
     </div>
   </body>
   <div id="foot"></div>
-  <div class="d-lg-none d-block">
+  <div class="d-block">
     <div id="floating_button"></div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
@@ -41,7 +41,7 @@
       load("header", "./layout/header.html");
       load("#floating_button", "./component/floating-button.html");
       load("#left_sidebar", "./layout/left-sidebar.html");
-      load("main", "./layout/content-text.html");
+      load("main", "./sample/content-sample.html");
       load("footer", "./layout/footer.html");
 
       $("#foot").load("./include/footer.html");
