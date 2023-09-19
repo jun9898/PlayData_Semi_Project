@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autocomplete Dropdown</title>
+    <style>
+      #autocomplete-list {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        border: 1px solid #ccc;
+        background-color: white;
+        z-index: 10;
+      }
+
+      .show {
+        opacity: 1 !important;
+        transform: scaleY(1) !important;
+        /*  */
+      }
+
+      .autocomplete-item {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .autocomplete-item:hover {
+        background-color: #f0f0f0;
+      }
+
+      select {
+        width: 100%;
+        margin: 10px 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="position: relative">
+      <input type="text" id="input-text" placeholder="Click me!" />
+      <div id="autocomplete-list">
+        <div class="autocomplete-item">Item 1</div>
+        <div class="autocomplete-item">Item 2</div>
+        <div class="autocomplete-item">Item 3</div>
+        <div class="autocomplete-item">Item 4</div>
+        <select id="filter-1">
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+        </select>
+        <select id="filter-2">
+          <option value="option1">Option A</option>
+          <option value="option2">Option B</option>
+        </select>
+      </div>
+    </div>
+
+    <script>
+      const inputText = document.getElementById("input-text");
+      const autocompleteList = document.getElementById("autocomplete-list");
+
+      inputText.addEventListener("focus", () => {
+        autocompleteList.classList.add("show");
+      });
+      inputText.addEventListener("click", () => {
+        autocompleteList.classList.add("show");
+      });
+
+      //   inputText.addEventListener("blur", () => {
+      //     setTimeout(() => {
+      //       autocompleteList.classList.remove("show");
+      //     }, 300);
+      //   });
+      //   inputText.addEventListener("mouseup",()=>{
+      //     autocompleteList.classList.add("show");
+      //   })
+      autocompleteList.addEventListener("mouseleave", () => {
+        console.log(1);
+        autocompleteList.classList.remove("show");
+      });
+    </script>
+  </body>
+</html>

@@ -29,17 +29,18 @@
     /*
       추후 jsp 또는 thymeleaf로 대체 될 코드 
     */
-    function load(ele, url) {
+    function load(ele, url, callback = function () {}) {
       $.ajax({
         url,
         success: function (data) {
           $(ele)[0].outerHTML = data;
+          callback(data);
         },
         async: false,
       });
     }
     window.addEventListener("load", async function () {
-      load("header", "./layout/header.html");
+      load("header", "./layout/feed-header.html");
       load("#floating_button", "./component/floating-button.html");
       load("#left_sidebar", "./layout/left-sidebar.html");
       load("main", "./page/feed.html");
@@ -70,6 +71,18 @@
         if (!floatingBtnContainer.contains(event.target)) {
           floatingBtnContainer.classList.remove("cs-active");
         }
+      });
+
+      $("#feed-search").on("focus", () => {
+        console.log($("#feed-auto-complete"));
+        $("#feed-auto-complete")[0].classList.add("cs-autocomplete-show");
+      });
+      $("#feed-search").on("click", () => {
+        $("#feed-auto-complete")[0].classList.add("cs-autocomplete-show");
+      });
+      // $("#feed-search").on("click", () => {});
+      $("#feed-auto-complete").on("mouseleave", () => {
+        $("#feed-auto-complete").removeClass("cs-autocomplete-show");
       });
     });
   </script>

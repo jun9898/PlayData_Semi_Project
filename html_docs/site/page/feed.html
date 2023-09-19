@@ -1,18 +1,95 @@
 <div class="cs-main-content-bg cs-content col container-flude">
-  <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 p-3 g-4">
-    <div class="col">
-      <div
-        class="card cs-card-feed"
-        style="background-image: url('./asset/profile.png')"
-      >
-        <div class="card-body row align-items-end">
-          <div class="col-12">
-            <p class="card-text">
-              <span>별점 / 유저이름</span><br />
-              <span>리뷰 제목</span><br />
-              <span>태그</span>
-            </p>
-          </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="input-group input-group-sm p-3">
+        <input type="text" id="feed-search" class="form-control" />
+        <span class="input-group-append">
+          <button type="button" class="btn btn-warning btn-flat">
+            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+          </button>
+        </span>
+        <div id="feed-auto-complete" class="cs-autocomplete-list">
+          <div class="cs-autocomplete-item">Item 1</div>
+          <div class="cs-autocomplete-item">Item 2</div>
+          <div class="cs-autocomplete-item">Item 3</div>
+          <div class="cs-autocomplete-item">Item 4</div>
+          <select id="filter-1">
+            <option value=""></option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+          </select>
+          <select id="filter-2">
+            <option value="option1">Option A</option>
+            <option value="option2">Option B</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="feed_list"
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 row-cols-xxl-6 p-3 g-4"
+  >
+    <!-- <div class="col mb-1">
+      <div class="card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
         </div>
       </div>
     </div>

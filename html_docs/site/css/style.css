@@ -247,10 +247,44 @@ body {
     display:block !important;
   
   }
+ .cs-feed-header{
+  border-top: 0.1px solid black; 
+  background-color: #edebea;
+ }
  
- 
+ .cs-feed-card {
+  cursor:pointer;
+ }
 
 
+ .cs-autocomplete-list {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 10;
+  top:45px;
+  
+}
 
+.cs-autocomplete-show {
+  opacity: 1 !important;
+  transform: scaleY(1) !important;
+  /*  */
+}
+
+.cs-autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cs-autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
 
   
