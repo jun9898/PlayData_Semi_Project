@@ -143,10 +143,13 @@ body {
   align-items: center;
 }
 
-/* #cs-list-border *{
-  margin: 10px 10px 10px 10px;
-  background-color: #C0BFBF;
-} */
+#cs-right-box{
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  float: right;
+  width: 150px;
+}
 
 
 @media only screen and (max-width: 576px) {
