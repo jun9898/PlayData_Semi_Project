@@ -202,7 +202,53 @@ body {
       min-height: calc(1.2rem * 2);
     }
   }
+  .cs-card-feed {
+    border-radius : 1rem;
+    background-color: #dddddd;
+    height:300px;
+  }
+  .cs-card-feed::after{
+    position : absolute;
+    border-radius : 1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit;  /* 부모 요소의 배경색을 상속받습니다. */
+    opacity: 0.1;  /* 여기에서 원하는 투명도를 설정합니다. */
+    pointer-events: none;  /* 가상 요소 위의 마우스 동작을 방지합니다. */
+    content : '';
 
+  }
+  .cs-card-feed .card-text {
+    color:black;
+  }
+  .cs-card-feed:hover:before{
+    position : absolute;
+    border-radius : 1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit;  /* 부모 요소의 배경색을 상속받습니다. */
+    opacity: 0.9; /* 여기에서 원하는 투명도를 설정합니다. */
+    pointer-events: none;  /* 가상 요소 위의 마우스 동작을 방지합니다. */
+    content : '';
+    background: linear-gradient(180deg, #000000,#3a3a3a, #c6c6c6,#ffffff);
+  }
+
+  /* .cs-card-feed:hover:before{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+  
+  } */
+  .cs-card-feed:before:hover{
+    display:block !important;
+  
+  }
+ 
+ 
 
 
 
