@@ -133,6 +133,15 @@ body {
   border-color: #FFDCBC;
 }
 
+#cs-list-border {
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #FFDCBC;
+}
+
 .row-border{
   margin: 20px 20px 20px 20px;
   background-color: #C0BFBF;
@@ -162,7 +171,29 @@ body {
   margin-top: 10px;
   border-radius: 20px;
   margin-bottom: 20px;
+}
 
+.cs-border-radis {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #666;
+}
+
+.cs-border-margin {
+  margin: 5px;
+  margin-top: 10px;
+  background-color: #ffff;
+  border-radius: 20px;
+}
+
+#cs-review-border {
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 15px;
+  border-color: #FFDCBC;
+  background-color: #D9D9D9;
 }
 
 
