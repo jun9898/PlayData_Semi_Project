@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- 가게 랭킹과 게시글 랭킹을 같은 div에 묶어 나열했습니다. 추후 버튼으로 변경할 것 입니다. -->
+<div class="row" id="cs-test">
+    <div class="col-3"></div>
+    <div class="col-3 cs-col-radius">
+        <h3>게시글 랭킹</h3>
+    </div>
+    <div class="col-3">
+        <h3>가게 랭킹</h3>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<!-- container 시작 -->
+<div class="container">
+  <div class="row justify-content-center" >
+    <div class="col" id="cs-list-border" >
+        <!-- select box입니다. 부트스트랩에서 가져왔습니다. 
+             cs-right-box css를 이용해 화면 우측에 고정시킬 예정입니다.-->
+        <div class="row" id="cs-right-box">
+            <select class="form-select" aria-label="Default select example" id="cs-box-float">
+            <option selected>---------------------------</option>
+            <option value="1">리뷰순</option>
+            <option value="2">별점순</option>
+            </select>
+        </div>
+        <hr style="clear: both;"/>
+        <!-- 가게 리스트입니다. MDB에서 가져왔으며 별점과 각종 가게정보가 들어갈것입니다. -->
+        <ul class="list-group list-group-light">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+            <!-- 랭킹이 몇등인지 이곳에 표시할것 -->
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+            <!-- 가게의 대표사진 1장 -->
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+            <div class="ms-3">
+                <p class="fw-bold mb-1">전식당</p>
+            </div>
+            <div class="ms-3">
+                <p class="fw-bold mb-1">별점</p>
+            </div>
+            </div>
+            <span>
+                <a class="btn badge rounded-pill badge-success" href="#" role="button">리뷰 수</a>
+            </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+            <!-- 랭킹이 몇등인지 이곳에 표시할것 -->
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+            <!-- 가게의 대표사진 1장 -->
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+            <div class="ms-3">
+                <p class="fw-bold mb-1">전식당</p>
+            </div>
+            <div class="ms-3">
+                <p class="fw-bold mb-1">별점</p>
+            </div>
+            </div>
+            <span>
+                <a class="btn badge rounded-pill badge-success" href="#" role="button">리뷰 수</a>
+            </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+            <!-- 랭킹이 몇등인지 이곳에 표시할것 -->
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+            <!-- 가게의 대표사진 1장 -->
+            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                class="rounded-circle" />
+            <div class="ms-3">
+                <p class="fw-bold mb-1">전식당</p>
+            </div>
+            <div class="ms-3">
+                <p class="fw-bold mb-1">별점</p>
+            </div>
+            </div>
+            <span>
+                <a class="btn badge rounded-pill badge-success" href="#" role="button">리뷰 수</a>
+            </span>
+        </li>
+
+        </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
