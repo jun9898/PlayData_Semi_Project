@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head> </head>
+  <body>
+    <header></header>
+    <section class="container-flude px-0">
+      <div class="row justify-content-center">
+        <!-- 좌측 사이드바 영역-->
+        <div id="left_sidebar"></div>
+        <!-- 사이드바 위치 보조 div-->
+        <!-- <div class="d-lg-block col-lg-4"></div> -->
+        
+        <!-- content 영역 -->
+        <main></main>
+      </div>
+    </section>
+
+    <div class="d-none d-lg-block">
+      <footer></footer>
+    </div>
+  </body>
+  <div id="foot"></div>
+  <div class="d-block">
+    <div id="floating_button"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+  <script>
+    /*
+      추후 jsp 또는 thymeleaf로 대체 될 코드 
+    */
+    function load(ele, url) {
+      $.ajax({
+        url,
+        success: function (data) {
+          $(ele)[0].outerHTML = data;
+        },
+        async: false,
+      });
+    }
+    window.addEventListener("load", async function () {
+      load("header", "./layout/header.html");
+      load("#floating_button", "./component/floating-button.html");
+      load("#left_sidebar", "./layout/left-sidebar.html");
+      load("main", "./sample/rank-list.html");
+      load("footer", "./layout/footer.html");
+
+      $("#foot").load("./include/footer.html");
+      $("head").load("./include/header.html");
+
+      /*
+        플로팅 버튼용 js
+      */
+      const floatingBtnContainer = document.querySelector(
+        ".cs-floating-btn-container"
+      );
+      const floatingBtn =
+        floatingBtnContainer.querySelector(".cs-floating-btn");
+      const subButtons = floatingBtnContainer.querySelector(
+        ".cs-floating-sub-buttons"
+      );
+
+      // 메인 버튼 클릭 시
+      floatingBtn.addEventListener("click", function () {
+        floatingBtnContainer.classList.toggle("cs-active");
+      });
+
+      // 다른 부분 클릭 시
+      document.addEventListener("click", function (event) {
+        if (!floatingBtnContainer.contains(event.target)) {
+          floatingBtnContainer.classList.remove("cs-active");
+        }
+      });
+    });
+  </script>
+</html>
