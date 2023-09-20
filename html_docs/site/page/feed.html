@@ -1,37 +1,167 @@
-<div class="cs-main-content-bg cs-content col container-flude">
+<div class="cs-main-content-bg cs-content col container-flude p-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8">
-      <div class="input-group input-group-sm p-3">
+      <div class="input-group input-group-md p-3">
         <input type="text" id="feed-search" class="form-control" />
         <span class="input-group-append">
-          <button type="button" class="btn btn-warning btn-flat">
-            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+          <button
+            type="button"
+            class="btn btn-warning btn-flat cs-feed-search-btn"
+          >
+            <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
           </button>
         </span>
-        <div id="feed-auto-complete" class="cs-autocomplete-list">
+      </div>
+      <div class="position-relative row justify-content-center px-6">
+        <div id="feed-auto-complete" class="cs-autocomplete-list col-12 px-0">
           <div class="cs-autocomplete-item">Item 1</div>
           <div class="cs-autocomplete-item">Item 2</div>
           <div class="cs-autocomplete-item">Item 3</div>
           <div class="cs-autocomplete-item">Item 4</div>
-          <select id="filter-1">
-            <option value=""></option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-          </select>
-          <select id="filter-2">
-            <option value="option1">Option A</option>
-            <option value="option2">Option B</option>
-          </select>
+          <hr />
+          <div class="row px-2">
+            <h5>옵션 선택</h5>
+            <div class="col-6 mb-1">
+              <select id="filter-1 form-control">
+                <option value=""></option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+              </select>
+            </div>
+            <div class="col-6 mb-1">
+              <select id="filter-2 form-control">
+                <option value="option1">Option A</option>
+                <option value="option2">Option B</option>
+              </select>
+            </div>
+          </div>
+          <hr />
+          <div class="row mb-3 px-2">
+            <h5>태그 선택</h5>
+            <div class="col-12 col-sm-auto mb-2">
+              <button
+                class="btn btn-tag btn-sm btn-rounded border selected"
+                data-mdb-close="true"
+              >
+                ⌛️ 음식이 빨리나와요
+              </button>
+            </div>
+            <div class="col-12 col-sm-auto mb-2">
+              <button
+                class="btn btn-tag btn-sm btn-rounded border"
+                data-mdb-close="true"
+              >
+                🐶 애완동물 입장이 가능해요
+              </button>
+            </div>
+            <div class="col-12 col-sm-auto mb-2">
+              <button
+                class="btn btn-tag btn-sm btn-rounded border"
+                data-mdb-close="true"
+              >
+                ⚽️ 모임하기 좋아요
+              </button>
+            </div>
+            <div class="col-12 col-sm-auto mb-2">
+              <button
+                class="btn btn-tag btn-sm btn-rounded border"
+                data-mdb-close="true"
+              >
+                🤮 위생적이지 않아요
+              </button>
+            </div>
+            <div class="col-12 col-sm-auto mb-2">
+              <button
+                class="btn btn-tag btn-sm btn-rounded border"
+                data-mdb-close="true"
+              >
+                🥕 살려주세요
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- feed list -->
   <div
     id="feed_list"
-    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 row-cols-xxl-6 p-3 g-4"
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 p-3 g-4"
   >
-    <!-- <div class="col mb-1">
-      <div class="card">
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top img-fluid"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-2">
+          <p class="card-text">
+            <span class="title"><b>출근한지 5분만에 퇴근하는법</b></span>
+            <br />
+            <span class="categroy-text">양식, 멕시코</span>
+            <span class="stars">
+              <i class="fa-solid fa-star star-active fa-xs"></i>
+              <i class="fa-solid fa-star star-active fa-xs"></i>
+              <i class="fa-solid fa-star star-active fa-xs"></i>
+              <i class="fa-solid fa-star-half fa-xs star-active"></i>
+              <span class="evaluation-count">(8)</span>
+            </span>
+            <br />
+            <span class="cs-start-user">🧇 장보명님이 작성</span>
+            <br />
+            <span class="cs-tags row">
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                  class="btn btn-tag btn-sm btn-rounded border cs-tag cs-more-tag"
+                  data-mdb-close="true"
+                >
+                  ⚽️ 모임하기 좋아요
+                </button>
+              </div>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top img-fluid"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span class="title">출근한지 5분만에 퇴근하는법</span>
+            <span class="title-start">
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+            </span>
+            <span class="cs-start-user">장보명님이 작성</span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"> </span>
+            <br />
+
+            <span class="cs-tag">
+              <button
+                class="btn btn-tag btn-sm btn-rounded border"
+                data-mdb-close="true"
+              >
+                🤮 위생적이지 않아요
+              </button>
+              <div class="cs-more-tag"></div>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
         <img
           src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
           class="card-img-top"
@@ -39,6 +169,7 @@
         />
         <div class="card-body p-1">
           <p class="card-text">
+            <span class="cs-feed-"></span>
             <span>별점 / 유저이름 :</span>
             <span class="cs-start-user"></span>
             <br />
@@ -50,16 +181,23 @@
           </p>
         </div>
       </div>
-    </div> -->
+    </div>
     <div class="col mb-1">
       <div class="card cs-feed-card">
         <img
           src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
-          class="card-img-top"
+          class="card-img-top img-fluid"
           alt="Sunset Over the Sea"
         />
         <div class="card-body p-1">
           <p class="card-text">
+            <span class="title">출근한지 5분만에 퇴근하는법</span>
+            <br />
+            <span class="title-start">
+              <i class="fa-solid fa-star star-active fa-xs"></i>
+              <i class="fa-solid fa-star star-active fa-xs"></i>
+              <i class="fa-solid fa-star-half fa-xs star-active"></i>
+            </span>
             <span>별점 / 유저이름 :</span>
             <span class="cs-start-user"></span>
             <br />
@@ -81,6 +219,135 @@
         />
         <div class="card-body p-1">
           <p class="card-text">
+            <span class="cs-feed-"></span>
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top img-fluid"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span class="title">출근한지 5분만에 퇴근하는법</span>
+            <span class="title-start">
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+            </span>
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span class="cs-feed-"></span>
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top img-fluid"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span class="title">출근한지 5분만에 퇴근하는법</span>
+            <span class="title-start">
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+            </span>
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span class="cs-feed-"></span>
+            <span>별점 / 유저이름 :</span>
+            <span class="cs-start-user"></span>
+            <br />
+            <span>리뷰 제목 : </span>
+            <span class="cs-review"></span>
+            <br />
+            <span>태그 : </span>
+            <span class="cs-tag"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col mb-1">
+      <div class="card cs-feed-card">
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
+          class="card-img-top img-fluid"
+          alt="Sunset Over the Sea"
+        />
+        <div class="card-body p-1">
+          <p class="card-text">
+            <span class="title">출근한지 5분만에 퇴근하는법</span>
+            <span class="title-start">
+              <i class="fa-solid fa-star star-active fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+              <i class="fa-solid fa-star fa-xs"></i>
+            </span>
             <span>별점 / 유저이름 :</span>
             <span class="cs-start-user"></span>
             <br />

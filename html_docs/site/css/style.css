@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
   overflow-y: hidden;
   overflow-x: hidden;
@@ -254,6 +256,7 @@ body {
  
  .cs-feed-card {
   cursor:pointer;
+  height:320px;
  }
 
 
@@ -263,12 +266,12 @@ body {
   transform-origin: top;
   transition: all 0.3s ease-in-out;
   position: absolute;
-  width: 100%;
+  width: calc(100% - 3.5rem);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border: 1px solid #ccc;
   background-color: white;
   z-index: 10;
-  top:45px;
+  top : -1rem;
   
 }
 
@@ -278,6 +281,9 @@ body {
   /*  */
 }
 
+.cs-feed-search-btn{
+  line-height:1.1rem !important;
+}
 .cs-autocomplete-item {
   padding: 10px;
   cursor: pointer;
@@ -287,4 +293,21 @@ body {
   background-color: #f0f0f0;
 }
 
-  
+.cs-autocomplete-list .btn-tag.selected{
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.259) inset !important;
+  /* background-color:rgba(218, 218, 218, 0.831); */
+}
+
+.fa-star.star-active {
+  color:orange;
+}
+.fa-star-half.star-active {
+  color:orange;
+}
+.cs-autocomplete-item.active {
+  background-color : #f0f0f0;
+}
+
+.cs-tag.cs-more-tag:after {
+  content : "..."
+}
