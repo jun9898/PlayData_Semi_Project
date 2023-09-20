@@ -8,14 +8,14 @@
 <body>
 <!-- 가게 랭킹과 게시글 랭킹을 같은 div에 묶어 나열했습니다. 추후 버튼으로 변경할 것 입니다. -->
 <div class="row" id="cs-test">
-    <div class="col-3"></div>
-    <div class="col-3 cs-col-radius">
-        <h3>게시글 랭킹</h3>
+    <div class=" row justify-content-center">
+        <div class="btn-group cs-btn-select">
+            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked />
+            <label class="btn btn-secondary" for="option1">Checked</label>
+            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" />
+            <label class="btn btn-secondary" for="option2">Radio</label>
+        </div>
     </div>
-    <div class="col-3">
-        <h3>가게 랭킹</h3>
-    </div>
-    <div class="col-3"></div>
 </div>
 
 <!-- container 시작 -->
@@ -24,6 +24,7 @@
     <div class="col" id="cs-list-border" >
         <!-- select box입니다. 부트스트랩에서 가져왔습니다. 
              cs-right-box css를 이용해 화면 우측에 고정시킬 예정입니다.-->
+
         <div class="row" id="cs-right-box">
             <select class="form-select" aria-label="Default select example" id="cs-box-float">
             <option selected>---------------------------</option>
