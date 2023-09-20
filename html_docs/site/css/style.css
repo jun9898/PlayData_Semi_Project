@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body {
   overflow-y: hidden;
   overflow-x: hidden;
@@ -202,9 +204,110 @@ body {
       min-height: calc(1.2rem * 2);
     }
   }
+  .cs-card-feed {
+    border-radius : 1rem;
+    background-color: #dddddd;
+    height:300px;
+  }
+  .cs-card-feed::after{
+    position : absolute;
+    border-radius : 1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit;  /* 부모 요소의 배경색을 상속받습니다. */
+    opacity: 0.1;  /* 여기에서 원하는 투명도를 설정합니다. */
+    pointer-events: none;  /* 가상 요소 위의 마우스 동작을 방지합니다. */
+    content : '';
 
+  }
+  .cs-card-feed .card-text {
+    color:black;
+  }
+  .cs-card-feed:hover:before{
+    position : absolute;
+    border-radius : 1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit;  /* 부모 요소의 배경색을 상속받습니다. */
+    opacity: 0.9; /* 여기에서 원하는 투명도를 설정합니다. */
+    pointer-events: none;  /* 가상 요소 위의 마우스 동작을 방지합니다. */
+    content : '';
+    background: linear-gradient(180deg, #000000,#3a3a3a, #c6c6c6,#ffffff);
+  }
 
-
-
-
+  /* .cs-card-feed:hover:before{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
   
+  } */
+  .cs-card-feed:before:hover{
+    display:block !important;
+  
+  }
+ .cs-feed-header{
+  border-top: 0.1px solid black; 
+  background-color: #edebea;
+ }
+ 
+ .cs-feed-card {
+  cursor:pointer;
+  height:320px;
+ }
+
+
+ .cs-autocomplete-list {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  width: calc(100% - 3.5rem);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 10;
+  top : -1rem;
+  
+}
+
+.cs-autocomplete-show {
+  opacity: 1 !important;
+  transform: scaleY(1) !important;
+  /*  */
+}
+
+.cs-feed-search-btn{
+  line-height:1.1rem !important;
+}
+.cs-autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cs-autocomplete-item:hover {
+  background-color: #f0f0f0;
+}
+
+.cs-autocomplete-list .btn-tag.selected{
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.259) inset !important;
+  /* background-color:rgba(218, 218, 218, 0.831); */
+}
+
+.fa-star.star-active {
+  color:orange;
+}
+.fa-star-half.star-active {
+  color:orange;
+}
+.cs-autocomplete-item.active {
+  background-color : #f0f0f0;
+}
+
+.cs-tag.cs-more-tag:after {
+  content : "..."
+}
