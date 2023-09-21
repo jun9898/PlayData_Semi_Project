@@ -38,6 +38,7 @@ body {
 
 
 .cs-floating-btn-container {
+    z-index:3;
     position: fixed;
     bottom: 60px;
     right: 35px;
