@@ -115,6 +115,39 @@ body {
     content : ''
 }
 
+/* 전병준 css 영역 */
+
+.cs-content cs-list-background{
+  margin: 5%;
+  background-color: #000000;
+}
+
+.cs-list-cover {
+  border-radius: 20px;
+  border: solid 20px;
+  border-color: #FFDCBC;
+  margin: 5%;
+}
+
+.cs-list-outer-content {
+  background-color: #FFBA87;
+  margin: 5% auto;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  width: 350px;
+  height: 50px; 
+  border-radius: 30px;
+}
+
+.cs-list-content {
+  margin: 10px;
+}
+
+
+
+
+
+
 
 @media only screen and (max-width: 576px) {
   
