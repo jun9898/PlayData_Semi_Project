@@ -143,10 +143,172 @@ body {
   margin: 10px;
 }
 
+/*--------------천현지 mypage-------------*/
 
+/* 다른페이지까지 영향간다..
+:root{
+  font-size: 10px;
+}*/
 
+.cs-mypage-aside,
+.cs-mypage-aside2{
+  width: 10%;
+}
 
+.cs-mypage-container {
+  max-width: 93.5rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 80%;
+  
+}
 
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* 마이페이지 프로필 */
+.cs-mypage-profile {
+  padding: 5rem 0;
+}
+
+.cs-mypage-profile::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.cs-mypage-profile-image {
+  float: left;
+  width: calc(33.333% - 1rem);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3rem;
+}
+
+.cs-mypage-profile-image img {
+  border-radius: 50%;
+}
+
+.cs-mypage-profile-user-name {
+  display: inline-block;
+  font-size: 3.2rem;
+  font-weight: 300;
+} 
+
+.cs-mypage-profile-follow-btn {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  border: 0.1rem solid #dbdbdb;
+  border-radius: 0.3rem;
+  padding: 0 2.4rem;
+  margin-left: 2rem;
+}
+
+.cs-mypage-profile-stats {
+  margin-top: 1.3rem;
+} 
+
+.cs-mypage-profile-stats li {
+  display: inline-block;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+
+.cs-mypage-profile-stats li:last-of-type {
+  margin-right: 0;
+}
+
+.cs-mypage-profile-bio {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 2.3rem;
+}
+
+/* 마이페이지 게시물 */
+.cs-mypage-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -1rem -1rem;
+  padding-bottom: 3rem;
+}
+
+.cs-mypage-gallery-item {
+  position: relative;
+  flex: 1 0 22rem;
+  margin: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cs-mypage-gallery-item:hover .cs-mypage-gallery-item-info,
+.cs-mypage-gallery-item:focus .cs-mypage-gallery-item-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cs-mypage-gallery-item-info {
+  display: none;
+}
+
+.cs-mypage-gallery-item-info li {
+  display: inline-block;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.cs-mypage-gallery-item-likes {
+  margin-right: 2.2rem;
+}
+
+.cs-mypage-gallery-item-type {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
+.cs-mypage-gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 이미지 로더 */
+.loader {
+  width: 5rem;
+  height: 5rem;
+  border: 0.6rem solid #999;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: loader 500ms linear infinite;
+}
+
+/* 이미지 로더 빙글빙글 애니메이터*/
+@keyframes loader {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------*/
 
 
 @media only screen and (max-width: 576px) {
