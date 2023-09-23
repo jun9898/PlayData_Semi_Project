@@ -8,4 +8,10 @@ window.addEventListener('load',()=>{
     };
 
     var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-});
+    $(".cs-bar-cover .cs-btn-active").on("click",(e)=>{
+      $(".cs-bar-cover").addClass("active");
+    });
+    $(".cs-bar-cover .cs-btn-deactive").on("click",(e)=>{
+      $(".cs-bar-cover").removeClass("active");
+    })
+  });

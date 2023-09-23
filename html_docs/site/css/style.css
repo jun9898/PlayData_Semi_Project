@@ -132,7 +132,48 @@ body {
     .footer {
       min-height: calc(0.9rem * 2);
     }
-  }
+    
+    /* 지도 검색 목록 커버 */
+    .cs-map-list-section-cover {
+      z-index:4;
+      height : calc(100vh - 212px);
+      bottom:0px;
+      width:100%;
+      transform : scaleY(0);
+      transform-origin: bottom;
+      max-height: 100%;
+      overflow-y: auto;
+      transition: all 0.3s ease-in-out;
+    }
+    .cs-bar-cover.active .cs-map-list-section-cover {
+      /* opacity: 1; */
+      transform : scaleY(1) !important;
+      transition: all 0.3s ease-in-out;
+    }
+    .cs-bar-cover {
+      z-index:10;
+      top: calc(100vh - 155px);
+      bottom:0px;
+      left : 0px;
+      width:100%;
+      z-index:10;
+      text-align: center;
+      transform-origin: bottom;
+      transition: all 0.3s ease-in-out;
+      border-radius: 15px 15px 0px 0px;
+    }
+    .cs-bar-cover.active {
+      top : 120px;
+      transform : scaleY(1) !important;
+      transition: all 0.3s ease-in-out;
+    }
+    .cs-bar-cover .cs-btn-active , .cs-btn-deactive {
+      width: 100%;
+      border : 0.1px solid gray;
+      border-radius: 15px 15px 0px 0px;
+    }
+
+}
 
   /* 가로 해상도가 576px 보다 작은 큰화면 적용) */
   @media only screen and (min-width: 576px) {
@@ -148,7 +189,59 @@ body {
     .footer {
       min-height: calc(1rem * 2);
     }
+        
+    /* 지도 검색 목록 커버 */
+    .cs-map-list-section-cover {
+      z-index:4;
+      height : 100%;
+      bottom:0px;
+      width: calc(100% - 35px); /* (button 21 px) + (padding 6 * 2) */
+      transform : scaleX(0);
+      transform-origin: left;
+      max-height: 100%;
+      overflow-y: auto;
+  
+    }
+    .cs-bar-cover.active .cs-map-list-section-cover {
+      /* opacity: 1; */
+      transform : scaleX(1) !important;
+      transition: all 0.3s ease-in-out;
+    }
 
+    .cs-bar-cover {
+      z-index: 10;
+      top: 0px;
+      text-align: end;
+      height:100%;
+      z-index: 10;
+      transform-origin: left;
+      transition: all 0.3s ease-in-out;
+      border-radius: 0px 15px 15px 0px;
+    }
+    .cs-bar-cover .bar {
+      height :100%;
+    }
+    .cs-bar-cover.active {
+      top : 0px;
+      left : 0px;
+      width: 40%;
+      transform : scaleX(1) !important;
+      transition: all 0.3s ease-in-out;
+    }
+    .cs-bar-cover .cs-btn-active , .cs-btn-deactive {
+      height: 100%;
+      border : 0.1px solid gray;
+      border-radius: 0px 15px 15px 0px;
+    }
+    .cs-bar-cover .bar .cs-btn-deactive.d-sm-inline-block {
+      display: none !important;
+    }
+    .cs-bar-cover.active .bar .cs-btn-deactive.d-sm-inline-block {
+      display: inline-block !important;
+    }
+    .cs-map-list-section-cover {
+
+    }
   }
 
   /* 가로 해상도가 768px 보다 작은 큰화면에 적용) */
@@ -208,7 +301,7 @@ body {
       min-height: calc(1.2rem * 2);
     }
   }
-  .cs-card-feed {
+  .cs-card-feed { 
     border-radius : 1rem;
     background-color: #dddddd;
     height:300px;
@@ -301,6 +394,7 @@ body {
 
 .cs-autocomplete-list .btn-tag.selected{
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.259) inset !important;
+  background-color:#e9e9e9;
   /* background-color:rgba(218, 218, 218, 0.831); */
 }
 
@@ -322,23 +416,103 @@ body {
   top : 10px;
   position:absolute;
   z-index:1;
-  
+  right:-1rem;
 }
+
+
+/* .cs-map-search-cover .cs-map-search-section{
+
+} */
+.cs-map-search-cover .cs-tag-section{
+  max-width: 100%;
+  max-height:50px;
+  overflow-y : hidden;
+  overflow-x: auto;
+  display : flex;
+}
+/* 스크롤바 */
+.cs-map-search-cover .cs-tag-section::-webkit-scrollbar{
+  width: 100%;
+  height: 8px;
+}
+.cs-map-search-cover .cs-tag-section::-webkit-scrollbar-thumb{
+  background: #f1b200b8;
+  border-radius: 14px;
+
+}
+.cs-map-search-section .btn-tag{
+  background-color:#ffffff;
+  color:#000000;
+  margin-right : 0.25rem;
+  margin-left : 0.25rem;
+  border : 0.1px solid rgb(176, 176, 176) !important;
+}
+.cs-map-search-section .btn-tag.selected{
+  background-color:#e9e9e9;
+  box-shadow:  3px 3px 3px rgba(0, 0, 0, 0.259) inset !important;
+}
+
+
 
 /* 지도 검색 목록 커버 */
-.cs-map-list-section-cover {
-  z-index:4;
-  top:50px;
-  left:10px;
+.cs-map-list-section-cover{
+  background-color: #dddddd;
+}
+.cs-map-list-section-cover::-webkit-scrollbar{
+  height: 100%;
+  width: 8px;
+}
+.cs-map-list-section-cover::-webkit-scrollbar-thumb{
+  background: #ffbb00de;
+  border-radius: 14px;
+
+}
+
+.cs-map-list-section-cover .bar {
+  cursor: pointer;
+  height:10px;
+}
+
+/* .cs-bar-cover {
+  top: calc(100vh - 160px);
+  height: 100px;
+  background-color:rgba(0, 0, 0, 0.259);
+  left:0px;
+  z-index:10;
+
+}
+.cs-bar-cover {
+  text-align: center;
+  width:100%;
+  background-color: rgba(128, 128, 128, 0.413);
+  border-radius: 15px 15px 0px 15px;
+} */
+
+.cs-bar-cover.active .bar .cs-btn-deactive{
+  display:inline-block ;
+}
+.cs-bar-cover.active .bar .cs-btn-active{
+  display:none;
+}
+.cs-bar-cover .bar .cs-btn-deactive{
+  display:none;
+}
+.cs-bar-cover .bar .cs-btn-active{
+  display:inline-block ;
+}
+
+.cs-bar-cover.active .bar .cs-btn-deactive.d-sm-inline-block {
+  display:inline-block ;
+  opacity: 1;
+}
+.cs-bar-cover .bar .cs-btn-active.d-sm-inline-block {
+  display:inline-block ;
+}
+.cs-bar-cover.active .bar .cs-btn-active.d-sm-inline-block {
+  display:none !important;
 }
 
 
-.cs-map-list-section-cover .mobile-drag{
 
-
-}
-.cs-map-list-section-cover button.bar {
-
-}
 
 
