@@ -1,1 +1,35 @@
-<div id="maps" class="cs-content" style="height: calc(100vh - 80px)"></div>
+<div class="cs-content position-absolute px-0">
+  <!-- 지도 영역 style 속성 건들지 말것 -->
+  <div id="maps" style="height: calc(100vh - 80px); position: static"></div>
+  <!-- 검색 영역-->
+  <div
+    class="cs-map-search-cover col-12"
+    style="background-color: rgba(150, 150, 240, 0.684); height: 150px"
+  >
+    <div class="row justify-content-end">
+      <div class="col-12 col-sm-8">
+        <div class="input-group mb-3 px-1">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="장소 또는 지역을 검색하세요"
+            aria-label="search place or region"
+            aria-describedby="button-addon2"
+          />
+          <button class="btn btn-primary" type="button" id="map-search-btn">
+            <i class="fa fa-search fa-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 목록 영역 -->
+  <div
+    class="position-absolute cs-map-list-section-cover"
+    style="background-color: rgba(240, 160, 150, 0.684); height: 150px"
+  >
+    <div class="d-block d-md-none mobile-drag">
+      <div class="bar"></div>
+    </div>
+  </div>
+</div>
