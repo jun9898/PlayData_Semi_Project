@@ -21,16 +21,22 @@ body {
 .cs-sidebar-menu {
   position: fixed;
   left: 0;
-  z-index: 2;
+  z-index: 20;
+  box-shadow: rgb(91 91 91) 3px 5px 7px 1px;
+    border: 0.1px solid #b4b4b4;
 }
 .cs-sidebar-list-group {
   height: calc(100vh - 67px);
-  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.413);
 }
 .cs-profile-box {
   min-height: 150px;
   height: 150px;
-  background: repeating-linear-gradient(to top left, #f3f3f3, #dddddd, #dfdfdf);
+  border-radius: 10px;
+  background: repeating-linear-gradient(to top left, #ff8000, #ffa54b, #ffd1a3);
+}
+.cs-profile-box .nickname {
+  color:#171717;
+
 }
 .cs-profile{
     width: 75px; height: 75px; border-radius: 20px;
@@ -325,6 +331,7 @@ body {
       color: rgba(0, 0, 0, 0.2) !important;
     }
     .footer {
+      background-color:#fff;
       min-height: calc(0.9rem * 2);
     }
     
@@ -382,6 +389,7 @@ body {
       color: rgba(0, 0, 0, 0.2) !important;
     }
     .footer {
+      background-color:#fff;
       min-height: calc(1rem * 2);
     }
         
@@ -450,6 +458,7 @@ body {
       color: rgba(0, 0, 0, 0.2) !important;
     }
     .footer {
+      background-color:#fff;
       min-height: calc(1rem * 2);
     }
   }
@@ -459,13 +468,14 @@ body {
     .footer a {
       color: black !important;
       text-decoration: none !important;
-      font-size: 1.3rem;
+      font-size: 1rem;
     }
     .footer a:hover {
       color: rgba(0, 0, 0, 0.2) !important;
     }
     .footer {
-      min-height: calc(1.3rem * 2);
+      background-color:#fff;
+      min-height: calc(1rem * 2);
     }
   }
 
@@ -480,6 +490,7 @@ body {
       color: rgba(0, 0, 0, 0.2) !important;
     }
     .footer {
+      background-color:#fff;
       min-height: calc(1.1rem * 2);
     }
   }
@@ -493,6 +504,7 @@ body {
       color: rgba(0, 0, 0, 0.2) !important;
     }
     .footer {
+      background-color:#fff;
       min-height: calc(1.2rem * 2);
     }
   }
@@ -707,7 +719,12 @@ body {
   display:none !important;
 }
 
+.footer-menus {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
+  border-right: 1px solid black;
 
-
+}
 
 
