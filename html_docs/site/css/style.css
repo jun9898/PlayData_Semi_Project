@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 body {
@@ -214,8 +215,7 @@ body {
 
 /*--------------천현지 mypage-------------*/
 
-/* 다른페이지까지 영향간다..
-:root{
+/* :root{
   font-size: 10px;
 }*/
 
@@ -376,6 +376,12 @@ body {
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
 
 /*--------------------------------------------------*/
 
@@ -634,7 +640,7 @@ body {
   }
 
   .cs-map-list-section-cover {}
-}
+
 
 /* 가로 해상도가 768px 보다 작은 큰화면에 적용) */
 @media only screen and (min-width: 768px) {
@@ -944,5 +950,111 @@ body {
   text-wrap: nowrap;
   border-right: 1px solid black;
 
+}
+
+
+/*-------천현지 가게페이지-----*/
+/*--가게 상제 정보 망고플레이트 참고--*/
+
+
+.cs-restaurant_name{
+  display:inline-block;
+  max-width:100%;
+  word-break:break-all
+}
+
+.cs-restaurant-detail>header{
+  position:relative;
+  padding-bottom:10px;
+  min-height:74px
+}
+.cs-rate-point{
+  font-size:20px;
+  color:#ff792a;
+  margin-left:5px
+}
+.cs-Restaurant__InfoItemLabel--RoadAddressText{
+  font-size:16px;
+  line-height:normal
+}
+.cs-Restaurant__InfoItemLabel--Address{
+  margin-top:10px
+}
+.cs-Restaurant__InfoItemLabel--RoadAddressText{
+  font-size:16px;color:#4f4f4f;
+  line-height:normal
+}
+.cs-Restaurant__InfoAddress--Rectangle{
+  border-radius:2px;
+  border:solid 1px #e9e9e9;
+  padding:0 4px;
+  margin-right:2px;
+  font-size:12px;color:#7f7f7f
+}
+.cs-Restaurant__InfoAddress--Text{
+  font-size:14px;
+  color:#7f7f7f;
+  line-height:normal
+}
+
+/* .cs-Restaurant_Menu{
+  flex:1;
+  display:inline-block;
+  margin-right:30px;
+  white-space:normal
+} */
+.cs-restaurant-detail .info td{
+  font-size:.9rem;
+  color:#4f4f4f;
+  line-height:1.7;
+  text-align:left;
+  vertical-align:middle;
+  padding-bottom:5px
+}
+.cs-restaurant-detail 
+.info th{
+  width:110px;
+  font-size:.9rem;
+  color:rgba(79,79,79,0.6);
+  line-height:1.7;
+  text-align:left;
+  vertical-align:top;
+  padding-right:10px;
+  padding-bottom:5px
+}
+
+.cs-storepage {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.carousel-inner {
+  height: 500px;
+}
+
+.cs-storeinfo-map {
+  width: 100%;
+}
+
+.cs-listmargin {
+  margin-left: 50px;
+
+}
+
+.cs-listmarginrigth {
+  margin-right: 50px;
+}
+
+.cs-reviewtest{
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 30px;
+  padding-top:10px;
+}
+
+.carousel-item>img {
+width: 500px;
+height: 500px;
+object-fit: contain;
 }
 
