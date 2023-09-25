@@ -206,6 +206,12 @@ body {
     background-color: #ff8513;
 }
 
+.cs-list-selectbox {
+  width: 20%;
+  margin: 1%;
+  float: right;
+}
+
 /*--------------천현지 mypage-------------*/
 
 /* 다른페이지까지 영향간다..
