@@ -1,0 +1,85 @@
+<div class="cs-main-content-bg cs-content col container-flude p-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8">
+        <div class="input-group input-group-md p-3">
+          <input type="text" id="feed-search" class="form-control" />
+          <span class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-warning btn-flat cs-feed-search-btn"
+            >
+              <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+            </button>
+          </span>
+        </div>
+        <div class="position-relative row justify-content-center px-6">
+          <div id="feed-auto-complete" class="cs-autocomplete-list col-12 px-0">
+            <div class="cs-autocomplete-item">Item 1</div>
+            <div class="cs-autocomplete-item">Item 2</div>
+            <div class="cs-autocomplete-item">Item 3</div>
+            <div class="cs-autocomplete-item">Item 4</div>
+            <hr />
+            <div class="row px-2">
+              <h5>옵션 선택</h5>
+              <div class="col-6 mb-1">
+                <select id="filter-1 form-control">
+                  <option value=""></option>
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                </select>
+              </div>
+              <div class="col-6 mb-1">
+                <select id="filter-2 form-control">
+                  <option value="option1">Option A</option>
+                  <option value="option2">Option B</option>
+                </select>
+              </div>
+            </div>
+            <hr />
+            <div class="row mb-3 px-2">
+              <h5>태그 선택</h5>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                  class="btn btn-tag btn-sm btn-rounded border selected"
+                  data-mdb-close="true"
+                >
+                  ⌛️ 음식이 빨리나와요
+                </button>
+              </div>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                  class="btn btn-tag btn-sm btn-rounded border"
+                  data-mdb-close="true"
+                >
+                  🐶 애완동물 입장이 가능해요
+                </button>
+              </div>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                  class="btn btn-tag btn-sm btn-rounded border"
+                  data-mdb-close="true"
+                >
+                  ⚽️ 모임하기 좋아요
+                </button>
+              </div>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                  class="btn btn-tag btn-sm btn-rounded border"
+                  data-mdb-close="true"
+                >
+                  🤮 위생적이지 않아요
+                </button>
+              </div>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                  class="btn btn-tag btn-sm btn-rounded border"
+                  data-mdb-close="true"
+                >
+                  🥕 살려주세요
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
