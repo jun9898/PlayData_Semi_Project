@@ -632,7 +632,19 @@ body {
 
 .cs-feed-card {
   cursor: pointer;
-  height: 320px;
+}
+
+.cs-feed-card .card-body{
+  height:150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cs-feed-card .cs-tags {
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 
@@ -690,9 +702,7 @@ body {
   background-color: #f0f0f0;
 }
 
-.cs-tag.cs-more-tag:after {
-  content: "..."
-}
+
 
 .cs-map-search-cover {
   top: 10px;
