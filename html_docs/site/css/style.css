@@ -184,26 +184,15 @@ body {
   background-color: #666;
 }
 
-.cs-list-outer-content .btn-secondary {
-  /* 좀 더 알아보고 수정 */
-  --mdb-btn-color: #000000;
-  --mdb-btn-bg: #ffb06f;
-  --mdb-btn-border-color: #ff9317;
-  --mdb-btn-hover-color: #000;
-  --mdb-btn-hover-bg: #ff9317;
-  --mdb-btn-hover-border-color: #ff9317;
-  --mdb-btn-focus-shadow-rgb: 135, 141, 151;
-  --mdb-btn-active-color: #000;
-  --mdb-btn-active-bg: #y;
-  --mdb-btn-active-border-color: #f87a12;
-  --mdb-btn-active-shadow: 0 8px 9px -4px rgba(0, 0, 0, 0.15), 0 4px 18px 0 rgba(0, 0, 0, 0.1);
-  --mdb-btn-disabled-color: #000;
-  --mdb-btn-disabled-bg: #9fa6b2;
-  --mdb-btn-disabled-border-color: #ff8513;
-  width: 250px;
+ .cs-list-outer-content .btn-check:focus+.btn-light, .btn-check:focus-visible+.btn-light, .btn-light:focus {
+    box-shadow: var(--mdb-btn-box-shadow-state);
+    background-color: #ffb46d;
 }
-.cs-list-outer-content .btn-check:focus+.btn-secondary, .btn-check:focus-visible+.btn-secondary, .btn-secondary:focus{
-    background-color: #ff8513;
+
+.cs-list-selectbox {
+  width: 20%;
+  margin: 1%;
+  float: right;
 }
 
 /*--------------천현지 mypage-------------*/
