@@ -83,7 +83,7 @@
       $("#feed-search").on("click", () => {
         $("#feed-auto-complete")[0].classList.add("cs-autocomplete-show");
       });
-      $("#feed-auto-complete").on("mouseleave", () => {
+      $("#feed-search").on("blur", () => {
         $("#feed-auto-complete").removeClass("cs-autocomplete-show");
       });
     });
