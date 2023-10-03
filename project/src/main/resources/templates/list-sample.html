@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="utf-8">
+  <body>
+  <div th:replace="layout/header :: headerFragment"></div>
+    <section class="container-flude px-0">
+      <div class="row justify-content-center">
+        <!-- 좌측 사이드바 영역-->
+        <div id="left_sidebar"></div>
+        <!-- 사이드바 위치 보조 div-->
+        <!-- <div class="d-lg-block col-lg-4"></div> -->
+        <!-- content 영역 -->
+        <main></main>
+      </div>
+    </section>
+
+    <div class="d-none d-lg-block">
+      <footer></footer>
+    </div>
+  </body>
+  <div id="foot"></div>
+  <div class="d-block">
+    <div id="floating_button"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+</html>
