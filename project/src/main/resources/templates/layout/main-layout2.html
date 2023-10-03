@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head th:fragment="main_header(title,links)">
+    <meta charset="UTF-8"/>
+    <title th:replace="${title}"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="/css/mdb.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <th:block th:if="${links}">
+        <th:block th:replace="${links}"/>
+    </th:block>
+
+</head>
+
+<body th:fragment="layout">
+<header th:replace="layout/header :: header"></header>
+<section class="container-flude px-0">
+    <div class="row justify-content-center" >
+        <!-- 좌측 사이드바 영역-->
+        <div id="left_sidebar" th:include="layout/left-sidebar :: sidebar-content"></div>
+        <!-- 사이드바 위치 보조 div-->
+        <!-- <div class="d-lg-block col-lg-4"></div> -->
+        <!-- content 영역 -->
+        <main th:replace="this :: content"></main>
+    </div>
+</section>
+
+<div class="d-none d-lg-block">
+    <footer th:include="layout/footer :: footer"></footer>
+</div>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script type="text/javascript" th:src="/js/mdb.min.js"></script>
+
+<th:block th:fragment="common_footer(scripts)">
+    <th:block th:replace="${scripts}"></th:block>
+</th:block>
