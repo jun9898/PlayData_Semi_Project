@@ -19,11 +19,15 @@
     </th:block>
 </head>
 <body>
-<header th:replace="layout/header :: header"></header>
+<th:block th:if="${header_yn == 'Y'}">
+    <header th:replace="layout/header :: header"></header>
+</th:block>
 <section class="container-flude px-0">
     <div class="row justify-content-center" >
         <!-- 좌측 사이드바 영역-->
-        <div id="left_sidebar" th:replace="layout/left-sidebar :: sidebar-content"></div>
+        <th:block th:if="${sidebar_yn == 'Y'}">
+            <div id="left_sidebar" th:replace="layout/left-sidebar :: sidebar-content"></div>
+        </th:block>
         <!-- content 영역 -->
         <main th:replace="this :: content"></main>
     </div>
