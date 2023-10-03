@@ -1,4 +1,12 @@
 window.addEventListener("load",function(){
+
+    $("#feed-search").on("click", () => {
+        $("#feed-auto-complete")[0].classList.add("cs-autocomplete-show");
+    });
+    $("#feed-search").on("blur", () => {
+        $("#feed-auto-complete").removeClass("cs-autocomplete-show");
+    });
+
     $("button[data-id='feed-btn']").addClass("disabled");
     let index = -1;
     const ARROW_UP = 38;
