@@ -5,7 +5,10 @@
         <th:block th:case="'default'">
             <div th:replace="layout/header :: header"></div>
         </th:block>
-
+        <!-- feed header -->
+        <th:block th:case="'feed'">
+            <div th:replace="layout/feed-header :: header"></div>
+        </th:block>
         <!-- 표시 안할 경우 -->
         <th:block th:case="'none'"></th:block>
 
