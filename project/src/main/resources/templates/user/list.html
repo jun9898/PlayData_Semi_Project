@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<th:block th:replace="layout/main-layout :: layout(default,none)">
+  <th:block th:fragment="add_header">
+    <title>팔로우/팔로워 리스트</title>
+  </th:block>
+
+  <div th:fragment="content" class="cs-main-content-bg cs-content col container-flude p-3">
+    <div class="cs-content">
+    <div class="row justify-content-center cs-list-cover-top">
+      <div class="cs-list-outer-content">
+        <div class="btn-group">
+          <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick='location.href="list?status=follower";'>follower</button>
+          <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick='location.href="list?status=following";'>following</button>
+        </div>
+      </div>
+
+      <div class="cs-list-cover justify-content-center">
+        <div class="cs-list-content">
+
+          <ul class="list-group list-group-light">
+
+            <li class="list-group-item d-flex justify-content-between align-items-center" th:each="user : ${list}">
+              <div class="d-flex align-items-center">
+                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                     style="width: 45px; height: 45px" class="rounded-circle" />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1" th:text="${user.name}"></p>
+                  <p class="text-muted mb-0" th:text="${user.email}"></p>
+                </div>
+              </div>
+              <a class="btn btn-danger btn-rounded" href="#" role="button">삭제</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <th:block th:fragment="add_bottom">
+    <script type="text/javascript" th:src="@{/js/feed.js}"></script>
+  </th:block>
+
+</th:block>
