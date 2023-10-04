@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ko"
+<<<<<<< Updated upstream
       th:fragment="layout(header_type,footer_type)">
 <head>
     <!-- default-head insert -->
     <th:block th:replace="layout/default-head :: head"></th:block>
     <!-- other page resolve header -->
     <th:block th:replace="this :: add_header"></th:block>
+=======
+      th:fragment="layout(header_yn,sidebar_yn,footer_yn)"
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" th:href="@{/css/mdb.min.css}" />
+    <link rel="stylesheet" href="/css/style.css" />
+   <th:block th:replace="this :: add_header">
+    </th:block>
+>>>>>>> Stashed changes
 </head>
 
 <body>
+<<<<<<< Updated upstream
     <!-- 헤더 replace -->
     <header th:replace="layout-switch/header-switch :: header-switch(${header_type})"></header>
     <section class="container-flude px-0">
@@ -21,6 +43,22 @@
     </section>
     <!-- 푸터 replace -->
     <footer th:replace="layout-switch/footer-switch :: footer-switch(${footer_type})"></footer>
+=======
+<header th:replace="include/header :: header"></header>
+<section class="container-flude px-0">
+    <div class="row justify-content-center" >
+        <!-- 좌측 사이드바 영역-->
+        <div id="left_sidebar" th:replace="include/left-sidebar :: sidebar-content"></div>
+        <!-- content 영역 -->
+        <main th:replace="this :: content"></main>
+    </div>
+</section>
+<th:block th:if="${footer_yn == 'Y'}">
+    <div class="d-none d-lg-block">
+        <footer th:replace="include/footer :: footer"></footer>
+    </div>
+</th:block>
+>>>>>>> Stashed changes
 </body>
 
 <!-- default-bottom insert -->
