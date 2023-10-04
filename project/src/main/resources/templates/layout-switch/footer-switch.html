@@ -1,7 +1,7 @@
 <!-- footer type에 따라 출력할 항목 변경 -->
 <th:block th:fragment="footer-switch(footer_type)" th:switch="${footer_type}">
 
-    <!-- 기본 푸터 -->제
+    <!-- 기본 푸터 -->
     <th:block th:case="'default'">
         <div th:replace="layout/footer :: footer"></div>
     </th:block>
