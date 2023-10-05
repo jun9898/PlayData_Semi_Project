@@ -5,7 +5,7 @@
 <head>
     <!-- default-head insert -->
     <th:block th:replace="layout/default-head :: head"></th:block>
-    <!-- other page resolve header -->
+    <!-- other page injection header -->
     <th:block th:replace="this :: add_header"></th:block>
 =======
       th:fragment="layout(header_yn,sidebar_yn,footer_yn)"
@@ -63,7 +63,7 @@
 
 <!-- default-bottom insert -->
 <th:block th:replace="layout/default-bottom :: bottom"></th:block>
-<!-- other page resolve footer -->
+<!-- other page injection footer -->
 <th:block th:replace="this :: add_bottom"></th:block>
 
 </html>
