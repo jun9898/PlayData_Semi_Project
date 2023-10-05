@@ -21,11 +21,11 @@
 </head>
 
 <body th:fragment="layout">
-<header th:replace="layout/header :: header"></header>
+<header th:replace="include/header :: header"></header>
 <section class="container-flude px-0">
     <div class="row justify-content-center" >
         <!-- 좌측 사이드바 영역-->
-        <div id="left_sidebar" th:include="layout/left-sidebar :: sidebar-content"></div>
+        <div id="left_sidebar" th:include="include/left-sidebar :: sidebar-content"></div>
         <!-- 사이드바 위치 보조 div-->
         <!-- <div class="d-lg-block col-lg-4"></div> -->
         <!-- content 영역 -->
@@ -34,7 +34,7 @@
 </section>
 
 <div class="d-none d-lg-block">
-    <footer th:include="layout/footer :: footer"></footer>
+    <footer th:include="include/footer :: footer"></footer>
 </div>
 
 
