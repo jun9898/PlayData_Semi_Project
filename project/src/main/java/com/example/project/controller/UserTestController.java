@@ -1,6 +1,6 @@
 package com.example.project.controller;
 
-import com.example.project.service.MemberService;
+//import com.example.project.service.MemberService;
 import com.example.project.service.UserTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,4 +25,12 @@ public class UserTestController {
         }
         return "user/"+name;
     }
+
+    @RequestMapping("/mypage")
+    public String mypage(){
+
+        return "user/mypage";
+    }
+
+
 }
