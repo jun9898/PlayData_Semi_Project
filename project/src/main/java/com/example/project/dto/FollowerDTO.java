@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class FollowerDTO {
 
-    private int seq;
+    private Long seq;
     private String follower_user_seq;
     private String following_user_seq;
     private String created_at;

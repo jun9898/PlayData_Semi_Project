@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -34,7 +35,6 @@ public class UserController {
 
     @RequestMapping("/mypage")
     public String mypage(){
-
         return "user/mypage";
     }
 

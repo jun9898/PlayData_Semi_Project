@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.playdata.erp.board">
+<mapper namespace="com.playdata.project.user">
 <!--    해당 xml파일에 member 관련 쿼리문 생성-->
 <!--    <select id="selectall" resultType="board">-->
 <!--        select * from tbboard-->
