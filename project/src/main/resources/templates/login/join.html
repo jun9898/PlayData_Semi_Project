@@ -46,7 +46,7 @@
 <div class="container">
   <div class="input-form-backgroud row" style="margin-bottom: 100px;">
     <div class="input-form col-md-12 mx-auto">
-      <img src="/html_docs/site/asset/logo.jpg" class="img-fluid" alt="...">
+      <img th:src="@{/asset/logo-removebg-preview.png}" class="img-fluid" alt="...">
       <h4 class="mb-3">회원가입</h4>
 
       <form class="validation-form" novalidate>
@@ -141,16 +141,91 @@
           </div>
         </div>
 
-        <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="aggrement" required>
-          <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
-        </div>
 
+        <label for="id">약관</label>
+        <div class="card">
+          <div class="card-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                전체 약관 동의
+              </label>
+            </div>
+
+            <hr />
+            <p>필수 동의 항목</p>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label">
+                <span class="card-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  [필수] 이용약관
+                </span>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label">
+                  <span class="card-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    [필수] 개인정보 수집동의서
+                  </span>
+              </label>
+            </div>
+
+            <hr />
+            <p>선택 동의 항목</p>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label">
+                  <span class="card-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    [선택] 광고성 정보 수신 동의
+                  </span>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label">
+                  <span class="card-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    [선택] 위치기반서비스 이용약관
+                  </span>
+              </label>
+            </div>
+
+          </div>
+        </div>
         <div class="d-grid gap-2">
           <button class="btn btn-light" type="button">가입완료</button>
         </div>
+      </form>
     </div>
   </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">약관 동의</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body ">
+        test
+        test
+        test
+        test
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 </body>
 </html>

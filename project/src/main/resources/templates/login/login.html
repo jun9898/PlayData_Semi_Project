@@ -90,7 +90,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 login-sec">
-                <img src="/html_docs/site/asset/logo.jpg" class="img-fluid" alt="...">
+                <img th:src="@{/asset/logo-removebg-preview.png}" class="img-fluid" alt="...">
+
                 <h2 class="text-center"></h2>
                 <form class="login-form">
                     <div class="form-group">
@@ -113,8 +114,10 @@
                     </div>
                     <hr />
                     <div class="snslogin">
-                        <img class="kakao" src="/html_docs/site/asset/kakao_login.png" alt="">
-                        <img class="google" src="/html_docs/site/asset/google_login.png" alt="">
+<!--                        <img class="kakao" src="/html_docs/site/asset/kakao_login.png" alt="">-->
+                        <img th:src="@{/asset/kakao_login.png}" class="kakao"/>
+                        <img th:src="@{/asset/google_login.png}" class="google"/>
+
                     </div>
                 </form>
             </div>
@@ -123,13 +126,14 @@
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/html_docs/site/asset/food.jpg" class="d-block w-100" alt="...">
+                            <img th:src="@{/asset/food.jpg}" class="d-block w-100" alt="...">
+
                         </div>
                         <div class="carousel-item">
-                            <img src="/html_docs/site/asset/food.jpg" class="d-block w-100" alt="...">
+                            <img th:src="@{/asset/food.jpg}" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="/html_docs/site/asset/food.jpg" class="d-block w-100" alt="...">
+                            <img th:src="@{/asset/food.jpg}" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
