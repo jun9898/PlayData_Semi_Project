@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<th:block th:replace="layout/main-layout :: layout(feed,none)">
+    <th:block th:fragment="add_header">
+        <title>가게 상세페이지</title>
+    </th:block>
+    <div th:fragment="content" class="cs-main-content-bg cs-content col container-flude p-3">
+        <div class="cs-mypage-container">
+
+            <div class="cs-storepage">
+
+
+                <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-mdb-ride="carousel"
+                     style="height: 500px;">
+                    <!-- Inner -->
+                    <div class="carousel-inner rounded-5 shadow-4-strong">
+                        <!-- Single item -->
+                        <div class="carousel-item active">
+                            <img th:src="@{/asset/photo_review1.jpg}" class="d-block w-100"
+                                 alt="" />
+                        </div>
+
+                        <!-- Single item -->
+                        <div class="carousel-item">
+                            <img th:src="@{/asset/photo_review2.jpg}" class="d-block w-100" alt="" />
+
+                        </div>
+
+                        <!-- Single item -->
+                        <div class="carousel-item">
+                            <img th:src="@{/asset/photo_review3.jpg}" class="d-block w-100"
+                                 alt="" />
+
+                        </div>
+                    </div>
+                    <!-- Inner -->
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselMaterialStyle"
+                            data-mdb-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselMaterialStyle"
+                            data-mdb-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="cs-mypage-container" style="height: 400px;">
+            <div class="cs-mypage-container">
+
+                <!-- Columns are always 50% wide, on mobile and desktop -->
+                <div class="row">
+                    <div class="col-6">
+                        <div class="cs-restaurant-detail" style="width: fit-content; float: left; ">
+                            <header>
+                                <div class="cs-restaurant_title_wrap">
+                                <span class="title">
+                                    <h1 class="cs-restaurant_name">미라이</h1>
+                                    <strong class="cs-rate-point ">
+                                        <span><i class="fa-solid fa-star" style="color: #ffde66;"></i>4.8</span>
+                                    </strong>
+
+                                    <p class="branch"></p>
+                                </span>
+                                </div>
+
+
+                            </header>
+
+
+                            <!-- 상세 정보 -->
+                            <table class="info">
+
+
+                                <tbody>
+                                <tr>
+                                    <th>주소</th>
+                                    <td>서울특별시 강남구 논현로153길 24 끌레르빌 1F<br>
+                                        <span class="Restaurant__InfoAddress--Rectangle">지번</span>
+                                        <span class="Restaurant__InfoAddress--Text">서울시 강남구 신사동 557-25 끌레르빌 1F</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>전화번호</th>
+                                    <td>02-540-0934</td>
+                                </tr>
+
+                                <tr>
+                                    <th>음식 종류</th>
+                                    <td>
+                                        <span>이자카야 / 오뎅 / 꼬치</span>
+                                    </td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <th style="vertical-align:top;">영업시간</th>
+                                    <td>18:00 - 01:00</td>
+                                </tr>
+
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+
+                        <iframe class="cs-storeinfo-map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.4422845278787!2d127.02133148393628!3d37.521070154683464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3ecd3a6732d%3A0x84a7da91e705e154!2z7ISc7Jq47Yq567OE7IucIOqwleuCqOq1rCDrhbztmITroZwxNTPquLggMjQ!5e0!3m2!1sko!2skr!4v1695518239547!5m2!1sko!2skr"
+                                width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-mypage-container"
+             style=" background-color: #f1f3f4;  padding-top: 30px; padding-bottom: 30px; border-radius:10px;">
+            <div style="margin-bottom:30px; background-color:#fff;">
+
+
+
+                <section class="mb-5">
+                    <div class="card bg-light">
+                        <div class="card-body">
+
+                            <ul class="list-group list-group-light">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center listmargin">
+                                        <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="...">
+                                        <div class="ms-3">
+                                            <p class="fw-bold mb-1">닉네임1</p>
+                                            <p>맛있어요</p>
+                                        </div>
+                                    </div>
+                                    <span class="listmarginrigth">
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+
+                                &nbsp;
+                                <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+
+                            </span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center listmargin">
+                                        <img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="...">
+                                        <div class="ms-3">
+                                            <p class="fw-bold mb-1">닉네임2</p>
+                                            <p>맛없어요</p>
+                                        </div>
+                                    </div>
+                                    <span class="listmarginrigth">
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-regular fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-regular fa-star" style="color: #ffde66;"></i>
+
+                                &nbsp;
+                                <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+
+                            </span>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+    <th:block th:fragment="add_bottom">
+        <script type="text/javascript" th:src="@{/js/feed.js}"></script>
+    </th:block>
+
+</th:block>
