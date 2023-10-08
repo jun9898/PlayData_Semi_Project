@@ -5,7 +5,6 @@
     </th:block>
 
     <div th:fragment="content" class="cs-main-content-bg cs-content col container-flude p-3">
-        <div class="cs-content">
             <div class="cs-mypage-aside">
             </div>
             <div>
@@ -19,6 +18,8 @@
                         <div>
                             <h1 class="cs-mypage-profile-user-name">닉네임</h1>
                             <button class="btn cs-mypage-profile-follow-btn" style="background-color: #ed9715;">팔로우 하기</button>
+                            <a href="#!" class="link-muted"><i class="fas fa-cog fa-lg" style="color: #8b8b8b; margin-left:10px;"></i></a>
+
                         </div>
 
                         <!-- 프로필 상태(게시물, 팔로워, 팔로잉)-->
@@ -233,7 +234,7 @@
 
             </div>
 
-        </div>
+
 
         <th:block th:fragment="add_bottom">
             <script type="text/javascript" th:src="@{/js/feed.js}"></script>
