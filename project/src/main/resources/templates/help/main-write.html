@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<th:block th:replace="layout/main-layout :: layout(white,none)">
+
+    <th:block th:fragment="add_header">
+        <title>공지사항</title>
+        <link rel="stylesheet" href="">
+    </th:block>
+
+    <div th:fragment="content" <div class="cs-content">
+
+    <div class="bg_container">
+        <div class="bubble"></div>
+        <div class="container">
+            <div class="board_write_wrap">
+                <div class="board_write">
+                    <div class="write_title">
+                        <dl>
+                            <dt><strong>제목</strong></dt>
+                            <dd><input type="text" placeholder="제목 입력" style="border: none;"></dd>
+                        </dl>
+                    </div>
+
+                    <div class="write_name">
+                        <dl>
+                            <dt><strong>가게정보</strong></dt>
+                            <dd><input type="text" placeholder="작성자 입력" style="border: none;"></dd>
+                        </dl>
+                        <dl>
+                            <dt><strong>별점</strong></dt>
+                            <div class="starpoint_wrap">
+                                <div class="starpoint_box">
+                                    <label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5점</span></label>
+                                    <label for="starpoint_2" class="label_star" title="1"><span class="blind">1점</span></label>
+                                    <label for="starpoint_3" class="label_star" title="1.5"><span class="blind">1.5점</span></label>
+                                    <label for="starpoint_4" class="label_star" title="2"><span class="blind">2점</span></label>
+                                    <label for="starpoint_5" class="label_star" title="2.5"><span class="blind">2.5점</span></label>
+                                    <label for="starpoint_6" class="label_star" title="3"><span class="blind">3점</span></label>
+                                    <label for="starpoint_7" class="label_star" title="3.5"><span class="blind">3.5점</span></label>
+                                    <label for="starpoint_8" class="label_star" title="4"><span class="blind">4점</span></label>
+                                    <label for="starpoint_9" class="label_star" title="4.5"><span class="blind">4.5점</span></label>
+                                    <label for="starpoint_10" class="label_star" title="5"><span class="blind">5점</span></label>
+                                    <input type="radio" name="starpoint" id="starpoint_1" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_2" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_3" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_4" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_5" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_6" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_7" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_8" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_9" class="star_radio">
+                                    <input type="radio" name="starpoint" id="starpoint_10" class="star_radio">
+                                    <span class="starpoint_bg"></span>
+                                </div>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div>
+                        <div class="write_upload">
+                            <dl>
+                                <div class="image_container" id="image_container">
+                                    <button id="image_btn">
+                                        <img
+                                                src="./asset/img.png"
+                                                width="125px"
+                                                height="125px"
+                                        >
+
+                                    </button>
+                                    <div class="input_file">
+                                        <input type="file" id="image" accept="image/*"  multiple/>
+                                    </div>
+                                </div>
+
+                            </dl>
+                        </div>
+
+
+                        <div class="write_cont">
+                            <dl>
+                                <dt><strong>내용</strong></dt>
+                                <dd><textarea placeholder="내용 입력"></textarea></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="write_tag">
+                        <dl>
+                            <dt><strong>태그</strong></dt>
+                            <div class="input-group input-group-md p-3">
+                                <input type="text" id="feed-search" class="form-control" />
+                                <span class="input-group-append">
+                              <button
+                                      type="button"
+                                      class="btn btn-warning btn-flat cs-feed-search-btn"
+                              >
+                                <i class="fa-solid fa-magnifying-glass fa-2xl"></i>
+                              </button>
+                            </span>
+                            </div>
+                            <div class="position-relative row justify-content-center px-6">
+                                <div id="feed-auto-complete" class="cs-autocomplete-list col-12 px-0">
+                                    <div class="cs-autocomplete-item">Item 1</div>
+                                    <div class="cs-autocomplete-item">Item 2</div>
+                                    <div class="cs-autocomplete-item">Item 3</div>
+                                    <div class="cs-autocomplete-item">Item 4</div>
+                                    <hr />
+                                    <div class="row px-2">
+                                        <h5>옵션 선택</h5>
+                                        <div class="col-6 mb-1">
+                                            <select id="filter-1 form-control">
+                                                <option value=""></option>
+                                                <option value="option1">Option 1</option>
+                                                <option value="option2">Option 2</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6 mb-1">
+                                            <select id="filter-2 form-control">
+                                                <option value="option1">Option A</option>
+                                                <option value="option2">Option B</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row mb-3 px-2">
+                                        <h5>태그 선택</h5>
+                                        <div class="col-12 col-sm-auto mb-2">
+                                            <button
+                                                    class="btn btn-tag btn-sm btn-rounded border selected"
+                                                    data-mdb-close="true"
+                                            >
+                                                ⌛️ 음식이 빨리나와요
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-sm-auto mb-2">
+                                            <button
+                                                    class="btn btn-tag btn-sm btn-rounded border"
+                                                    data-mdb-close="true"
+                                            >
+                                                🐶 애완동물 입장이 가능해요
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-sm-auto mb-2">
+                                            <button
+                                                    class="btn btn-tag btn-sm btn-rounded border"
+                                                    data-mdb-close="true"
+                                            >
+                                                ⚽️ 모임하기 좋아요
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-sm-auto mb-2">
+                                            <button
+                                                    class="btn btn-tag btn-sm btn-rounded border"
+                                                    data-mdb-close="true"
+                                            >
+                                                🤮 위생적이지 않아요
+                                            </button>
+                                        </div>
+                                        <div class="col-12 col-sm-auto mb-2">
+                                            <button
+                                                    class="btn btn-tag btn-sm btn-rounded border"
+                                                    data-mdb-close="true"
+                                            >
+                                                🥕 살려주세요
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bt_wrap">
+                <a href="view.html" class="on">등록</a>
+                <a href="notice.html">취소</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <th:block th:fragment="add_bottom">
+
+        <script type="text/javascript" th:src="@{/js/notice.js}"></script>
+    </th:block>
+
+</th:block>

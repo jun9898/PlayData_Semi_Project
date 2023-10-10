@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<th:block th:replace="layout/main-layout :: layout(white,none)">
+
+    <th:block th:fragment="add_header">
+        <title>공지사항</title>
+        <link rel="stylesheet" href="">
+    </th:block>
+
+    <div th:fragment="content" class="cs-content">
+
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>공지사항</strong>
+            <p>공지사항을 알려드립니다</p>
+        </div>
+    </div>
+
+    <div class="bg_container">
+        <div class="bubble"></div>
+        <div class="container">
+            <div class="board_view_wrap">
+                <div class="board_view">
+                    <div class="view_title">
+                        <strong>9월 정기점검 안내</strong>
+                    </div>
+                    <div class="view_info">
+                        <dl>
+                            <dt>NO</dt>
+                            <dd>59</dd>
+                        </dl>
+                        <dl>
+                            <dt>WRITER</dt>
+                            <dd>관리자</dd>
+                        </dl>
+                        <dl>
+                            <dt>DATE</dt>
+                            <dd>2023.09.20</dd>
+                        </dl>
+                        <dl>
+                            <dt>조회</dt>
+                            <dd>33</dd>
+                        </dl>
+                    </div>
+                    <div class="view_cont">
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다<br>
+                        글 내용이 들어갑니다
+                    </div>
+                </div>
+                <div class="bt_wrap">
+                    <a href="notice.html" class="on">목록</a>
+                    <a href="write.html">수정</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <th:block th:fragment="add_bottom">
+
+        <script type="text/javascript" th:src="@{/js/notice.js}"></script>
+    </th:block>
+
+</th:block>
