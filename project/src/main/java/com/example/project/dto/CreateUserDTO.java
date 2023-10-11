@@ -1,5 +1,6 @@
 package com.example.project.dto;
 
+import com.example.project.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,21 +10,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+public class CreateUserDTO {
 
     private String email;
     private String id;
     private String phone_num;
-    private Long user_type_cd;
-    private String name;
+    private String name; //닉네임
     private String password;
     private String sigungu_cd;
-    private String email_agree_yn;
-    private String email_agree_at;
-    private String last_login_at;
-    private String create_at;
-    private String updated_at;
-    private String deleted_at;
-
 
 }
