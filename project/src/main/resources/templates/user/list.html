@@ -9,8 +9,9 @@
     <div class="row justify-content-center cs-list-cover-top">
       <div class="cs-list-outer-content">
         <div class="btn-group">
-          <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick='location.href="list?status=follower";'>follower</button>
-          <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onclick='location.href="list?status=following";'>following</button>
+          <!-- ajax로 요청 받아오도록 설정-->
+          <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" id="followerbtn">follower</button>
+          <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" id="followingbtn">following</button>
         </div>
       </div>
 
