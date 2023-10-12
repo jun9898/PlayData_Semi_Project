@@ -2,7 +2,7 @@ package com.example.project.repository;
 
 import com.example.project.dto.request.CreateUserDTO;
 import com.example.project.dto.request.LoginUserDTO;
-import com.example.project.dto.response.LoginResultDTO;
+import com.example.project.dto.request.UserDTO;
 import com.example.project.entity.UserEntity;
 import com.example.project.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public UserEntity findById(String id) {
+    public UserDTO findById(String id) {
         return null;
     }
 
@@ -30,7 +30,7 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public LoginResultDTO login(LoginUserDTO dto) {
+    public String login(LoginUserDTO dto) {
         return mapper.loginUser(dto);
     }
 
