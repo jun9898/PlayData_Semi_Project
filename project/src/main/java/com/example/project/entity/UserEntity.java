@@ -3,8 +3,8 @@ package com.example.project.entity;
 import lombok.*;
 import org.apache.ibatis.type.Alias;
 
+@Builder
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Alias("user")
@@ -14,7 +14,6 @@ public class UserEntity {
     private String email;
     private String id;
     private String phone_num;
-    private Long user_type_cd;
     private String name;
     private String password;
     private String sigungu_cd;
@@ -25,14 +24,17 @@ public class UserEntity {
     private String updated_at;
     private String deleted_at;
 
-    @Builder
-    public UserEntity(String email, String id, String phone_num, String name, String password, String sigungu_cd, Long user_type_cd) {
+    public UserEntity(String email, String id, String phone_num, String name, String password, String sigungu_cd) {
         this.email = email;
         this.id = id;
         this.phone_num = phone_num;
         this.name = name;
         this.password = password;
         this.sigungu_cd = sigungu_cd;
-        this.user_type_cd = user_type_cd;
+    }
+
+    public UserEntity(String id, String password) {
+        this.id = id;
+        this.password = password;
     }
 }
