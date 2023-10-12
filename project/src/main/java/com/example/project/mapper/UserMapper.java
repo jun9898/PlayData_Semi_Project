@@ -1,6 +1,5 @@
 package com.example.project.mapper;
 
-import com.example.project.dto.CreateUserDTO;
 import com.example.project.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 

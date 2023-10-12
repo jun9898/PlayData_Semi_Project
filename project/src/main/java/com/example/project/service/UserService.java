@@ -1,9 +1,8 @@
 package com.example.project.service;
 
-import com.example.project.dto.CreateUserDTO;
-import com.example.project.entity.UserEntity;
+import com.example.project.dto.user.CreateUserDTO;
 
 public interface UserService {
-    void join(UserEntity user);
+    void join(CreateUserDTO user);
     CreateUserDTO findMember(Long memberId);
 }

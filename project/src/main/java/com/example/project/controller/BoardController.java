@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/board")
 public class BoardController {
 
-
     @RequestMapping("/{name}")
     public String TestPath(@PathVariable("name") String name){
         System.out.println("board/"+name);
