@@ -1,6 +1,8 @@
 package com.example.project.service;
 
-import com.example.project.dto.user.CreateUserDTO;
+import com.example.project.dto.request.CreateUserDTO;
+import com.example.project.dto.request.LoginUserDTO;
+import com.example.project.dto.response.LoginResultDTO;
 import com.example.project.entity.UserEntity;
 import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +16,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void join(CreateUserDTO member) {
-        UserEntity user = member.toCreateUserEntity();
-        repository.join(user);
+        repository.join(member);
     }
 
     @Override
-    public CreateUserDTO findMember(Long memberId) {
-        return null;
+    public LoginResultDTO login(LoginUserDTO login) {
+        return repository.login(login);
     }
 }

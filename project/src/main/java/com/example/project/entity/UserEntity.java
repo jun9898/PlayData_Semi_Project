@@ -1,13 +1,10 @@
 package com.example.project.entity;
 
 import lombok.*;
-import org.apache.ibatis.type.Alias;
-
-@Builder
+//@Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Alias("user")
 public class UserEntity {
 
     private Long user_seq;
@@ -24,17 +21,18 @@ public class UserEntity {
     private String updated_at;
     private String deleted_at;
 
-    public UserEntity(String email, String id, String phone_num, String name, String password, String sigungu_cd) {
-        this.email = email;
-        this.id = id;
-        this.phone_num = phone_num;
-        this.name = name;
-        this.password = password;
-        this.sigungu_cd = sigungu_cd;
-    }
-
-    public UserEntity(String id, String password) {
-        this.id = id;
-        this.password = password;
-    }
+//    JPA 사용시 사용할 Builder 패턴
+//    public UserEntity(String email, String id, String phone_num, String name, String password, String sigungu_cd) {
+//        this.email = email;
+//        this.id = id;
+//        this.phone_num = phone_num;
+//        this.name = name;
+//        this.password = password;
+//        this.sigungu_cd = sigungu_cd;
+//    }
+//
+//    public UserEntity(String id, String password) {
+//        this.id = id;
+//        this.password = password;
+//    }
 }
