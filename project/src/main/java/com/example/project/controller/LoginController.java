@@ -1,8 +1,9 @@
 package com.example.project.controller;
 
 import com.example.project.Exception.LoginFailException;
-import com.example.project.dto.request.CreateUserDTO;
-import com.example.project.dto.request.LoginUserDTO;
+import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.LoginUserDTO;
+import com.example.project.dto.response.user.LoginSessionDTO;
 import com.example.project.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,8 +28,15 @@ public class LoginController {
 
     @PostMapping("/")
     public String login(LoginUserDTO dto, Model model) {
-        String user = service.login(dto);
-        return "test";
+        LoginSessionDTO user = service.login(dto);
+        model.addAttribute("user",user);
+        return "board/feed";
+    }
+
+    @GetMapping("/logout")
+    public String logout(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/board/feed";
     }
 
     @GetMapping("/login/join")

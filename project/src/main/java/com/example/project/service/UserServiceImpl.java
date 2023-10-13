@@ -1,24 +1,21 @@
 package com.example.project.service;
 
 import com.example.project.Exception.LoginFailException;
-import com.example.project.dto.request.CreateUserDTO;
-import com.example.project.dto.request.LoginUserDTO;
+import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.LoginUserDTO;
+import com.example.project.dto.response.user.LoginResultDTO;
+import com.example.project.dto.response.user.LoginSessionDTO;
 import com.example.project.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private UserRepository repository;
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserServiceImpl(UserRepository repository, PasswordEncoder passwordEncoder) {
-        this.repository = repository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void join(CreateUserDTO member) {
@@ -28,13 +25,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(LoginUserDTO login) throws LoginFailException{
+    public LoginSessionDTO login(LoginUserDTO login) throws LoginFailException{
         // 로그인하려는 회원의 아이디로 DB에 저장된 password를 가져와 입력한 비밀번호와 일치하는지 비교해줍니다.
         // 로그인에 성공하면 Session에 담을 nickname을 반환해줍니다
-        String session = null;
-        if (repository.findById(login.getId()) != null) {
-            if(passwordEncoder.matches(repository.findById(login.getId()).getPassword(), login.getPassword())) {
-                session = repository.findById(login.getId()).getName();
+
+        LoginResultDTO user = repository.findById(login.getId());
+        String pass = passwordEncoder.encode(login.getPassword());
+        LoginSessionDTO session = null;
+
+        if (user != null) {
+            if(passwordEncoder.matches(user.getPassword(), pass)) {
+                session = user.toCreateLoginSessionDTO();
             }
         } else {
             throw new LoginFailException();
