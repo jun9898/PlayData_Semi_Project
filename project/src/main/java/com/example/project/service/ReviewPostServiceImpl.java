@@ -8,19 +8,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReviewPostServiceImpl implements ReviewPostService {
 
-    @Autowired
-    private ReviewPostMapper reviewPostMapper;
 
     @Override
     public void insertReviewPost(ReviewPostDTO reviewPostDTO) {
-        reviewPostMapper.insertReviewPost(reviewPostDTO);
+
     }
 
     @Override
     public ReviewPostDTO getReviewPost(Long review_seq) {
-        return reviewPostMapper.getReviewPost(review_seq);
+        return null;
     }
 
-}
+
 
 }

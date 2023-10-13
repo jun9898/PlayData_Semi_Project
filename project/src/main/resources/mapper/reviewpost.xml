@@ -5,7 +5,7 @@
 <mapper namespace="com.example.project.mapper.ReviewPostMapper">
 
     <!-- 게시물 작성 -->
-    <insert id="insertReviewPost" parameterType="com.example.project.dto.request.ReviewPostDTO">
+    <insert id="insertReviewPost" parameterType="ReviewPostDTO">
         insert into review (
         user_seq,
         market_seq,
