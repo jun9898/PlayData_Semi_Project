@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.project.mapper.ReviewPostMapper">
+
+    <!-- 게시물 작성 -->
+    <insert id="insertReviewPost" parameterType="com.example.project.dto.request.ReviewPostDTO">
+        insert into review (
+        user_seq,
+        market_seq,
+        title,
+        content,
+        star,
+        img1,
+        img2,
+        img3,
+        img4,
+        img5,
+        created_at,
+        updated_at,
+        deleted_at
+        )
+        VALUES (
+        #{user_seq},
+        #{market_seq},
+        #{title},
+        #{content},
+        #{star},
+        #{img1},
+        #{img2},
+        #{img3},
+        #{img4},
+        #{img5},
+        #{created_at},
+        #{updated_at}
+        #{deleted_at}
+        )
+    </insert>
+
+    <!-- 게시물 조회 -->
+    <select id="getReviewPost" parameterType="java.lang.Long" resultType="ReviewPostDTO">
+        select * from review where review_seq = #{review_seq}
+    </select>
+
+</mapper>
+
