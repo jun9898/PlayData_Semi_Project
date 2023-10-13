@@ -1,12 +1,13 @@
 package com.example.project.service;
 
-import com.example.project.dto.request.ReviewPostDTO;
+import com.example.project.dto.request.user.ReviewPostDTO;
+import com.example.project.dto.response.user.ReviewPostReadDTO;
 
 
 public interface ReviewPostService {
 
     void insertReviewPost(ReviewPostDTO reviewPostDTO);
 
-    ReviewPostDTO getReviewPost(Long review_seq);
+    ReviewPostReadDTO getReviewPost(Long review_seq);
 
 }

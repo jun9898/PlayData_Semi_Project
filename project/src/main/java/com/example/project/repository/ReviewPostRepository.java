@@ -1,10 +1,14 @@
 package com.example.project.repository;
 
-import com.example.project.dto.request.ReviewPostDTO;
+import com.example.project.dto.request.user.ReviewPostDTO;
+import com.example.project.dto.response.user.ReviewPostReadDTO;
 
 
 public interface ReviewPostRepository {
 
     void write(ReviewPostDTO dto);
-    ReviewPostDTO read(Long review_seq);
+    ReviewPostReadDTO read(Long review_seq);
+
+
+
 }

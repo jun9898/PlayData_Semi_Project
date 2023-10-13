@@ -1,24 +1,24 @@
 package com.example.project.service;
 
-import com.example.project.dto.request.ReviewPostDTO;
-import com.example.project.mapper.ReviewPostMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.project.dto.request.user.ReviewPostDTO;
+import com.example.project.dto.response.user.ReviewPostReadDTO;
+import com.example.project.repository.ReviewPostRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ReviewPostServiceImpl implements ReviewPostService {
-
+    private final ReviewPostRepository repository;
 
     @Override
     public void insertReviewPost(ReviewPostDTO reviewPostDTO) {
-
+        repository.write(reviewPostDTO);
     }
 
     @Override
-    public ReviewPostDTO getReviewPost(Long review_seq) {
-        return null;
+    public ReviewPostReadDTO getReviewPost(Long review_seq) {
+        return repository.read(review_seq);
     }
-
-
-
 }
+

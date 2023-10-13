@@ -10,38 +10,36 @@
         user_seq,
         market_seq,
         title,
+        view_count,
         content,
         star,
-        img1,
-        img2,
-        img3,
-        img4,
-        img5,
-        created_at,
-        updated_at,
-        deleted_at
+        img_1,
+        img_2,
+        img_3,
+        img_4,
+        img_5
         )
-        VALUES (
+        values (
         #{user_seq},
         #{market_seq},
         #{title},
+        #{view_count},
         #{content},
         #{star},
         #{img1},
         #{img2},
         #{img3},
         #{img4},
-        #{img5},
-        #{created_at},
-        #{updated_at}
-        #{deleted_at}
+        #{img5}
         )
     </insert>
 
     <!-- 게시물 조회 -->
-    <select id="getReviewPost" parameterType="java.lang.Long" resultType="ReviewPostDTO">
+    <select id="getReviewPost" parameterType="Long" resultType="ReviewPostReadDTO">
         select * from review where review_seq = #{review_seq}
     </select>
+
+
 
 </mapper>
 
