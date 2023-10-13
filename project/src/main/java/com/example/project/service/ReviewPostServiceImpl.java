@@ -1,7 +1,7 @@
 package com.example.project.service;
 
-import com.example.project.dto.request.user.ReviewPostDTO;
-import com.example.project.dto.response.user.ReviewPostReadDTO;
+import com.example.project.dto.request.review.ReviewPostDTO;
+import com.example.project.dto.response.review.ReviewPostReadDTO;
 import com.example.project.repository.ReviewPostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

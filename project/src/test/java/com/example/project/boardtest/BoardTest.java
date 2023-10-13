@@ -1,7 +1,6 @@
 package com.example.project.boardtest;
 
-import com.example.project.dto.request.user.ReviewPostDTO;
-import com.example.project.dto.response.user.ReviewPostReadDTO;
+import com.example.project.dto.request.review.ReviewPostDTO;
 import com.example.project.service.ReviewPostService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

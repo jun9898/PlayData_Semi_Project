@@ -1,7 +1,7 @@
 package com.example.project.repository;
 
-import com.example.project.dto.request.user.ReviewPostDTO;
-import com.example.project.dto.response.user.ReviewPostReadDTO;
+import com.example.project.dto.request.review.ReviewPostDTO;
+import com.example.project.dto.response.review.ReviewPostReadDTO;
 import com.example.project.mapper.ReviewPostMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

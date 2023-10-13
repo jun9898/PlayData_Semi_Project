@@ -1,15 +1,17 @@
-package com.example.project.dto.response.user;
+package com.example.project.dto.request.review;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.apache.ibatis.type.Alias;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Alias("ReviewPostReadDTO")
-public class ReviewPostReadDTO {
+@Alias("ReviewPostDTO")
+public class ReviewPostDTO {
     private Long user_seq;
     private Long market_seq;
     private String title;
@@ -21,4 +23,5 @@ public class ReviewPostReadDTO {
     private String img3;
     private String img4;
     private String img5;
+
 }
