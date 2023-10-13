@@ -1,4 +1,4 @@
-package com.example.project.dto.request;
+package com.example.project.dto.request.user;
 
 import com.example.project.entity.UserEntity;
 import lombok.*;
