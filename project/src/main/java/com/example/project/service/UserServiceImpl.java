@@ -4,7 +4,7 @@ import com.example.project.Exception.LoginFailException;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.dto.response.user.LoginResultDTO;
-import com.example.project.dto.response.user.LoginSessionDTO;
+import com.example.project.dto.response.user.UserDTO;
 import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,18 +25,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginSessionDTO login(LoginUserDTO login) throws LoginFailException{
+    public UserDTO login(LoginUserDTO login) throws LoginFailException{
         // 로그인하려는 회원의 아이디로 DB에 저장된 password를 가져와 입력한 비밀번호와 일치하는지 비교해줍니다.
         // 로그인에 성공하면 Session에 담을 nickname을 반환해줍니다
 
         LoginResultDTO user = repository.findById(login.getId());
-        String pass = passwordEncoder.encode(login.getPassword());
-        LoginSessionDTO session = null;
+        UserDTO session = null;
 
-        if (user != null) {
-            if(passwordEncoder.matches(user.getPassword(), pass)) {
-                session = user.toCreateLoginSessionDTO();
-            }
+        if (user != null && passwordEncoder.matches(login.getPassword(),user.getPassword())) {
+            session = user.toCreateLoginSessionDTO();
         } else {
             throw new LoginFailException();
         }

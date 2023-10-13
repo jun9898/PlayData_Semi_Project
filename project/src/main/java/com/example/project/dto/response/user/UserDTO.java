@@ -5,12 +5,10 @@ import org.apache.ibatis.type.Alias;
 
 @Builder
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Alias("UserDTO")
-public class LoginSessionDTO {
+public class UserDTO {
 
     private Long user_seq;
     private String email;

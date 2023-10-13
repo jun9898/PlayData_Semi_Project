@@ -4,7 +4,6 @@ import lombok.*;
 import org.apache.ibatis.type.Alias;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Alias("LoginResultDTO")
@@ -17,8 +16,8 @@ public class LoginResultDTO {
     private String sigungu_cd;
     private String password;
 
-    public LoginSessionDTO toCreateLoginSessionDTO(){
-        return LoginSessionDTO.builder()
+    public UserDTO toCreateLoginSessionDTO(){
+        return UserDTO.builder()
                 .user_seq(user_seq)
                 .name(name)
                 .id(id)

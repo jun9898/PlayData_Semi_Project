@@ -3,7 +3,7 @@ package com.example.project.controller;
 import com.example.project.Exception.LoginFailException;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
-import com.example.project.dto.response.user.LoginSessionDTO;
+import com.example.project.dto.response.user.UserDTO;
 import com.example.project.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ public class LoginController {
 
     @PostMapping("/")
     public String login(LoginUserDTO dto, Model model) {
-        LoginSessionDTO user = service.login(dto);
+        UserDTO user = service.login(dto);
         model.addAttribute("user",user);
         return "board/feed";
     }

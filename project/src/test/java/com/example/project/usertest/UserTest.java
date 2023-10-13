@@ -1,9 +1,10 @@
 package com.example.project.usertest;
 
+import com.example.project.Exception.LoginFailException;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
-import com.example.project.dto.response.user.LoginSessionDTO;
 import com.example.project.service.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,29 +31,25 @@ public class UserTest {
     }
 
     @Test
+
     public void loginTest() {
 
         // 회원가입
         CreateUserDTO user = new CreateUserDTO();
-        user.setId("testid3");
-        user.setEmail("testid2@email.com");
-        user.setPassword("password");
+        user.setId("testid4");
+        user.setEmail("testid4@email.com");
+        user.setPassword("testpass");
         user.setName("test");
+        user.setPhone_num("0100101010");
+        user.setSigungu_cd("testetest");
         service.join(user);
 
         // 로그인
         LoginUserDTO login = new LoginUserDTO();
-        login.setId("testid3");
-        login.setPassword("password");
-        LoginSessionDTO testUser2 = service.login(login);
+        login.setId("testid4");
+        login.setPassword("testpass1");
 
-//        Assertions.assertThat(user.getName()).isEqualTo(testUser2);
-        System.out.println("testUser2 = " + testUser2);
-
-
-
-
-
-
+        // 실패 테스트
+        Assertions.assertThrows(LoginFailException.class,()->{ service.login(login); } );
     }
 }
