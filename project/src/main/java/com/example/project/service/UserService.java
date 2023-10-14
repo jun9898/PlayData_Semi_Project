@@ -1,11 +1,10 @@
 package com.example.project.service;
 
-import com.example.project.dto.request.CreateUserDTO;
-import com.example.project.dto.request.LoginUserDTO;
-import com.example.project.dto.response.LoginResultDTO;
-import com.example.project.entity.UserEntity;
+import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.LoginUserDTO;
+import com.example.project.dto.response.user.UserDTO;
 
 public interface UserService {
     void join(CreateUserDTO user);
-    LoginResultDTO login(LoginUserDTO login);
+    UserDTO login(LoginUserDTO login);
 }

@@ -1,15 +1,14 @@
 package com.example.project.usertest;
 
-import com.example.project.dto.request.CreateUserDTO;
-import com.example.project.dto.request.LoginUserDTO;
-import com.example.project.dto.response.LoginResultDTO;
-import com.example.project.entity.UserEntity;
+import com.example.project.Exception.LoginFailException;
+import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.service.UserService;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -21,37 +20,36 @@ public class UserTest {
     private UserService service;
 
     @Test
-    @Disabled
+    @Rollback(value = false)
     public void joinTest() {
         CreateUserDTO user = new CreateUserDTO();
-        user.setId("testid");
-        user.setEmail("testid@email.com");
+        user.setId("test");
+        user.setEmail("testid@emai.com");
         user.setPassword("password");
-        user.setName("testName");
+        user.setName("전병준짱짱짱");
         service.join(user);
     }
 
     @Test
+
     public void loginTest() {
 
         // 회원가입
         CreateUserDTO user = new CreateUserDTO();
-        user.setId("testid");
-        user.setEmail("testid@email.com");
-        user.setPassword("password");
-        user.setName("testName");
+        user.setId("testid4");
+        user.setEmail("testid4@email.com");
+        user.setPassword("testpass");
+        user.setName("test");
+        user.setPhone_num("0100101010");
+        user.setSigungu_cd("testetest");
         service.join(user);
 
         // 로그인
         LoginUserDTO login = new LoginUserDTO();
-        login.setId("testid");
-        login.setPassword("password");
-        LoginResultDTO testUser2 = service.login(login);
+        login.setId("testid4");
+        login.setPassword("testpass1");
 
-
-
-
-
-
+        // 실패 테스트
+        Assertions.assertThrows(LoginFailException.class,()->{ service.login(login); } );
     }
 }

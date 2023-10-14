@@ -1,6 +1,5 @@
-package com.example.project.dto.request;
+package com.example.project.dto.request.user;
 
-import com.example.project.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +15,10 @@ public class LoginUserDTO {
 
     private String id;
     private String password;
+//    private String password;
+//    private String password;
+//    private String password;
+
 
 //    JPA 사용시 사용될 factory method 패턴
 //    public UserEntity toCreateUserEntity(){

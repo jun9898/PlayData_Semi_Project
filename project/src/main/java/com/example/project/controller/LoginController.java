@@ -1,15 +1,18 @@
 package com.example.project.controller;
 
-import com.example.project.dto.request.CreateUserDTO;
-import com.example.project.dto.request.LoginUserDTO;
-import com.example.project.entity.UserEntity;
+import com.example.project.Exception.LoginFailException;
+import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.LoginUserDTO;
+import com.example.project.dto.response.user.UserDTO;
 import com.example.project.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,18 +26,18 @@ public class LoginController {
         return "login/login";
     }
 
-//    @PostMapping("/")
-//    public String login(LoginUserDTO dto, Model model) {
-//        UserEntity user = service.login(dto);
-//        String view = "";
-//        if(user!=null) {//로그인 성공
-//            model.addAttribute("user",user);
-//            view = "board/feed";
-//        }else { //로그인실패시 어떤 처리를 할지 생각해봐야 함
-//            view = "redirect:/";
-//        }
-//        return view;
-//    }
+    @PostMapping("/")
+    public String login(LoginUserDTO dto, Model model) {
+        UserDTO user = service.login(dto);
+        model.addAttribute("user",user);
+        return "board/feed";
+    }
+
+    @GetMapping("/logout")
+    public String logout(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/board/feed";
+    }
 
     @GetMapping("/login/join")
     public String join() {
@@ -52,4 +55,8 @@ public class LoginController {
         return "login/inquiry";
     }
 
+    @ExceptionHandler(LoginFailException.class)
+    public String ExceptionTest() {
+        return "test";
+    }
 }
