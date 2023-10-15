@@ -41,7 +41,7 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(SessionStatus status) {
         status.setComplete();
-        return "redirect:/board/feed";
+        return "redirect:/content/feed";
     }
 
     @GetMapping("/join")
