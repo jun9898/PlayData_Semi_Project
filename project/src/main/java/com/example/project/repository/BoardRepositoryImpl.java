@@ -15,7 +15,7 @@ public class BoardRepositoryImpl implements BoardRepository{
     private final BoardMapper boardMapper;
 
     @Override
-    public List<ContentDTO> getContentList(RequestContentDTO dao) {
-        return boardMapper.getContentList(dao);
+    public List<ContentDTO> getContentList(RequestContentDTO dto) {
+        return boardMapper.getContentList(dto);
     }
 }

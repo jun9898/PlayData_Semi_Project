@@ -1,5 +1,6 @@
 package com.example.project.config;
 
+import com.example.project.dto.response.user.UserDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -14,9 +15,10 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         //user가 없으면 로그인이 처리되지 않음을 의미
         HttpSession session = request.getSession(false);
         if(session!=null) {
-            String user = (String) session.getAttribute("user");
+            UserDTO user = (UserDTO) session.getAttribute("user");
             if(user==null) {//로그인하지 않은 상태
-                response.sendRedirect("/erp/emp/login.do");
+                // 여기서 로그인 세션이 없으면 화면에 전달할 내용이 담긴 로직을 만들어주면 될것같다
+                response.sendRedirect("/login");
                 //로그인하지 않은 사용자는 다음(뷰에서 선택한 path로 이동되지 않도록)으로 넘어가지 않도록 false를리턴
                 return false;
             }

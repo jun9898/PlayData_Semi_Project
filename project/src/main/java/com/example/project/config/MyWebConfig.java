@@ -20,9 +20,13 @@ public class MyWebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/index.do", "/emp/login.do", "/emp/spring/login",
-                        "/board/list.do", "/board/ajax/list.do", "/images/**"
-                        , "/common/css/**", "/emp/logout.do", "/emp/spring/logout");
+                .excludePathPatterns("/content/feed", "/login", "/join", "/forget", "/content/map", "/content/rank",
+//                        인터셉터 사용시 CSS와 JS 파일도 권한을 줘야 작동한다 (놀라운 사실)
+                        "/css/**", "/asset/**", "/js/**"
+//                        exam
+//                        "/board/ajax/list.do", "/images/**"
+//                        , "/common/css/**", "/emp/logout.do", "/emp/spring/logout"
+                );
 
     }
 }
