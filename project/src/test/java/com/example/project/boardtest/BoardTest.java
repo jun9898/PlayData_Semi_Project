@@ -22,12 +22,12 @@ public class BoardTest {
 
         // 글쓰기
         ReviewPostDTO write = new ReviewPostDTO();
-        write.setUser_seq(1L);
-        write.setMarket_seq(1L);
-        write.setTitle("test");
-        write.setContent("test");
+        write.setUser_seq(3L);
+        write.setMarket_seq(3L);
+        write.setTitle("testtitle6");
+        write.setContent("testcontent6");
         write.setView_count(1L);
-        write.setStar(1L);
+        write.setStar(5L);
         write.setImg1("");
         write.setImg2("");
         write.setImg3("");

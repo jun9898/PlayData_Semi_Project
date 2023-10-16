@@ -8,6 +8,7 @@ import org.apache.ibatis.type.Alias;
 @AllArgsConstructor
 @NoArgsConstructor
 @Alias("UserDTO")
+@ToString
 public class UserDTO {
 
     private Long user_seq;
