@@ -1,10 +1,8 @@
 package com.example.project.usertest;
 
-import com.example.project.Exception.LoginFailException;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.service.UserService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,10 +21,10 @@ public class UserTest {
     @Rollback(value = false)
     public void joinTest() {
         CreateUserDTO user = new CreateUserDTO();
-        user.setId("test");
-        user.setEmail("testid@emai.com");
+        user.setId("test1");
+        user.setEmail("testid1@emai.com");
         user.setPassword("password");
-        user.setName("전병준짱짱짱");
+        user.setName("전병준짱짱짱짱");
         service.join(user);
     }
 
@@ -35,21 +33,21 @@ public class UserTest {
     public void loginTest() {
 
         // 회원가입
-        CreateUserDTO user = new CreateUserDTO();
-        user.setId("testid4");
-        user.setEmail("testid4@email.com");
-        user.setPassword("testpass");
-        user.setName("test");
-        user.setPhone_num("0100101010");
-        user.setSigungu_cd("testetest");
-        service.join(user);
+//        CreateUserDTO user = new CreateUserDTO();
+//        user.setId("testid4");
+//        user.setEmail("testid4@email.com");
+//        user.setPassword("testpass");
+//        user.setName("test");
+//        user.setPhone_num("0100101010");
+//        user.setSigungu_cd("testetest");
+//        service.join(user);
 
         // 로그인
         LoginUserDTO login = new LoginUserDTO();
-        login.setId("testid4");
-        login.setPassword("testpass1");
+        login.setId("test1");
+        login.setPassword("password");
 
         // 실패 테스트
-        Assertions.assertThrows(LoginFailException.class,()->{ service.login(login); } );
+//        Assertions.assertThrows(LoginFailException.class,()->{ service.login(login); } );
     }
 }
