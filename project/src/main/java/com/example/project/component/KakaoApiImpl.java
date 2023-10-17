@@ -26,7 +26,7 @@ public class KakaoApiImpl implements KakaoApi{
     private String URL_PREFIX;
 
     private static final String SEARCH_CATEGORY_GROUP_CODE = "FD6";
-
+    private static final Integer SEARCH_CONTENT_PER_PAGE = 45;
     @Autowired
     public KakaoApiImpl(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
@@ -39,18 +39,22 @@ public class KakaoApiImpl implements KakaoApi{
                 .queryParam("x", dto.getLongitude())
                 .queryParam("y", dto.getLatitude())
                 .queryParam("radius", dto.getRadius())
-                .queryParam("query", dto.getQuery());
+                .queryParam("query", dto.getQuery())
+                .queryParam("page",SEARCH_CONTENT_PER_PAGE);
+
         HttpEntity req = new HttpEntity(headers);
-        ResponseEntity<ApiKeywordSearch> response = restTemplate.exchange(
+
+        return restTemplate.exchange(
                 uriBuilder.toUriString(),
                 HttpMethod.GET,
                 req,
                 ApiKeywordSearch.class
         );
 
-        return response;
-
     }
+
+
+
 
 
 }
