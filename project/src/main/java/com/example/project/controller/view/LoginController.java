@@ -41,7 +41,7 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(SessionStatus status) {
         status.setComplete();
-        return "redirect:/content/feed";
+        return "redirect:/login";
     }
 
     @GetMapping("/join")
@@ -51,8 +51,6 @@ public class LoginController {
 
     @PostMapping("/join")
     public String createUser(@ModelAttribute CreateUserDTO requestCreateUserDTO) {
-        log.info("회원가입 테스트");
-        log.info(requestCreateUserDTO.getId());
         service.join(requestCreateUserDTO);
         return "redirect:/board/feed";
     }

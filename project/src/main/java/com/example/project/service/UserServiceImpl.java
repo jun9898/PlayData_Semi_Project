@@ -2,6 +2,7 @@ package com.example.project.service;
 
 import com.example.project.Exception.LoginFailException;
 import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.dto.response.user.LoginResultDTO;
 import com.example.project.dto.response.user.UserDTO;
@@ -49,4 +50,19 @@ public class UserServiceImpl implements UserService {
     public UserDTO findById(String id) {
         return repository.findById(id).toCreateLoginSessionDTO();
     }
+
+    @Override
+    public int findFollow(FollowDTO dto) {
+        return repository.findFollow(dto);
+    }
+
+    @Override
+    public void following(FollowDTO dto) {
+        repository.insertFollow(dto);
+    }
+    @Override
+    public void unFollowing(FollowDTO dto) {
+        repository.deleteFollow(dto);
+    }
+
 }
