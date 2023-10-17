@@ -1,10 +1,6 @@
 package com.example.project.dto.response.feed;
 
-import com.example.project.dto.response.user.UserDTO;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.ibatis.type.Alias;
 
 import java.sql.Timestamp;
@@ -14,6 +10,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Alias("ContentDTO")
+@ToString
 public class ContentDTO {
 
     private Long review_seq;
@@ -22,6 +19,8 @@ public class ContentDTO {
     private Long star;
     private String img_1;
     private Timestamp created_at;
-    private UserDTO userDTO;
+//    private UserDTO userDTO;
+    // Username
+    private String name;
 
 }

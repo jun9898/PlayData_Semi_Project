@@ -7,4 +7,6 @@ import com.example.project.dto.response.user.UserDTO;
 public interface UserService {
     void join(CreateUserDTO user);
     UserDTO login(LoginUserDTO login);
+    void deleteUser(Long user_seq);
+    UserDTO findById(String id);
 }

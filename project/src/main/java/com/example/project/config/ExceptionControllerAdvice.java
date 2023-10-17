@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 @Slf4j
-public class ExcepctionControllerAdvice {
+public class ExceptionControllerAdvice {
 
 //    @ExceptionHandler(LoginFailException.class)
 //    public ResponseEntity handleAccessDeniedException(final AccessDeniedException ex) {

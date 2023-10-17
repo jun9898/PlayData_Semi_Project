@@ -1,20 +1,21 @@
 package com.example.project.dto.request.feed;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
+@Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class RequestContentDTO {
 
-    public String curPage;
-    public String cutPage;
+    public Long curPage;
+    public Long cutPage;
     public String searchType;
     public String keyword;
+    // tag는 DTO로 묶어서 사용할것
     public List<String> tag;
 
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.project.mapper.ReviewCommentMapper">
+
+    <insert id="insertReviewComment" parameterType="ReviewCommentDTO">
+        insert into review_comment (
+        review_seq,
+        user_seq,
+        content
+        )
+        values (
+        #{review_seq},
+        #{user_seq},
+        #{content}
+        )
+    </insert>
+
+    <select id="getReviewComment" parameterType="Long" resultType="ReviewCommentReadDTO">
+        select
+        c.comment_seq, c.user_seq, c.review_seq, c.content, u.name, c.created_at, coalesce (rc.recommend_count, 0) as recommend_count
+        from review_comment c
+        join user u ON c.user_seq = u.user_seq
+        left join (
+        select b.comment_seq, count(*) as recommend_count
+        from review_comment_recommand a
+        join review_comment b on a.comment_seq = b.comment_seq
+        group by b.comment_seq )
+        rc on c.comment_seq = rc.comment_seq
+        where c.review_seq = #{review_seq}
+        order by created_at asc;
+    </select>
+
+    <delete id="deleteReviewComment" parameterType="Long">
+        delete from review_comment where comment_seq = #{comment_seq}
+    </delete>
+
+    <update id="updateReviewComment" parameterType="ReviewCommentDTO" >
+        update review_comment
+        set content = #{comment.content}
+        where comment_seq = #{comment.comment_seq}
+    </update>
+
+    <insert id="insertReviewCommentRecommand" parameterType="ReviewCommentRecommandDTO">
+        insert into review_comment_recommand (comment_seq, user_seq)
+        values (#{comment_seq}, #{user_seq})
+    </insert>
+
+    <delete id="deleteRecommand" parameterType="map">
+        delete from review_comment_recommand
+        where comment_seq = #{comment_seq} and user_seq = #{user_seq}
+    </delete>
+
+    <select id="checkIfAlreadyRecommanded" parameterType="map" resultType="int">
+        select count(*)
+        from review_comment_recommand
+        where comment_seq = #{comment_seq} and user_seq = #{user_seq}
+    </select>
+</mapper>
+

@@ -39,4 +39,14 @@ public class UserServiceImpl implements UserService {
         }
         return session;
     }
+
+    @Override
+    public void deleteUser(Long user_seq) {
+        repository.deleteUser(user_seq);
+    }
+
+    @Override
+    public UserDTO findById(String id) {
+        return repository.findById(id).toCreateLoginSessionDTO();
+    }
 }

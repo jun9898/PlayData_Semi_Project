@@ -12,5 +12,6 @@ public interface UserMapper {
 //    UserEntity findUser(UserEntity member);
     String loginUser(LoginUserDTO member);
     LoginResultDTO findById(String id);
+    void deleteUser(Long user_seq);
 
 }

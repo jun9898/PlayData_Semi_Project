@@ -50,7 +50,9 @@ public class LoginController {
     }
 
     @PostMapping("/join")
-    public String createUser(CreateUserDTO requestCreateUserDTO) {
+    public String createUser(@ModelAttribute CreateUserDTO requestCreateUserDTO) {
+        log.info("회원가입 테스트");
+        log.info(requestCreateUserDTO.getId());
         service.join(requestCreateUserDTO);
         return "redirect:/board/feed";
     }

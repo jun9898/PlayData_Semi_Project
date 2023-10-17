@@ -20,5 +20,8 @@
         where id = #{id}
         and password = #{password}
     </select>
+    <select id="deleteUser" parameterType="long">
+        delete from user where user_seq = #{user_seq}
+    </select>
 </mapper>
 

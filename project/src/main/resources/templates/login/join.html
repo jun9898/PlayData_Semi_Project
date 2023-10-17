@@ -49,24 +49,27 @@
       <img th:src="@{/asset/logo-removebg-preview.png}" class="img-fluid" alt="...">
       <h4 class="mb-3">회원가입</h4>
 
-      <form class="validation-form" novalidate>
+      <form class="validation-form" action="/join" method="post" >
         <div class="row">
 
           <label for="id">아이디</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder=""  aria-describedby="basic-addon2">
+            <input type="text" class="form-control" aria-describedby="basic-addon2" id="id" name="id">
+<!--
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button">중복확인</button>
             </div>
+-->
           </div>
 
           <label for="password">비밀번호</label>
           <div class="mb-3">
-            <input type="password" class="form-control" id="password" >
+            <input type="password" class="form-control" id="password" name="password" >
             <div class="invalid-feedback">
               비밀번호 입력해주세요.
             </div>
           </div>
+<!--
 
           <label for="password2">비밀번호 재확인</label>
           <div class="mb-3">
@@ -76,14 +79,16 @@
             </div>
           </div>
 
-          <label for="id">이름</label>
+-->
+          <label for="name">닉네임</label>
           <div class="mb-3">
-            <input type="text" class="form-control" id="id">
+            <input type="text" class="form-control" id="name" name="name">
             <div class="invalid-feedback">
               이름을 입력해주세요.
             </div>
           </div>
 
+<!--
           <label for="nickname">닉네임</label>
           <div class="mb-3">
             <input type="text" class="form-control" id="nickname">
@@ -91,39 +96,48 @@
               닉네임을 입력해주세요.
             </div>
           </div>
-
+-->
 
           <div class="mb-3">
             <label for="email">이메일</label>
-            <input type="email" class="form-control" id="email" placeholder="example@example.com">
+            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com">
             <div class="invalid-feedback">
               이메일을 입력해주세요.
             </div>
           </div>
 
+<!--
           <div class="mb-3">
             <form>
               <input type="radio" class="radio" name="gender">&nbsp 여성
               <input type="radio" class="radio" name="gender">&nbsp 남성
             </form>
           </div>
+-->
 
+<!--
           <div class="input-group mb-3">
             <div class="col-md-3">
               <label for="birth">생년월일</label>
               <label for="inputEmail4" class="form-label"></label>
               <input type="text" class="form-control" id="inputEmail4" placeholder="YYYY">
             </div>
+-->
+<!--
             <div class="col-md-3">
               <label for="inputPassword4" class="form-label"></label>
               <input type="text" class="form-control" id="inputPassword4" placeholder="MM">
             </div>
+-->
+<!--
             <div class="col-md-3">
               <label for="inputPassword4" class="form-label"></label>
               <input type="text" class="form-control" id="inputPassword4" placeholder="DD">
             </div>
-          </div>
+-->
+<!--          </div>-->
 
+<!--
           <label for="id">휴대전화</label>
           <div class="input-group mb-3">
             <input type="tel" class="form-control" placeholder=""  aria-describedby="basic-addon2">
@@ -131,7 +145,9 @@
               <button class="btn btn-outline-secondary" type="button">인증</button>
             </div>
           </div>
+-->
 
+<!--
           <label for="id">인증번호</label>
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder=""  aria-describedby="basic-addon2">
@@ -139,9 +155,10 @@
               <button class="btn btn-outline-secondary" type="button">확인</button>
             </div>
           </div>
-        </div>
+-->
 
 
+<!--
         <label for="id">약관</label>
         <div class="card">
           <div class="card-body">
@@ -171,7 +188,9 @@
                   </span>
               </label>
             </div>
+-->
 
+<!--
             <hr />
             <p>선택 동의 항목</p>
             <div class="form-check">
@@ -191,19 +210,23 @@
                   </span>
               </label>
             </div>
+-->
 
-          </div>
-        </div>
+<!--          </div>-->
+<!--        </div>-->
         <div class="d-grid gap-2">
-          <button class="btn btn-light" type="button">가입완료</button>
+          <button class="btn btn-light" type="submit">가입완료</button>
+        </div>
         </div>
       </form>
     </div>
   </div>
+</div>
 
 
 
 <!-- Modal -->
+<!--
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -227,5 +250,6 @@
     </div>
   </div>
 </div>
+-->
 </body>
 </html>
