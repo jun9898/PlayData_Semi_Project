@@ -1,10 +1,25 @@
 <!DOCTYPE html>
+
+<script>
+    function editform(button) {
+
+    const commentSeq = button.id.split('-')[1];
+    const commentContent = document.getElementById(`commentcontent-${commentSeq}`);
+    const commentEdit = document.getElementById(`commentedit-${commentSeq}`);
+
+    commentContent.style.display = 'none';
+    commentEdit.style.display = 'block';
+
+
+}
+</script>
+
 <th:block th:replace="layout/main-layout :: layout(feed,none)">
     <th:block th:fragment="add_header">
         <title>가게 리뷰 게시물</title>
     </th:block>
     <div th:fragment="content" class="cs-main-content-bg cs-content col container-flude p-3">
-            <div class="cs-mypage-container">
+        <div class="cs-mypage-container">
                 <div class="cs-storepage">
                     <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-mdb-ride="carousel"
                          style="height: 500px;">
@@ -44,10 +59,8 @@
                         </button>
                     </div>
                 </div>
-
             </div>
-
-            <div class="cs-mypage-container" style="height: 400px;">
+        <div class="cs-mypage-container" style="height: 400px;">
                 <div class="cs-mypage-container">
 
                     <!-- Columns are always 50% wide, on mobile and desktop -->
@@ -66,13 +79,10 @@
                                 </span>
                                     </div>
 
-
                                 </header>
-
 
                                 <!-- 상세 정보 -->
                                 <table class="info">
-
 
                                     <tbody>
                                     <tr>
@@ -95,8 +105,6 @@
                                         </td>
                                     </tr>
 
-
-
                                     <tr>
                                         <th style="vertical-align:top;">영업시간</th>
                                         <td>18:00 - 01:00</td>
@@ -114,163 +122,118 @@
                                     width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="cs-mypage-container"
-                 style=" background-color: #f1f3f4;  padding-top: 30px; padding-bottom: 30px; border-radius:10px;">
-
-
-                <section class="mb-5">
+        <div class="cs-mypage-container"
+             style=" background-color: #f1f3f4;  padding-top: 30px; padding-bottom: 30px; border-radius:10px;">
+            <section class="mb-5">
                     <div class="card bg-light">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-9 cs-reviewtest"><h3>test-제목</h3></div>
+                                <div class="col-9 cs-reviewtest"><h3 th:text="${review.title}">test-제목</h3></div>
                                 <div class="col-3">
+<!--                                    별점 icon-->
                             <span class="listmarginrigth">
-                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
-                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
-                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
-                                <i class="fa-regular fa-star" style="color: #ffde66;"></i>
-                                <i class="fa-regular fa-star" style="color: #ffde66;"></i>
+                                <th:block th:each="i : ${#numbers.sequence(1, review.star)}">
+                                    <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                </th:block>
+                                <th:block th:each="i : ${#numbers.sequence(1, 5 - review.star)}">
+                                    <i class="fa-regular fa-star" style="color: #ffde66;"></i>
+                                </th:block>
+                                &nbsp;
                                 &nbsp;
                                 &nbsp;
                                 <img class="rounded-circle shadow-1-strong me-3"
                                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
                                      height="60" />
                                 &nbsp;
+<!--                                조회수-->
+                                <i class="fa-regular fa-thumbs-up fa-lg" aria-hidden="true"><small th:text="${review.view_count}" class="text-muted"></small></i>
 
-                                <i class="fas fa-thumbs-up fa-lg" aria-hidden="true"></i>
                             </span>
 
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </section>
-
-
-
-                <section class="mb-5">
+            <section class="mb-5">
                     <div class="card bg-light">
                         <div class="card-body">
-                            <h6>test</h6>
-                            <h6>test</h6>
-                            <h6>test</h6>
+                            <h6 th:text="${review.content}"></h6>
                         </div>
                     </div>
                 </section>
+            <section class="mb-5">
+                <div class="card text-dark">
+                    <div class="card-body p-4">
+                        <form th:action="@{'/content/feed/' + ${review.review_seq} + '/add-comment'}" method="post" class="mb-4">
+                            <input type="hidden" name="user_seq" th:value="${session.user.user_seq}" />
+                            <textarea name="content" class="form-control" rows="3" placeholder="댓글 남기기"></textarea>
+                            <button type="submit" class="btn btn-warning" style="margin-top:5px; margin-bottom: 30px;">등록</button>
+                        </form>
+                    </div>
 
-                <section class="mb-5">
-
-
-
-
-                    <div class="card text-dark">
-                        <div class="card-body p-4">
-                            <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글 남기기"></textarea>
-                                <button type="button" class="btn btn-warning" style="margin-top:5px; margin-bottom: 30px;">등록</button></form>
+                    <div th:each="comment : ${comments}">
+                        <div  class="card-body p-4">
                             <div class="d-flex flex-start">
                                 <img class="rounded-circle shadow-1-strong me-3"
                                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
                                      height="60" />
-                                <div>
-                                    <h6 class="fw-bold mb-1">닉네임</h6>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <p class="mb-0">
-                                            March 07, 2021
+                                    <div>
+                                        <h6 class="fw-bold mb-1"><span th:text="${comment.name}"></span></h6>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0"><span th:text="${comment.created_at}"></span></p>
+                                            <!-- 추천 버튼 -->
+                                            <form th:action="@{'/content/feed/' + ${review.review_seq} + '/add-recommand/' + ${comment.comment_seq}}"
+                                                  method="post" style="display:inline;">
+                                                <input type="hidden" name="user_seq" th:value="${session.user.user_seq}" />
+                                                <input type="hidden" name="_method" value="post" />
+                                                <button type="submit" class="link-muted" style="border: none; background-color: transparent;">
+                                                    <i class="fas fa-thumbs-up ms-2" style="color: #8b8b8b;"></i>
+                                                </button>
 
-                                        </p>
-                                        <a href="#!" class="link-muted"><i class="fas fa-thumbs-up ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-x ms-2" style="color: #8b8b8b;"></i></a>
+                                            </form>
+                                            <p class="mb-0"><span th:text="${comment.recommend_count}"></span></p>
+
+
+                                            <!-- 수정 버튼-->
+                                            <button type="submit" style="border: none; background-color: transparent;" class="link-muted edit-comment"  th:id="'editbutton-'+${comment.comment_seq}"
+                                                    onclick="editform(this)" th:if="${session.user.user_seq == comment.user_seq}">
+                                                <i class="fas fa-pencil-alt ms-2" style="color: #8b8b8b;"></i>
+                                            </button>
+<!--                                            <form th:action="@{'/content/feed/' + ${review.review_seq} + '/delete-comment/' + ${comment.comment_seq}}"-->
+<!--                                                  method="post" style="display:inline;">-->
+<!--                                                <input type="hidden" name="_method" value="post" />-->
+<!--                                                <button type="submit" class="link-muted" style="border: none; background-color: transparent;">-->
+<!--                                                    <i class="fas fa-x ms-2" style="color: #8b8b8b;"></i>-->
+<!--                                                </button>-->
+<!--                                            </form>-->
+                                            <form th:action="@{'/content/feed/' + ${review.review_seq} + '/delete-comment/' + ${comment.comment_seq}}"
+                                                  method="post" style="display:inline;" th:if="${session.user.user_seq == comment.user_seq}">
+                                                <input type="hidden" name="_method" value="post" />
+                                                <button type="submit" class="link-muted" style="border: none; background-color: transparent;">
+                                                    <i class="fas fa-x ms-2" style="color: #8b8b8b;"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                           <!-- 댓글내용 -->
+                                        <div th:id="'commentcontent-'+${comment.comment_seq}" style="display:inline;" class="mb-0"><span th:text="${comment.content}"></span></div>
+                                            <!-- 수정 form -->
+                                        <div th:id="'commentedit-'+${comment.comment_seq}" style="display:none; margin-top: 10px;">
+                                            <form th:action="@{'/content/feed/' + ${review.review_seq} + '/edit-comment/' + ${comment.comment_seq}}"
+                                                  method="post">
+                                                <textarea name="content" class="form-control" rows="3" th:text="${comment.content}"></textarea>
+                                                <button type="submit" class="btn btn-warning mt-2">수정</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <p class="mb-0">
-                                        test
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <hr class="my-0" />
-
-                        <div class="card-body p-4">
-                            <div class="d-flex flex-start">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="60"
-                                     height="60" />
-                                <div>
-                                    <h6 class="fw-bold mb-1">닉네임2</h6>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <p class="mb-0">
-                                            March 15, 2021
-
-                                        </p>
-                                        <a href="#!" class="link-muted"><i class="fas fa-thumbs-up ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-x ms-2" style="color: #8b8b8b;"></i></a>
-                                    </div>
-                                    <p class="mb-0">
-                                        test
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="my-0" style="height: 1px;" />
-
-                        <div class="card-body p-4">
-                            <div class="d-flex flex-start">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(33).webp" alt="avatar" width="60"
-                                     height="60" />
-                                <div>
-                                    <h6 class="fw-bold mb-1">닉네임3</h6>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <p class="mb-0">
-                                            March 24, 2021
-
-                                        </p>
-                                        <a href="#!" class="link-muted"><i class="fas fa-thumbs-up ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-x ms-2" style="color: #8b8b8b;"></i></a>
-                                    </div>
-                                    <p class="mb-0">
-                                        test
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="my-0" />
-
-                        <div class="card-body p-4">
-                            <div class="d-flex flex-start">
-                                <img class="rounded-circle shadow-1-strong me-3"
-                                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(24).webp" alt="avatar" width="60"
-                                     height="60" />
-                                <div>
-                                    <h6 class="fw-bold mb-1">닉네임4</h6>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <p class="mb-0">
-                                            March 30, 2021
-
-                                        </p>
-                                        <a href="#!" class="link-muted"><i class="fas fa-thumbs-up ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2" style="color: #8b8b8b;"></i></a>
-                                        <a href="#!" class="link-muted"><i class="fas fa-x ms-2" style="color: #8b8b8b;"></i></a>
-                                    </div>
-                                    <p class="mb-0">
-                                        test
-                                    </p>
-                                </div>
-                            </div>
+                            <hr class="my-0" style="height: 1px;" />
                         </div>
                     </div>
                 </section>
