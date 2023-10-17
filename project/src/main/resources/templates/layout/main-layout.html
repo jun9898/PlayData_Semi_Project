@@ -21,11 +21,14 @@
     </section>
     <!-- 푸터 replace -->
     <footer th:replace="layout-switch/footer-switch :: footer-switch(${footer_type})"></footer>
+    <div class="d-block">
+        <div id="floating_button" th:replace="component/floating-button :: floating-button"></div>
+    </div>
 </body>
 
 <!-- default-bottom insert -->
 <th:block th:replace="layout/default-bottom :: bottom"></th:block>
 <!-- other page injection footer -->
 <th:block th:replace="this :: add_bottom"></th:block>
-
+<script type="text/javascript" th:src="@{/js/floating-button.js}"></script>
 </html>
