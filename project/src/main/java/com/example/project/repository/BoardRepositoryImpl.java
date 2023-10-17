@@ -18,11 +18,11 @@ public class BoardRepositoryImpl implements BoardRepository{
 
     @Override
     public List<ContentDTO> getContentList(RequestContentDTO dto) {
-        System.out.println(dto.toString());
+//         return boardMapper.getContentList(dto);
         List<ContentDTO> contentList = boardMapper.getContentList(dto);
-        for (ContentDTO test : contentList) {
-            System.out.println(test.toString());
-
+        for (ContentDTO content : contentList) {
+            log.info(content.getTitle());
+            log.info(content.getName());
         }
         return contentList;
     }

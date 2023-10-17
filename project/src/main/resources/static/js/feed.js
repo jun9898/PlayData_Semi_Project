@@ -4,23 +4,25 @@ window.addEventListener("load",function(){
     let response_data = null;
     var curPage = 1;
     var cutPage = 20;
-    // var keyword = null;
+    var keyword = "";
+    var searchType = "";
     $.ajax({
         url:"/api/content/feed",
         type:"get",
-        data:{curPage : curPage, cutPage : cutPage,/* keyword : keyword*/}, // 클라이언트에서 서버로 넘기는 파라미터
+        data:{curPage : curPage, cutPage : cutPage, keyword : keyword, searchType : searchType}, // 클라이언트에서 서버로 넘기는 파라미터
         dataType:"json", // 응답데이터의 종류
         success:(respons) =>  {
+            console.log(respons)
             response_data = respons;
         },
         error:error_run,
-        Async : false
+        async : false
     })
 
     let html = response_data.map(row => {
-        const {review_seq, title, view_count, star, img_1, created_at} = row;
+        const {review_seq, title, name, view_count, star, img_1, created_at} = row;
         return `
-              <div class="col mb-1">
+              <div class="col mb-1" OnClick="location.href ='/content/feed/${review_seq}'">
               <div class="card cs-feed-card">
               <img
                 src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp"
@@ -40,7 +42,7 @@ window.addEventListener("load",function(){
                 <span className="evaluation-count">(8)</span>
               </span>
       <br />
-      <span className="cs-start-user">🧇 ${name}님이 작성</span>
+      <span className="cs-start-user"><b>${name}</b></span>
       <br />
     </p>
       <div className="cs-tags mb-2">
@@ -73,7 +75,7 @@ window.addEventListener("load",function(){
     </div>
     </div>
     </div>`    }).join('');
-    feed_list.append(html);
+    $('#feed_list').append(html);
 
     function error_run(obj,resmsg,errormsg) {
         console.log("오류발생");

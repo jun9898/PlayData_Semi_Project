@@ -22,6 +22,10 @@ public class BoardApiController {
 
     @GetMapping("/feed")
     public List<ContentDTO> requestContent(@ModelAttribute RequestContentDTO dto) {
+        log.info(String.valueOf(dto.getCurPage()));
+        log.info(String.valueOf(dto.getCutPage()));
+        log.info(dto.getKeyword());
+        log.info(dto.getSearchType());
         return service.getContentList(dto);
     }
 }
