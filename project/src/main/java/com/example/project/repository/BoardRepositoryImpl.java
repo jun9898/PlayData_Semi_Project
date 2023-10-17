@@ -18,12 +18,6 @@ public class BoardRepositoryImpl implements BoardRepository{
 
     @Override
     public List<ContentDTO> getContentList(RequestContentDTO dto) {
-//         return boardMapper.getContentList(dto);
-        List<ContentDTO> contentList = boardMapper.getContentList(dto);
-        for (ContentDTO content : contentList) {
-            log.info(content.getTitle());
-            log.info(content.getName());
-        }
-        return contentList;
+         return boardMapper.getContentList(dto);
     }
 }

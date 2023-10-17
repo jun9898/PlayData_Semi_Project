@@ -1,5 +1,4 @@
 window.addEventListener("load",function(){
-
     // ajax 최초 요청
     let response_data = null;
     var curPage = 1;
