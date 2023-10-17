@@ -23,11 +23,24 @@
                     <!-- 타임리프 문법을 사용하여 session이 있으면 프로필 사진과 닉네임, 로그인 버튼이 표시되도록 처리해야함-->
                 </div>
             </div>
-            <a
+
+            <!-- 세션 있을때 -->
+            <a th:unless="${session.user == null}"
                     href="#"
                     class="list-group-item list-group-item-action py-2 ripple"
                     aria-current="true"
-                    th:href="@{/user/profile}"
+                    th:href="@{/user/profile/} + ${session.user.id}"
+            >
+                <i class="fa-solid fa-user fa-fw me-3"></i>
+
+                <span>마이페이지</span>
+            </a>
+            <!-- 세션 없을때 -->
+            <a th:if="${session.user == null}"
+               href="#"
+               class="list-group-item list-group-item-action py-2 ripple"
+               aria-current="true"
+               th:href="@{/user/profile}"
             >
                 <i class="fa-solid fa-user fa-fw me-3"></i>
 

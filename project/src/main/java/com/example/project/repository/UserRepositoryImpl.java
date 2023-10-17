@@ -1,6 +1,7 @@
 package com.example.project.repository;
 
 import com.example.project.dto.request.user.CreateUserDTO;
+import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.dto.response.user.LoginResultDTO;
 import com.example.project.dto.response.user.UserDTO;
@@ -37,6 +38,21 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public void deleteUser(Long user_seq) {
         mapper.deleteUser(user_seq);
+    }
+
+    @Override
+    public int findFollow(FollowDTO dto) {
+        return mapper.findFollow(dto);
+    }
+
+    @Override
+    public void insertFollow(FollowDTO dto) {
+        mapper.insertFollow(dto);
+    }
+
+    @Override
+    public void deleteFollow(FollowDTO dto) {
+        mapper.deleteFollow(dto);
     }
 
 }
