@@ -19,47 +19,54 @@
         <title>가게 리뷰 게시물</title>
     </th:block>
     <div th:fragment="content" class="cs-main-content-bg cs-content col container-flude p-3">
+
         <div class="cs-mypage-container">
-                <div class="cs-storepage">
-                    <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-mdb-ride="carousel"
-                         style="height: 500px;">
-                        <!-- Inner -->
-                        <div class="carousel-inner rounded-5 shadow-4-strong">
-                            <!-- Single item -->
-                            <div class="carousel-item active">
-                                <img th:src="@{/asset/photo_review1.jpg}" class="d-block w-100"
-                                     alt="" />
-                            </div>
-
-                            <!-- Single item -->
-                            <div class="carousel-item">
-                                <img th:src="@{/asset/photo_review2.jpg}" class="d-block w-100" alt="" />
-
-                            </div>
-
-                            <!-- Single item -->
-                            <div class="carousel-item">
-                                <img th:src="@{/asset/photo_review3.jpg}" class="d-block w-100"
-                                     alt="" />
-
-                            </div>
+            <div class="cs-storepage">
+                <div id="carouselMaterialStyle" class="carousel slide carousel-fade" data-mdb-ride="carousel"
+                     style="height: 500px;">
+                    <!-- Inner -->
+                    <div class="carousel-inner rounded-5 shadow-4-strong">
+                        <!-- Single item -->
+                        <div class="carousel-item active" th:if="${review.img_1 != null}">
+                            <img th:src="@{/download/}+${review.img_1}" class="d-block w-100"
+                                 alt="" />
                         </div>
-                        <!-- Inner -->
+                        <!-- Single item -->
+                        <div class="carousel-item" th:if="${review.img_2 != null}">
+                            <img th:src="@{/download/}+${review.img_2}" class="d-block w-100" alt="" />
 
-                        <!-- Controls -->
-                        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselMaterialStyle"
-                                data-mdb-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-mdb-target="#carouselMaterialStyle"
-                                data-mdb-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        </div>
+
+                        <!-- Single item -->
+                        <div class="carousel-item" th:if="${review.img_3 != null}">
+                            <img th:src="@{/download/}+${review.img_3}" class="d-block w-100" alt="" />
+
+                        </div>
+                        <!-- Single item -->
+                        <div class="carousel-item" th:if="${review.img_4 != null}">
+                            <img th:src="@{/download/}+${review.img_4}" class="d-block w-100" alt="" />
+                        </div>
+                        <!-- Single item -->
+                        <div class="carousel-item" th:if="${review.img_5 != null}">
+                            <img th:src="@{/download/}+${review.img_5}" class="d-block w-100" alt="" />
+                        </div>
                     </div>
+                    <!-- Inner -->
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselMaterialStyle"
+                            data-mdb-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselMaterialStyle"
+                            data-mdb-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
+        </div>
         <div class="cs-mypage-container" style="height: 400px;">
                 <div class="cs-mypage-container">
 
@@ -136,10 +143,18 @@
                                 <div class="col-3">
 <!--                                    별점 icon-->
                             <span class="listmarginrigth">
+<!--                                <th:block th:each="i : ${#numbers.sequence(1, review.star)}">-->
+<!--                                    <i class="fa-solid fa-star" style="color: #ffde66;"></i>-->
+<!--                                </th:block>-->
+<!--                                <th:block th:each="i : ${#numbers.sequence(1, 5 - review.star)}">-->
+<!--                                    <i class="fa-regular fa-star" style="color: #ffde66;"></i>-->
+<!--                                </th:block>-->
                                 <th:block th:each="i : ${#numbers.sequence(1, review.star)}">
-                                    <i class="fa-solid fa-star" style="color: #ffde66;"></i>
+                                <i class="fa-solid fa-star" style="color: #ffde66;"></i>
                                 </th:block>
-                                <th:block th:each="i : ${#numbers.sequence(1, 5 - review.star)}">
+
+                                <!-- 회색 별 그리기 -->
+                                <th:block th:if="${review.star <= 4}" th:each="i : ${#numbers.sequence(1, 5 - review.star)}">
                                     <i class="fa-regular fa-star" style="color: #ffde66;"></i>
                                 </th:block>
                                 &nbsp;
@@ -149,8 +164,7 @@
                                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
                                      height="60" />
                                 &nbsp;
-<!--                                조회수-->
-                                <i class="fa-regular fa-thumbs-up fa-lg" aria-hidden="true"><small th:text="${review.view_count}" class="text-muted"></small></i>
+                                <i class="far fa-eye fa-lg" aria-hidden="true"><small th:text="${review.view_count}" class="text-muted"></small></i>
 
                             </span>
 
@@ -163,6 +177,14 @@
                     <div class="card bg-light">
                         <div class="card-body">
                             <h6 th:text="${review.content}"></h6>
+                        </div>
+                        <div style=" text-align: center;">
+                            <form th:action="@{'/content/feed/' + ${review.review_seq} + '/add-postrecommand'}"
+                                  method="post" style="display:inline;">
+                                <input type="hidden" name="user_seq" th:value="${session.user.user_seq}" />
+                                <input type="hidden" name="_method" value="post" />
+                                <button type="submit" class="btn btn-outline-warning btn-rounded link-muted" data-mdb-ripple-color="dark"><i class="fa-regular fa-thumbs-up fa-lg" aria-hidden="true"></i><p th:text="${review.recommend_count}" class="text-muted" style="color:#e4a11b;"></p></button>
+                            </form>
                         </div>
                     </div>
                 </section>
