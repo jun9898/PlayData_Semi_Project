@@ -25,11 +25,14 @@ public class LoginController {
 //        무한루프돌아서 실행 안됨 좀 더 알아봐야할듯 - 해결 Session 이 UserDTO로 담기는데 LoginCheckInterceptor에서
 //        String으로 리턴받으려고 해서 발생하는 문제였음
         if (session != null){
+            log.info(session.getId());
+            log.info(session.getName());
             return "redirect:/content/feed";
         } else {
             return "login/login";
         }
     }
+
 
     @PostMapping("/login")
     public String login(@ModelAttribute LoginUserDTO loginUserDTO, Model model) {

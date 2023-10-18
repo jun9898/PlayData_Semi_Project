@@ -23,7 +23,6 @@ public class UserController {
     private final UserService service;
 
     @GetMapping("/profile/{id}")
-    @ModelAttribute("user")
     public String mypageView(@PathVariable("id")String id,
                              @ModelAttribute(name = "user") UserDTO session,
                              Model model){
@@ -33,7 +32,7 @@ public class UserController {
         } else {
             UserDTO byId = service.findById(id);
             FollowDTO dto = new FollowDTO(session.getUser_seq(), byId.getUser_seq());
-            model.addAttribute("user", byId);
+            model.addAttribute("profile", byId);
             model.addAttribute("findFollowResult",service.findFollow(dto));
             return "user/profile";
         }
@@ -42,6 +41,8 @@ public class UserController {
     @GetMapping("/profile/{id}/following")
     public String following(@PathVariable("id")String id,
                             @ModelAttribute(name = "user") UserDTO session){
+        log.info(session.getId());
+        log.info(id);
         UserDTO byId = service.findById(id);
         FollowDTO dto = new FollowDTO(session.getUser_seq(), byId.getUser_seq() );
         log.info(session.getUser_seq() + "         " + byId.getUser_seq());

@@ -16,32 +16,23 @@
                         </div>
 
                         <div>
-                            <h1 class="cs-mypage-profile-user-name" th:text = "${user.name}">닉네임</h1>
-<!--
-                            <div th:if="${not #strings.isEmpty(mypage)}">
-                                <a href="/" class="link-muted"><i class="fas fa-cog fa-lg" style="color: #8b8b8b; margin-left:10px;"></i></a>
-                            </div>
--->
-                            <div th:unless="${not #strings.isEmpty(mypage)}">
+                            <h1 class="cs-mypage-profile-user-name" th:text = "${profile.name}">닉네임</h1>
                                 <div th:if="${findFollowResult == 0}">
-
-                                    <a th:href="@{'/user/profile/' + ${user.id} + '/following'}">
-                                        <button class="btn cs-mypage-profile-follow-btn" style="background-color: #ed9715;">팔로우 하기</button>
+                                    <a th:href="@{'/user/profile/' + ${profile.id} + '/following'}">
+                                        <button class="btn cs-mypage-profile-follow-btn" style="background-color: #ed9715;">
+                                            팔로우 하기
+                                        </button>
                                     </a>
-<!--
-                                    <button class="btn cs-mypage-profile-follow-btn" style="background-color: #ed9715;"
-                                            th:onclick="|location.href= '@{/user/profile/' + ${user.id} + '/following}'|"
-                                    >팔로우 하기</button>
--->
                                 </div>
                                 <div th:unless="${findFollowResult == 0}">
-                                    <button class="btn cs-mypage-profile-follow-btn" style="background-color: #ed9715;"
-                                            th:onclick="@{'/user/profile/' + ${user.id} + '/un_following'}"
-                                    >언팔로우 하기</button>
+                                    <a th:href="@{'/user/profile/' + ${profile.id} + '/un_following'}">
+                                        <button class="btn cs-mypage-profile-follow-btn" style="background-color: #ed9715;">
+                                            언팔로우 하기
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
 
-                        </div>
 
                         <!-- 프로필 상태(게시물, 팔로워, 팔로잉)-->
                         <div class="cs-mypage-profile-stats">
