@@ -1,4 +1,8 @@
 // 요청 인터셉터 추가하기
+
+axios.default.paramsSerializer = function(params){
+    return new URLSearchParams(params);
+}
 axios.interceptors.request.use(function (config) {
     // 요청이 전달되기 전에 작업 수행
     return config;
