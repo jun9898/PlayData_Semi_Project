@@ -37,9 +37,9 @@
                         <!-- 프로필 상태(게시물, 팔로워, 팔로잉)-->
                         <div class="cs-mypage-profile-stats">
                             <ul>
-                                <li>게시물 <span class="profile-stat-count">100</span></li>
-                                <li><a class="my-follower-list" th:href="@{/user/list(status=follower)}">팔로워 <span class="profile-stat-count">100</span></a></li>
-                                <li><a class="my-follower-list" th:href="@{/user/list(status=following)}">팔로잉 <span class="profile-stat-count">100</span></a></li>
+                                <li>게시물 <span class="profile-stat-count" th:text="${profile.post_count}">100</span></li>
+                                <li><a class="my-follower-list" th:href="@{/user/list(status=follower)}">팔로워 <span class="profile-stat-count" th:text="${profile.follower}">100</span></a></li>
+                                <li><a class="my-follower-list" th:href="@{/user/list(status=following)}">팔로잉 <span class="profile-stat-count" th:text="${profile.following}">100</span></a></li>
                             </ul>
                         </div>
 

@@ -3,6 +3,7 @@ package com.example.project.service;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
+import com.example.project.dto.response.user.ProfileDTO;
 import com.example.project.dto.response.user.UserDTO;
 
 public interface UserService {
@@ -13,5 +14,5 @@ public interface UserService {
     int findFollow(FollowDTO dto);
     void following(FollowDTO dto);
     void unFollowing(FollowDTO dto);
-
+    ProfileDTO findProfile(String id);
 }

@@ -5,6 +5,7 @@ import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.dto.response.user.LoginResultDTO;
+import com.example.project.dto.response.user.ProfileDTO;
 import com.example.project.dto.response.user.UserDTO;
 import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -64,5 +65,11 @@ public class UserServiceImpl implements UserService {
     public void unFollowing(FollowDTO dto) {
         repository.deleteFollow(dto);
     }
+
+    @Override
+    public ProfileDTO findProfile(String id) {
+        return repository.findProfile(id);
+    }
+
 
 }

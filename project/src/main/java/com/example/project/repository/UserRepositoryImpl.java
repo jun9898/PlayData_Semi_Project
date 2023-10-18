@@ -4,6 +4,7 @@ import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.dto.response.user.LoginResultDTO;
+import com.example.project.dto.response.user.ProfileDTO;
 import com.example.project.dto.response.user.UserDTO;
 import com.example.project.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -53,6 +54,11 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public void deleteFollow(FollowDTO dto) {
         mapper.deleteFollow(dto);
+    }
+
+    @Override
+    public ProfileDTO findProfile(String id) {
+        return mapper.findProfile(id);
     }
 
 }
