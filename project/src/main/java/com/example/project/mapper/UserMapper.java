@@ -4,6 +4,7 @@ import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
 import com.example.project.dto.response.user.LoginResultDTO;
+import com.example.project.dto.response.user.ProfileDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -17,5 +18,5 @@ public interface UserMapper {
     int findFollow(FollowDTO dto);
     void insertFollow(FollowDTO dto);
     void deleteFollow(FollowDTO dto);
-
+    ProfileDTO findProfile(String id);
 }

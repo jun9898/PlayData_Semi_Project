@@ -4,6 +4,7 @@ package com.example.project.controller.view;
 //import com.example.project.service.MemberService;
 
 import com.example.project.dto.request.user.FollowDTO;
+import com.example.project.dto.response.user.ProfileDTO;
 import com.example.project.dto.response.user.UserDTO;
 import com.example.project.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,13 +27,13 @@ public class UserController {
     public String mypageView(@PathVariable("id")String id,
                              @ModelAttribute(name = "user") UserDTO session,
                              Model model){
+        ProfileDTO byId = service.findProfile(id);
+        model.addAttribute("profile", byId);
         if (session.getId().equals(id)){
             log.info("use mypage");
             return "user/mypage";
         } else {
-            UserDTO byId = service.findById(id);
             FollowDTO dto = new FollowDTO(session.getUser_seq(), byId.getUser_seq());
-            model.addAttribute("profile", byId);
             model.addAttribute("findFollowResult",service.findFollow(dto));
             return "user/profile";
         }
