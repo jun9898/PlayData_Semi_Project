@@ -1,7 +1,7 @@
 package com.example.project.component;
 
 import com.example.project.dto.request.map.SearchMapDTO;
-import com.example.project.dto.response.map.ApiKeywordSearch;
+import com.example.project.dto.response.map.ApiKeywordSearchDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +31,8 @@ public class KakaoApiImpl implements KakaoApi{
     public KakaoApiImpl(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
     }
-    public ResponseEntity<ApiKeywordSearch> getMarketList(SearchMapDTO dto) {
+
+    public ResponseEntity<ApiKeywordSearchDTO> getMarketList(SearchMapDTO dto) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + API_KEY);
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(URL_PREFIX)
@@ -48,7 +49,7 @@ public class KakaoApiImpl implements KakaoApi{
                 uriBuilder.toUriString(),
                 HttpMethod.GET,
                 req,
-                ApiKeywordSearch.class
+                ApiKeywordSearchDTO.class
         );
 
     }
