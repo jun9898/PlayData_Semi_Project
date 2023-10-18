@@ -2,6 +2,7 @@ package com.example.project.controller.view;
 
 import com.example.project.dto.request.review.ReviewCommentDTO;
 import com.example.project.dto.request.review.ReviewCommentRecommandDTO;
+import com.example.project.dto.request.review.ReviewRecommandDTO;
 import com.example.project.dto.response.review.ReviewCommentReadDTO;
 import com.example.project.dto.response.review.ReviewPostReadDTO;
 import com.example.project.dto.response.user.UserDTO;
@@ -37,7 +38,6 @@ public class BoardController {
         return "board/map";
     }
 
-
     //게시판 상세보기
     @GetMapping("/feed/{review_seq}")
     public String getReviewDetail(@PathVariable("review_seq") Long review_seq, Model model) {
@@ -48,7 +48,23 @@ public class BoardController {
         return "board/user-content";
     }
 
-    
+    //게시판 추천 유무 체크하기
+    public boolean checkIfAlreadyPostRecommanded(@ModelAttribute ReviewRecommandDTO RecommandDTO) {
+        int count = postservice.checkIfAlreadyPostRecommanded(RecommandDTO);
+        return count > 0;
+    }
+
+    //게시판 추천하기
+    @PostMapping("/feed/{review_seq}/add-postrecommand")
+    public String addPostCommand(@ModelAttribute ReviewRecommandDTO RecommandDTO) {
+        boolean alreadyRecommanded = checkIfAlreadyPostRecommanded(RecommandDTO);
+        if (alreadyRecommanded) {
+            postservice.deleteReviewRecommand(RecommandDTO);
+        } else {
+            postservice.insertReviewRecommand(RecommandDTO);
+        }
+        return "redirect:/content/feed/{review_seq}";
+    }
 
     //댓글 쓰기
     @PostMapping("/feed/{review_seq}/add-comment")

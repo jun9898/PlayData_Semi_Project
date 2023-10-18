@@ -30,7 +30,7 @@
         and following_user_seq = #{following_user_seq}
     </select>
     <insert id="insertFollow" parameterType="FollowDTO">
-        insert into user(follower_user_seq, following_user_seq)
+        insert into follower(follower_user_seq, following_user_seq)
         values(#{user_seq}, #{following_user_seq})
     </insert>
     <delete id="deleteFollow" parameterType="FollowDTO">

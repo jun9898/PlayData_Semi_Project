@@ -23,6 +23,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
                 return false;
             }
         }
+
         //로그인된 사용자는 다음으로 넘어갈 수 있도록 true리턴
         return true;
 

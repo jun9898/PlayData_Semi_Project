@@ -10,15 +10,19 @@ import org.apache.ibatis.type.Alias;
 @NoArgsConstructor
 @Alias("ReviewPostReadDTO")
 public class ReviewPostReadDTO {
+    private Long review_seq;
     private Long user_seq;
     private Long market_seq;
     private String title;
     private String content;
     private Long view_count;
     private Long star;
-    private String img1;
-    private String img2;
-    private String img3;
-    private String img4;
-    private String img5;
+    private String img_1;
+    private String img_2;
+    private String img_3;
+    private String img_4;
+    private String img_5;
+    private String created_at;
+    private String recommend_count;
+
 }

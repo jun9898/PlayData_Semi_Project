@@ -18,10 +18,10 @@ public class ReviewPostDTO {
     private String content;
     private Long view_count;
     private Long star;
-    private String img1;
-    private String img2;
-    private String img3;
-    private String img4;
-    private String img5;
+    private String img_1;
+    private String img_2;
+    private String img_3;
+    private String img_4;
+    private String img_5;
 
 }

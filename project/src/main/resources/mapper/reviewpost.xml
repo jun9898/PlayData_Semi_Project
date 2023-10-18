@@ -26,20 +26,73 @@
         #{view_count},
         #{content},
         #{star},
-        #{img1},
-        #{img2},
-        #{img3},
-        #{img4},
-        #{img5}
+        #{img_1},
+        #{img_2},
+        #{img_3},
+        #{img_4},
+        #{img_5}
         )
     </insert>
 
     <!-- 게시물 조회 -->
     <select id="getReviewPost" parameterType="Long" resultType="ReviewPostReadDTO">
-        select * from review where review_seq = #{review_seq}
+<!--        select * from review where review_seq = #{review_seq}-->
+        SELECT
+        r.review_seq, r.user_seq, r.market_seq, r.title, r.content, r.view_count,
+        r.star, r.img_1, r.img_2, r.img_3, r.img_4, r.img_5,
+        r.created_at, COALESCE(rc.recommend_count, 0) as recommend_count
+        FROM review r
+        LEFT JOIN (
+        SELECT b.review_seq, COUNT(*) as recommend_count
+        FROM review_recommand a
+        JOIN review b ON a.review_seq = b.review_seq
+        GROUP BY b.review_seq
+        ) rc ON r.review_seq = rc.review_seq
+        WHERE r.review_seq = #{review_seq}
     </select>
 
+    <!-- 게시물 수정 -->
+    <update id="updateReviewPost" parameterType="ReviewPostDTO">
+        update review
+        set
+        market_seq = #{market_seq},
+        title = #{title},
+        content = #{content},
+        star = #{star},
+        img_1 = #{img1},
+        img_2 = #{img2},
+        img_3 = #{img3},
+        img_4 = #{img4},
+        img_5 = #{img5}
+        where review_seq = #{review_seq}
+    </update>
 
+    <!-- 게시물 삭제 -->
+    <delete id="deleteReviewPost" parameterType="Long">
+        delete from review where review_seq = #{review_seq}
+    </delete>
+
+    <!--  조회수  -->
+<!--    <update id="updateViewCount" parameterType="Long">-->
+<!--        update review-->
+<!--        set view_count = view_count + 1-->
+<!--        where review_seq = #{review_seq}-->
+<!--    </update>-->
+    <insert id="insertReviewRecommand" parameterType="ReviewRecommandDTO">
+        insert into review_recommand (review_seq, user_seq)
+        values (#{review_seq}, #{user_seq})
+    </insert>
+
+    <delete id="deleteReviewRecommand" parameterType="map">
+        delete from review_recommand
+        where review_seq = #{review_seq} and user_seq = #{user_seq}
+    </delete>
+
+    <select id="checkIfAlreadyPostRecommanded" parameterType="map" resultType="int">
+        select count(*)
+        from review_recommand
+        where review_seq = #{review_seq} and user_seq = #{user_seq}
+    </select>
 
 </mapper>
 
