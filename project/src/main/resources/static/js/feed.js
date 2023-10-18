@@ -1,28 +1,16 @@
 window.addEventListener("load",async function(){
     // ajax 최초 요청
-    let response_data = null;
+    var param = null;
     var curPage = 1;
     var cutPage = 20;
     var keyword = "";
     var searchType = "";
-    data = {curPage : curPage, cutPage : cutPage, keyword : keyword, searchType : searchType}
-    let res =  await axios.get("/api/content/feed?curPage=1&cutPage=5&keyword=&searchType=")
-
-    $.ajax({
-        url:"/api/content/feed",
-        type:"get",
-        data,// 클라이언트에서 서버로 넘기는 파라미터
-        dataType:"json", // 응답데이터의 종류
-        success:(respons) =>  {
-            console.log(respons)
-            response_data = respons;
-        },
-        error:error_run,
-        async : false
-    })
-    let html = response_data.map(row => {
-        const {review_seq, title, name, view_count, star, img_1, created_at} = row;
-        return `
+    param = {curPage : curPage, cutPage : cutPage, keyword : keyword, searchType : searchType}
+    try{
+        let res =  await axios.get("/api/content/feed", {params : param})
+        let html = res.data.map(row => {
+            const {review_seq, title, name, view_count, star, img_1, created_at} = row;
+            return `
               <div class="col mb-1" OnClick="location.href ='/content/feed/${review_seq}'">
               <div class="card cs-feed-card">
               <img
@@ -76,7 +64,16 @@ window.addEventListener("load",async function(){
     </div>
     </div>
     </div>`    }).join('');
-    $('#feed_list').append(html);
+        $('#feed_list').append(html);
+
+
+    } catch (e){
+
+    }
+
+
+
+
 
     function error_run(obj,resmsg,errormsg) {
         console.log("오류발생");
@@ -85,9 +82,46 @@ window.addEventListener("load",async function(){
         console.log("errormsg = " + errormsg);
     }
 
+    /* 검색 대상을 정하는 버튼의 전체 버튼을 눌렀을때 */
+    $("#feed-selected-all").on("click", () => {
+        // 버튼의 "selected" 클래스를 토글
+        if ($("#feed-selected-all").hasClass("selected")) {
+            keyword = ""; // 키워드 값을 ""로 설정
+            // 이미 선택된 상태인 경우, 클래스 제거
+            $("#feed-selected-all").removeClass("selected");
+        } else {
+            // 선택되지 않은 상태인 경우, 클래스 추가
+            keyword = "all"; // 키워드 값을 "all"로 설정
+            $("#feed-selected-all").addClass("selected");
+            $("#feed-selected-following").removeClass("selected");
+        }
+    });
+
+    /* 검색 대상을 정하는 버튼의 친구만 버튼을 눌렀을때 */
+    $("#feed-selected-following").on("click", () => {
+        // 버튼의 "selected" 클래스를 토글
+        if ($("#feed-selected-following").hasClass("selected")) {
+            keyword = ""; // 키워드 값을 ""로 설정
+            // 이미 선택된 상태인 경우, 클래스 제거
+            $("#feed-selected-following").removeClass("selected");
+        } else {
+            // 선택되지 않은 상태인 경우, 클래스 추가
+            keyword = "following"; // 키워드 값을 "all"로 설정
+            $("#feed-selected-following").addClass("selected");
+            $("#feed-selected-all").removeClass("selected");
+        }
+    });
+
+/*
+    $("#feed-selected-following").on("click", () => {
+        $("#feed-auto-complete")[0].classList.add("cs-autocomplete-show");
+    });
+*
+
     $("#feed-search").on("click", () => {
         $("#feed-auto-complete")[0].classList.add("cs-autocomplete-show");
     });
+    /* 포커스 아웃 */
     $("#feed-search").on("blur", () => {
         $("#feed-auto-complete").removeClass("cs-autocomplete-show");
     });
@@ -113,6 +147,7 @@ window.addEventListener("load",async function(){
           $(".cs-autocomplete-item")[index + 1].classList.remove("active"); // 추후 오류 처리 필요
           break;
         case ENTER:
+            keyword = ""
           alert("search");
           document.body.focus();
           $(".cs-autocomplete-item").removeClass("active");

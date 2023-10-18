@@ -33,20 +33,23 @@
         R.img_1,
         R.created_at
         from
-        user U join review R <!--join follower F-->
+        review R
+        join user U
         on U.user_seq = R.user_seq
-<!--
-        팔로워 테이블 설계 후 다시 확인
-        on U.user_seq = F.follower_user_seq
-        <where>
-            F.follower_user_seq = #{id}
-        </where>
--->
-        <if test="#{keyword} != null">
+        <if test='#{searchType} == "following"'>
+            join follower F
+            on U.user_seq = F.follower_user_seq
+            <where>
+                F.follower_user_seq = #{user_seq}
+            </where>
+        </if>
+
+        <if test='#{keyword} != null and #{keyword} != ""' >
             <where>
                 R.title like CONCAT('%',#{keyword},'%') || R.content like CONCAT('%',#{keyword},'%')
             </where>
         </if>
+
 <!--
         태그에 담겨올 List<String>도 처리할 방법 필요
 -->

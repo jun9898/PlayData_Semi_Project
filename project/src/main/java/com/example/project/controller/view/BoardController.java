@@ -5,8 +5,6 @@ import com.example.project.dto.request.review.ReviewCommentRecommandDTO;
 import com.example.project.dto.request.review.ReviewRecommandDTO;
 import com.example.project.dto.response.review.ReviewCommentReadDTO;
 import com.example.project.dto.response.review.ReviewPostReadDTO;
-import com.example.project.dto.response.user.UserDTO;
-import com.example.project.service.BoardService;
 import com.example.project.service.ReviewCommentService;
 import com.example.project.service.ReviewPostService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +22,6 @@ import java.util.List;
 @Slf4j
 public class BoardController {
 
-    private final BoardService service;
     private final ReviewPostService postservice;
     private final ReviewCommentService commentservice;
 

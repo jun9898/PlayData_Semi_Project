@@ -19,21 +19,52 @@
         </div>
         <div class="position-relative row justify-content-center px-6">
           <div id="feed-auto-complete" class="cs-autocomplete-list col-12 px-0">
+<!--
             <div class="cs-autocomplete-item">Item 1</div>
             <div class="cs-autocomplete-item">Item 2</div>
             <div class="cs-autocomplete-item">Item 3</div>
             <div class="cs-autocomplete-item">Item 4</div>
+-->
             <hr />
             <div class="row mb-3 px-2">
-              <h5>태그 선택</h5>
+<!--
+              <h5>검색 범위</h5>
               <div class="col-12 col-sm-auto mb-2">
                 <button
                         class="btn btn-tag btn-sm btn-rounded border selected"
                         data-mdb-close="true"
                 >
-                  ⌛️ 음식이 빨리나와요
+                  전체
                 </button>
               </div>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                        class="btn btn-tag btn-sm btn-rounded border selected"
+                        data-mdb-close="true"
+                >
+                  친구만
+                </button>
+              </div>
+-->
+              <h5>검색 범위</h5>
+              <div class="col-12 col-sm-auto mb-2">
+                <button
+                        class="btn btn-tag btn-sm btn-rounded border"
+                        data-mdb-close="true"
+                        id = "feed-selected-all"
+                >
+                  ⌛️ 전체
+                </button>
+                <button
+                        class="btn btn-tag btn-sm btn-rounded border"
+                        data-mdb-close="true"
+                        id = "feed-selected-following"
+                >
+                  ⌛️ 친구만
+                </button>
+              </div>
+
+              <hr />
               <div class="col-12 col-sm-auto mb-2">
                 <button
                         class="btn btn-tag btn-sm btn-rounded border"
