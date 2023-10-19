@@ -14,6 +14,7 @@ import java.util.List;
 public interface BoardMapper {
 
     List<ContentDTO> getContentList(RequestContentDTO dto);
+    List<ContentDTO> getFollowContentList(RequestContentDTO dto);
     int upsertMarketList(List<MarketDocumentDTO> dto);
     List<MarketReviewDTO> getMarketAndReviewList(SearchMapDTO dto);
 

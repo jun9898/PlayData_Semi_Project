@@ -12,10 +12,8 @@ import java.util.List;
 public interface BoardRepository {
 
     List<ContentDTO> getContentList(RequestContentDTO dao);
-
+    List<ContentDTO> getFollowContentList(RequestContentDTO dao);
     int upsertMarketList(List<MarketDocumentDTO> dto);
-
     List<MarketReviewDTO> getMarketAndReviewList(SearchMapDTO dto);
-
     List<TagDto> getTagList();
 }
