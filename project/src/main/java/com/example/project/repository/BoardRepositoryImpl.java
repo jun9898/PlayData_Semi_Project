@@ -22,15 +22,12 @@ public class BoardRepositoryImpl implements BoardRepository{
 
     @Override
     public List<ContentDTO> getContentList(RequestContentDTO dto) {
-        if (dto.getSearchtype().equals("all")){
-            dto.setSearchtype("");
-            log.info(dto.toString());
-        }
-        if (dto.getKeyword().equals(null)){
-            dto.setKeyword("");
-            log.info(dto.toString());
-        }
         return boardMapper.getContentList(dto);
+    }
+
+    @Override
+    public List<ContentDTO> getFollowContentList(RequestContentDTO dto) {
+        return boardMapper.getFollowContentList(dto);
     }
 
     @Override

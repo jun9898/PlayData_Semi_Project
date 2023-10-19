@@ -33,24 +33,34 @@
         R.img_1,
         R.created_at
         from
-        user U join review R <!--join follower F-->
+        user U join review R
         on U.user_seq = R.user_seq
-        <if test='#{searchtype}!=null and !#{searchtype}.equals("")'>
-<!--
-                JOIN Follower F ON U.user_seq = F.follower_user_seq
-                where F.following_user_seq = #{user_seq}
--->
+        <if test='#{keyword} != "" and #{keyword} != null'>
             where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
         </if>
-<!--
-        <if test='#{keyword} != "" and #{keyword} != null '>
-                where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
-        </if>
--->
+        ORDER BY R.review_seq DESC
+        limit #{curPage}, #{cutPage}
 
-<!--
-        태그에 담겨올 List<String>도 처리할 방법 필요
--->
+    </select>
+
+    <select id="getFollowContentList" parameterType="RequestContentDTO" resultType="ContentDTO">
+        select
+        U.name,
+        R.review_seq,
+        R.title,
+        R.view_count,
+        R.star,
+        R.img_1,
+        R.created_at
+        from
+        user U join review R
+        on U.user_seq = R.user_seq
+        JOIN Follower F
+        ON U.user_seq = F.follower_user_seq
+        where F.following_user_seq = #{user_seq}
+        <if test='#{keyword} != "" and #{keyword} != null'>
+            where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
+        </if>
         ORDER BY R.review_seq DESC
         limit #{curPage}, #{cutPage}
 
