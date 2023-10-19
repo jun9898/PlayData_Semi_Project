@@ -3,9 +3,10 @@ package com.example.project.repository;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
-import com.example.project.dto.response.user.LoginResultDTO;
-import com.example.project.dto.response.user.ProfileDTO;
-import com.example.project.dto.response.user.UserDTO;
+import com.example.project.dto.response.help.NoticeReadDTO;
+import com.example.project.dto.response.user.*;
+
+import java.util.List;
 
 public interface UserRepository {
 
@@ -18,5 +19,8 @@ public interface UserRepository {
     void insertFollow(FollowDTO dto);
     void deleteFollow(FollowDTO dto);
     ProfileDTO findProfile(String id);
+    List<UserfeedDTO> feedList(String id);
+    List<FollowlistDTO> readfollowingList(Long follower_user_seq);//팔로우로 표시될 것
+    List<FollowlistDTO> readfollowerList(Long following_user_seq);//팔로잉으로 표시 것
 
 }

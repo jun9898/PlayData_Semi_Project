@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <th:block th:replace="layout/main-layout :: layout(default,none)">
     <th:block th:fragment="add_header">
         <title>마이페이지</title>
@@ -24,16 +25,10 @@
                         <div class="cs-mypage-profile-stats">
                             <ul>
                                 <li>게시물 <span class="profile-stat-count" th:text="${profile.post_count}">100</span></li>
-                                <li><a class="my-follower-list" th:href="@{/user/list(status=follower)}">팔로워 <span class="profile-stat-count" th:text="${profile.follower}">100</span></a></li>
-                                <li><a class="my-follower-list" th:href="@{/user/list(status=following)}">팔로잉 <span class="profile-stat-count" th:text="${profile.following}">100</span></a></li>
+                                <li><a class="my-follower-list" th:href="@{'/user/list/follower/'} + ${profile.user_seq}">팔로워 <span class="profile-stat-count" th:text="${profile.follower}">100</span></a></li>
+                                <li><a class="my-follower-list" th:href="@{'/user/list/following/'} + ${profile.user_seq}">팔로잉 <span class="profile-stat-count" th:text="${profile.following}">100</span></a></li>
                             </ul>
                         </div>
-
-                        <!-- 프로필 소개-->
-                        <div class="cs-mypage-profile-bio">
-                            <p>맛집여행 📷🍺🍲🍝</p>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -43,186 +38,188 @@
             <div>
                 <div class="cs-mypage-container">
                     <div class="cs-mypage-gallery">
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 56
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 2
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 89
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 5
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
+                        <div class="cs-mypage-gallery-item" tabindex="0"  th:each="myfeedlist : ${myfeedlist}" >
+                            <!--                            <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"-->
+                            <a th:href="@{'/content/feed/' + ${myfeedlist.review_seq}}">
+                                <img th:src="@{/download/}+${myfeedlist.img_1}" class="cs-mypage-gallery-image" alt="" >
                             <div class="cs-mypage-gallery-item-info">
                                 <ul>
                                     <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 42
+                                        <i class="fas fa-thumbs-up" aria-hidden="true" style="color:white;"></i><span th:text="${myfeedlist.recommend_cnt}" style="color: white;"></span>
                                     </li>
                                     <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 1
+                                        <i class="fas fa-comment" aria-hidden="true" style="color: white;"></i><span th:text="${myfeedlist.comment_cnt}" style="color: white;"></span>
                                     </li>
                                 </ul>
                             </div>
+                            </a>
                         </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 89-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 5-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 38
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 0
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 42-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 1-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 47
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 1
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 38-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 0-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 94
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 3
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 47-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 1-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 52
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 4
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 94-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 3-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 66
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 2
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 52-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 4-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 45
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 0
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 66-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 2-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 34
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 1
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 45-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 0-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 41
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 0
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 34-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 1-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
-                        <div class="cs-mypage-gallery-item" tabindex="0">
-                            <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop"
-                                 class="cs-mypage-gallery-image" alt="">
-                            <div class="cs-mypage-gallery-item-info">
-                                <ul>
-                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>
-                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 30
-                                    </li>
-                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>
-                                        <i class="fas fa-comment" aria-hidden="true"></i> 2
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 41-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 0-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="cs-mypage-gallery-item" tabindex="0">-->
+<!--                            <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop"-->
+<!--                                 class="cs-mypage-gallery-image" alt="">-->
+<!--                            <div class="cs-mypage-gallery-item-info">-->
+<!--                                <ul>-->
+<!--                                    <li class="cs-mypage-gallery-item-likes"><span class="visually-hidden">Likes:</span>-->
+<!--                                        <i class="fas fa-thumbs-up" aria-hidden="true"></i> 30-->
+<!--                                    </li>-->
+<!--                                    <li class="cs-mypage-gallery-item-comments"><span class="visually-hidden">Comments:</span>-->
+<!--                                        <i class="fas fa-comment" aria-hidden="true"></i> 2-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
-                    <div class="loader"></div>
                 </div>
             </div>
             <div class="cs-mypage-aside2">

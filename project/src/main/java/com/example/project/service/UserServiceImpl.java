@@ -4,13 +4,13 @@ import com.example.project.Exception.LoginFailException;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
-import com.example.project.dto.response.user.LoginResultDTO;
-import com.example.project.dto.response.user.ProfileDTO;
-import com.example.project.dto.response.user.UserDTO;
+import com.example.project.dto.response.user.*;
 import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -69,6 +69,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public ProfileDTO findProfile(String id) {
         return repository.findProfile(id);
+    }
+
+    @Override
+    public List<UserfeedDTO> myfeedlist(String id) {
+        return repository.feedList(id);
+    }
+
+    @Override
+    public List<FollowlistDTO> readfollowingList(Long follower_user_seq) {
+        return repository.readfollowingList(follower_user_seq);
+    }
+
+    @Override
+    public List<FollowlistDTO> readfollowerList(Long following_user_seq) {
+        return repository.readfollowerList(following_user_seq);
     }
 
 

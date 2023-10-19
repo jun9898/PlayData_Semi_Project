@@ -40,7 +40,10 @@
     </delete>
 
     <select id="findProfile" parameterType="string" resultType="ProfileDTO">
-        SELECT A.*, B.post_count, C.follower, D.following
+        SELECT A.*,
+        COALESCE(B.post_count, 0) AS post_count,
+        COALESCE(C.follower, 0) AS follower,
+        COALESCE(D.following, 0) AS following
         FROM (
         SELECT U.user_seq, U.id, U.name
         FROM user U
@@ -61,6 +64,44 @@
         FROM follower F
         GROUP BY F.follower_user_seq
         ) D ON A.user_seq = D.follower_user_seq;
+    </select>
+
+    <select id="myfeedlist" parameterType="string" resultType="UserfeedDTO">
+        select
+        r.review_seq,
+        r.img_1,
+        coalesce(rc.comment_cnt, 0) as comment_cnt,
+        coalesce(rr.recommend_cnt, 0) as recommend_cnt
+        from review r
+        left join (
+        select review_seq, COUNT(*) as comment_cnt
+        from review_comment
+        group by review_seq
+        ) rc on r.review_seq = rc.review_seq
+        left join (
+        select b.review_seq, count(*) as recommend_cnt
+        from review_recommand a
+        join review b on a.review_seq = b.review_seq
+        group by b.review_seq
+        ) rr on r.review_seq = rr.review_seq
+        join user u on r.user_seq = u.user_seq
+        where u.id = #{u.id};
+    </select>
+
+    <select id="followinglist" parameterType="Long" resultType="FollowlistDTO">
+<!--        팔로잉-->
+        select u.email, u.id, u.name, u.user_seq ,f.following_user_seq ,f.follower_user_seq
+        from follower f
+        join user u on f.following_user_seq = u.user_seq
+        where f.follower_user_seq = #{follower_user_seq};
+    </select>
+
+    <select id="followerlist" parameterType="Long" resultType="FollowlistDTO">
+<!--        팔로워-->
+        select u.email, u.id, u.name, u.user_seq ,f.following_user_seq ,f.follower_user_seq
+        from follower f
+        join user u on f.follower_user_seq = u.user_seq
+        where f.following_user_seq = #{following_user_seq};
     </select>
 </mapper>
 

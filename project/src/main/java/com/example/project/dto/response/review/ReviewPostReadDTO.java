@@ -13,6 +13,7 @@ public class ReviewPostReadDTO {
     private Long review_seq;
     private Long user_seq;
     private Long market_seq;
+    private String id;
     private String title;
     private String content;
     private Long view_count;
