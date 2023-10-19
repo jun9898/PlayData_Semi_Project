@@ -11,7 +11,6 @@ import java.util.List;
 @ToString
 public class RequestContentDTO {
 
-    public Long user_seq;
     public Long curPage;
     public Long cutPage;
     public String searchType;

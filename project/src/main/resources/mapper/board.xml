@@ -33,29 +33,46 @@
         R.img_1,
         R.created_at
         from
-        review R
-        join user U
+        user U join review R <!--join follower F-->
         on U.user_seq = R.user_seq
-        <if test='#{searchType} == "following"'>
-            join follower F
-            on U.user_seq = F.follower_user_seq
-            <where>
-                F.follower_user_seq = #{user_seq}
-            </where>
-        </if>
-
-        <if test='#{keyword} != null and #{keyword} != ""' >
+<!--
+        팔로워 테이블 설계 후 다시 확인
+        on U.user_seq = F.follower_user_seq
+        <where>
+            F.follower_user_seq = #{id}
+        </where>
+-->
+        <if test="#{keyword} != null">
             <where>
                 R.title like CONCAT('%',#{keyword},'%') || R.content like CONCAT('%',#{keyword},'%')
             </where>
         </if>
-
 <!--
         태그에 담겨올 List<String>도 처리할 방법 필요
 -->
         ORDER BY R.review_seq DESC
         limit #{curPage}, #{cutPage}
 
+    </select>
+
+
+    <insert id="upsertMarketList"  parameterType="java.util.List">
+        insert into market (market_id,name,category_cd,point_xy,phone_num,image_url,address_name,road_address_name,
+        place_url,sigungu_cd)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+                #{item.id},
+                #{item}
+
+            )
+        </foreach>
+    </insert>
+    
+    
+
+    <select id="getTagList" resultType="TagDTO">
+        select code,cd_name,use_yn from tag_cd where use_yn = 'Y'
     </select>
 </mapper>
 
