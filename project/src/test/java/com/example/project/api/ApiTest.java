@@ -2,9 +2,7 @@ package com.example.project.api;
 
 import com.example.project.component.KakaoApi;
 import com.example.project.dto.request.map.SearchMapDTO;
-import com.example.project.dto.response.map.ApiKeywordSearch;
-import com.example.project.enums.PowerSwitch;
-import com.example.project.enums.RankSearchType;
+import com.example.project.dto.response.map.ApiSearchDTO;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -43,15 +41,15 @@ public class ApiTest {
                     .longitude(127.06283102249932)
                     .radius(20000)
                     .build();
-            ResponseEntity<?> list =  api.getMarketList(dto);
+            ResponseEntity<?> list =  api.getKewordMarketList(dto);
 
-            ApiKeywordSearch api_dto = (ApiKeywordSearch) list.getBody();
-            log.info("11" + (api_dto.meta.is_end() ? "true" : "false"));
-            Boolean is_end_data = api_dto.meta.is_end();
+            ApiSearchDTO api_dto = (ApiSearchDTO) list.getBody();
+            log.info("is_end" + (api_dto.meta.getIs_end() ? "true" : "false"));
+            Boolean is_end_data = api_dto.meta.getIs_end();
 
             list.getStatusCode();
         }catch(HttpClientErrorException e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
     }

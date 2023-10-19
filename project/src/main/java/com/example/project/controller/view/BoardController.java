@@ -5,7 +5,6 @@ import com.example.project.dto.request.review.ReviewCommentRecommandDTO;
 import com.example.project.dto.request.review.ReviewRecommandDTO;
 import com.example.project.dto.response.review.ReviewCommentReadDTO;
 import com.example.project.dto.response.review.ReviewPostReadDTO;
-import com.example.project.dto.response.user.UserDTO;
 import com.example.project.service.BoardService;
 import com.example.project.service.ReviewCommentService;
 import com.example.project.service.ReviewPostService;
@@ -35,6 +34,7 @@ public class BoardController {
 
     @GetMapping("/map")
     public String mapView(){
+
         return "board/map";
     }
 

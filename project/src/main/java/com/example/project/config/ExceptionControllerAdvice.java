@@ -20,7 +20,6 @@ public class ExceptionControllerAdvice {
     // LoginFailException이 발생하면 이를 캐치해서 401에러와 메세지를 담아 리턴한다
     @ExceptionHandler(LoginFailException.class)
     public Object test(Exception e) {
-        System.out.println(e.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요.");
     }
 }
