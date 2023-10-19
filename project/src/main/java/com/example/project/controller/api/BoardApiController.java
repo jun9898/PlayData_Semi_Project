@@ -36,7 +36,7 @@ public class BoardApiController {
     }
 
     @GetMapping("/map")
-    public List<MarketReviewDTO> searchMarketAndReview(@RequestParam(required=false) SearchMapDTO dto){
+    public List<MarketReviewDTO> searchMarketAndReview(@ModelAttribute SearchMapDTO dto){
         return service.getMarketAndReviewList(dto);
     }
     @GetMapping("/tag")

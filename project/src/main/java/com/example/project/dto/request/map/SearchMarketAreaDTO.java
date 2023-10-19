@@ -1,25 +1,14 @@
 package com.example.project.dto.request.map;
 
-
 import com.example.project.dto.TagDto;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
-@Builder
-@Getter
-@Setter
-public class SearchMapDTO {
-
+public class SearchMarketAreaDTO {
     private String query;
     private Double latitude;    // Y(중심좌표 기준 위도)
     private Double longitude;   // X(중심좌표 경도)
-    private Integer radius;
     private Integer level;
-    private String rect;   // 영역
     private List<TagDto> tags;
-
 
 }

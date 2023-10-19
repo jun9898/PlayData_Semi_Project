@@ -7,10 +7,10 @@ import lombok.Getter;
 import java.util.List;
 
 @Data
-public class ApiKeywordSearchDTO {
+public class ApiSearchDTO {
 
 
-    public List<MarketDocumentDTO> documentsList;
+    public List<MarketDocumentDTO> documents;
     public Meta meta;
 
     @Getter

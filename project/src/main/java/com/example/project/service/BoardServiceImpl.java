@@ -5,12 +5,13 @@ import com.example.project.dto.TagDto;
 import com.example.project.dto.request.feed.RequestContentDTO;
 import com.example.project.dto.request.map.SearchMapDTO;
 import com.example.project.dto.response.feed.ContentDTO;
-import com.example.project.dto.response.map.ApiKeywordSearchDTO;
+import com.example.project.dto.response.map.ApiSearchDTO;
 import com.example.project.dto.response.map.MarketReviewDTO;
 import com.example.project.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,13 +28,23 @@ public class BoardServiceImpl implements BoardService {
         return repository.getContentList(dto);
     }
 
+
+    @Transactional
     @Override
     public List<MarketReviewDTO> getMarketAndReviewList(SearchMapDTO dto) {
         if (dto != null) {
             try {
-                ApiKeywordSearchDTO api_dto = (ApiKeywordSearchDTO) kakao_api.getMarketList(dto).getBody();
-                if (api_dto != null && api_dto.meta.getTotal_count() != 0)
-                    log.info("api update data count = " + repository.upsertMarketList(api_dto.getDocumentsList()));
+                ApiSearchDTO api_dto;
+                if (!dto.getQuery().isBlank()){
+                    api_dto = (ApiSearchDTO) kakao_api.getKewordMarketList(dto).getBody();
+                }else{
+                    api_dto = (ApiSearchDTO) kakao_api.getCategoryMarketList(dto).getBody();
+                }
+                if (api_dto != null && api_dto.meta.getTotal_count() != 0) {
+
+                    log.info("api update data count = " + repository.upsertMarketList(api_dto.getDocuments()));
+
+                }
             } catch (IllegalArgumentException e) {
                 log.error(e.getMessage());
             }
