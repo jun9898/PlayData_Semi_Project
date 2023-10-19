@@ -74,8 +74,7 @@
         drop temporary table tmp_marketlist;
     </delete>
     <insert id="insertTmpMarketList" parameterType="java.util.List">
-        insert into tmp_marketlist  (market_id,name,category_cd,point_xy,phone_num,address_name,road_address_name,
-        place_url,sigungu_cd)
+        insert into tmp_marketlist  (market_id,name,point_xy,phone_num,address_name,road_address_name,place_url)
         values
         <foreach collection="list" item="item" separator=",">
             (
@@ -83,31 +82,71 @@
             #{item.place_name},
             point(#{item.x},#{item.y}),
             #{item.phone},
-
-
+            #{item.address_name},
+            #{item.road_address_name},
+            #{item.place_url}
             )
         </foreach>
     </insert>
-
-
-    <insert id="upsertMarketList">
-        insert into market (market_id,name,category_cd,point_xy,phone_num,image_url,address_name,road_address_name,
-        place_url,sigungu_cd)
+    <insert id="upsertMarketList" parameterType="java.util.List">
+        insert into market  (market_id,name,point_xy,phone_num,address_name,road_address_name,place_url)
         values
         <foreach collection="list" item="item" separator=",">
             (
-                #{item.id},
-                #{item.place_name},
-                #{}
-
+            #{item.id},
+            #{item.place_name},
+            point(#{item.x},#{item.y}),
+            #{item.phone},
+            #{item.address_name},
+            #{item.road_address_name},
+            #{item.place_url}
             )
         </foreach>
+        on duplicate key update
+        name = values(name),
+        phone_num = values(name),
+        point_xy = values(point_xy),
+        place_url = place_url,
+        updated_at = now();
     </insert>
-    
-    <select id="getMarketAndReviewList" resultType="TagDTO">
-        select * from
-        market A left join review B ON A.market_seq = B.market_seq
-
+    <select id="getMarketAndReviewList" resultType="MarketReviewDTO">
+        select
+        M.name as market_name,
+        M.market_id,
+        M.address_name,
+        ifnull(M.image_url,B.img_1) as market_img,
+        B.user_seq as writer_seq,
+        D.name as writer_name,
+        count(B.review_seq) as review_count,
+        M.market_seq,
+        ST_X(M.point_xy) as x,
+        ST_Y(M.point_xy) as y,
+        ST_DISTANCE_SPHERE(POINT(@lon,@lat),M.point_xy) as distance
+        from
+        market M
+        left join sigungu_cd SG ON M.sigungu_cd = SG.sigungu_cd
+        left join sido_cd SD ON SG.sido_cd = SD.sido_cd
+        left join review B ON M.market_seq = B.market_seq
+        left join follower A ON
+        A.follower_user_seq = @USER_SEQ
+        AND
+        A.following_user_seq = B.user_seq
+        left join user D ON B.user_seq = D.user_seq
+        left join market E ON B.market_seq = E.market_seq
+        where
+        MBRContains(
+            ST_GeomFromText(CONCAT('POLYGON((',
+                @ha, ' ', @qa, ',',
+                @oa, ' ', @qa, ',',
+                @oa, ' ', @pa, ',',
+                @ha, ' ', @pa, ',',
+                @ha, ' ', @qa,
+            '))'))
+        ,M.point_xy) = 1
+        group by M.market_seq
+        order by count(B.review_seq),distance
+        limit 40
+        ;
     </select>
 
     <select id="getTagList" resultType="TagDTO">
