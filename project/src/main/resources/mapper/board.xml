@@ -54,5 +54,25 @@
         limit #{curPage}, #{cutPage}
 
     </select>
+
+
+    <insert id="upsertMarketList"  parameterType="java.util.List">
+        insert into market (market_id,name,category_cd,point_xy,phone_num,image_url,address_name,road_address_name,
+        place_url,sigungu_cd)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+                #{item.id},
+                #{item}
+
+            )
+        </foreach>
+    </insert>
+    
+    
+
+    <select id="getTagList" resultType="TagDTO">
+        select code,cd_name,use_yn from tag_cd where use_yn = 'Y'
+    </select>
 </mapper>
 
