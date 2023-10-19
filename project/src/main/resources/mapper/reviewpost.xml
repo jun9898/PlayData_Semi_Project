@@ -36,9 +36,9 @@
 
     <!-- 게시물 조회 -->
     <select id="getReviewPost" parameterType="Long" resultType="ReviewPostReadDTO">
-<!--        select * from review where review_seq = #{review_seq}-->
+    <!-- select * from review where review_seq = #{review_seq}-->
         SELECT
-        r.review_seq, r.user_seq, r.market_seq, r.title, r.content, r.view_count,
+        r.review_seq, r.user_seq, u.id, r.market_seq, r.title, r.content, r.view_count,
         r.star, r.img_1, r.img_2, r.img_3, r.img_4, r.img_5,
         r.created_at, COALESCE(rc.recommend_count, 0) as recommend_count
         FROM review r
@@ -48,6 +48,7 @@
         JOIN review b ON a.review_seq = b.review_seq
         GROUP BY b.review_seq
         ) rc ON r.review_seq = rc.review_seq
+        JOIN user u ON r.user_seq = u.user_seq
         WHERE r.review_seq = #{review_seq}
     </select>
 

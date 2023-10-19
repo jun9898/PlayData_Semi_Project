@@ -19,7 +19,7 @@
 
     <select id="getReviewComment" parameterType="Long" resultType="ReviewCommentReadDTO">
         select
-        c.comment_seq, c.user_seq, c.review_seq, c.content, u.name, c.created_at, coalesce (rc.recommend_count, 0) as recommend_count
+        c.comment_seq, c.user_seq, u.id, c.review_seq, c.content, u.name, c.created_at, coalesce (rc.recommend_count, 0) as recommend_count
         from review_comment c
         join user u ON c.user_seq = u.user_seq
         left join (
