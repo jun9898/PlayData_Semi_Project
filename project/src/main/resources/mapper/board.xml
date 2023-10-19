@@ -35,9 +35,7 @@
         from
         user U join review R
         on U.user_seq = R.user_seq
-        <if test='#{keyword} != "" and #{keyword} != null'>
-            where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
-        </if>
+        where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
         ORDER BY R.review_seq DESC
         limit #{curPage}, #{cutPage}
 
@@ -58,12 +56,9 @@
         JOIN Follower F
         ON U.user_seq = F.follower_user_seq
         where F.following_user_seq = #{user_seq}
-        <if test='#{keyword} != "" and #{keyword} != null'>
-            where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
-        </if>
+        and R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
         ORDER BY R.review_seq DESC
         limit #{curPage}, #{cutPage}
-
     </select>
 
 
