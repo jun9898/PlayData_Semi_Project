@@ -57,20 +57,48 @@
     </select>
 
 
-    <insert id="upsertMarketList"  parameterType="java.util.List">
+    <insert id="createTmpMarketList">
+        create temporary table tmp_marketlist like market;
+    </insert>
+    <delete id="dropTmpMarketList">
+        drop temporary table tmp_marketlist;
+    </delete>
+    <insert id="insertTmpMarketList" parameterType="java.util.List">
+        insert into tmp_marketlist  (market_id,name,category_cd,point_xy,phone_num,address_name,road_address_name,
+        place_url,sigungu_cd)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.id},
+            #{item.place_name},
+            point(#{item.x},#{item.y}),
+            #{item.phone},
+
+
+            )
+        </foreach>
+    </insert>
+
+
+    <insert id="upsertMarketList">
         insert into market (market_id,name,category_cd,point_xy,phone_num,image_url,address_name,road_address_name,
         place_url,sigungu_cd)
         values
         <foreach collection="list" item="item" separator=",">
             (
                 #{item.id},
-                #{item}
+                #{item.place_name},
+                #{}
 
             )
         </foreach>
     </insert>
     
-    
+    <select id="getMarketAndReviewList" resultType="TagDTO">
+        select * from
+        market A left join review B ON A.market_seq = B.market_seq
+
+    </select>
 
     <select id="getTagList" resultType="TagDTO">
         select code,cd_name,use_yn from tag_cd where use_yn = 'Y'

@@ -1,7 +1,7 @@
 package com.example.project.component;
 
 import com.example.project.dto.request.map.SearchMapDTO;
-import com.example.project.dto.response.map.ApiKeywordSearchDTO;
+import com.example.project.dto.response.map.ApiSearchDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,16 +26,16 @@ public class KakaoApiImpl implements KakaoApi{
     private String URL_PREFIX;
 
     private static final String SEARCH_CATEGORY_GROUP_CODE = "FD6";
-    private static final Integer SEARCH_CONTENT_PER_PAGE = 45;
+    private static final Integer SEARCH_CONTENT_PER_PAGE = 15;
     @Autowired
     public KakaoApiImpl(RestTemplate restTemplate){
         this.restTemplate = restTemplate;
     }
 
-    public ResponseEntity<ApiKeywordSearchDTO> getMarketList(SearchMapDTO dto) {
+    public ResponseEntity<ApiSearchDTO> getKewordMarketList(SearchMapDTO dto) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + API_KEY);
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(URL_PREFIX)
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(URL_PREFIX + "/keyword.json")
                 .queryParam("category_group_code",SEARCH_CATEGORY_GROUP_CODE)
                 .queryParam("x", dto.getLongitude())
                 .queryParam("y", dto.getLatitude())
@@ -49,8 +49,30 @@ public class KakaoApiImpl implements KakaoApi{
                 uriBuilder.toUriString(),
                 HttpMethod.GET,
                 req,
-                ApiKeywordSearchDTO.class
+                ApiSearchDTO.class
         );
+
+    }
+
+    @Override
+    public ResponseEntity<?> getCategoryMarketList(SearchMapDTO dto) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "KakaoAK " + API_KEY);
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(URL_PREFIX + "/category.json")
+                .queryParam("category_group_code",SEARCH_CATEGORY_GROUP_CODE)
+                .queryParam("x", dto.getLongitude())
+                .queryParam("y", dto.getLatitude())
+                .queryParam("radius", dto.getRadius())
+                .queryParam("page",SEARCH_CONTENT_PER_PAGE);
+
+        HttpEntity req = new HttpEntity(headers);
+        return  restTemplate.exchange(
+                uriBuilder.toUriString(),
+                HttpMethod.GET,
+                req,
+                ApiSearchDTO.class
+        );
+
 
     }
 
