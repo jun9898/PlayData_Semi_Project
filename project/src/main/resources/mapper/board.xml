@@ -35,18 +35,19 @@
         from
         user U join review R <!--join follower F-->
         on U.user_seq = R.user_seq
+        <if test='#{searchtype}!=null and !#{searchtype}.equals("")'>
 <!--
-        팔로워 테이블 설계 후 다시 확인
-        on U.user_seq = F.follower_user_seq
-        <where>
-            F.follower_user_seq = #{id}
-        </where>
+                JOIN Follower F ON U.user_seq = F.follower_user_seq
+                where F.following_user_seq = #{user_seq}
 -->
-        <if test="#{keyword} != null">
-            <where>
-                R.title like CONCAT('%',#{keyword},'%') || R.content like CONCAT('%',#{keyword},'%')
-            </where>
+            where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
         </if>
+<!--
+        <if test='#{keyword} != "" and #{keyword} != null '>
+                where R.title like CONCAT('%', #{keyword}, '%') OR R.content like CONCAT('%', #{keyword}, '%')
+        </if>
+-->
+
 <!--
         태그에 담겨올 List<String>도 처리할 방법 필요
 -->

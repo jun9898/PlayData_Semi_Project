@@ -40,18 +40,27 @@
     </delete>
 
     <select id="findProfile" parameterType="string" resultType="ProfileDTO">
-        select A.*, count(F.follower_user_seq) as follower from
-        (select U.user_seq, U.id, U.name, count(R.review_seq) as post_count, count(F.following_user_seq) as following
-        from user U
-        left join follower F
-        ON U.user_seq = F.follower_user_seq
-        left join review R
-        ON U.user_seq = R.user_seq
-        where U.id = "${id}"
-        group by U.user_seq) A
-        left join follower F
-        ON A.user_seq = F.following_user_seq
-        group by A.user_seq
+        SELECT A.*, B.post_count, C.follower, D.following
+        FROM (
+        SELECT U.user_seq, U.id, U.name
+        FROM user U
+        WHERE U.id = "${id}"
+        ) A
+        LEFT JOIN (
+        SELECT R.user_seq, COUNT(R.review_seq) AS post_count
+        FROM review R
+        GROUP BY R.user_seq
+        ) B ON A.user_seq = B.user_seq
+        LEFT JOIN (
+        SELECT F.following_user_seq, COUNT(F.following_user_seq) AS follower
+        FROM follower F
+        GROUP BY F.following_user_seq
+        ) C ON A.user_seq = C.following_user_seq
+        LEFT JOIN (
+        SELECT F.follower_user_seq, COUNT(F.follower_user_seq) AS following
+        FROM follower F
+        GROUP BY F.follower_user_seq
+        ) D ON A.user_seq = D.follower_user_seq;
     </select>
 </mapper>
 
