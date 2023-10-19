@@ -13,7 +13,7 @@ public class RequestContentDTO {
 
     public Long curPage;
     public Long cutPage;
-    public String searchType;
+    public String searchtype;
     public String keyword;
     // tag는 DTO로 묶어서 사용할것
     public List<String> tag;

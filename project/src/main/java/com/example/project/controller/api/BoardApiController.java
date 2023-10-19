@@ -28,6 +28,9 @@ public class BoardApiController {
         if (session != null){
             dto.setUser_seq(session.getUser_seq());
         }
+        if (dto.getKeyword() == null) {
+            log.info("test=========================="+dto.getKeyword());
+        }
         log.info(dto.toString());
         return service.getContentList(dto);
     }
