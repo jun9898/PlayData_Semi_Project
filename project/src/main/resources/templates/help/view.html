@@ -21,12 +21,12 @@
             <div class="board_view_wrap">
                 <div class="board_view">
                     <div class="view_title">
-                        <strong>9월 정기점검 안내</strong>
+                        <strong th:text="${notice.title}"></strong>
                     </div>
                     <div class="view_info">
                         <dl>
                             <dt>NO</dt>
-                            <dd>59</dd>
+                            <dd><span th:text="${notice.seq}"></span></dd>
                         </dl>
                         <dl>
                             <dt>WRITER</dt>
@@ -34,27 +34,21 @@
                         </dl>
                         <dl>
                             <dt>DATE</dt>
-                            <dd>2023.09.20</dd>
+                            <dd><span th:text="${notice.created_at}"></span></dd>
                         </dl>
                         <dl>
                             <dt>조회</dt>
-                            <dd>33</dd>
+                            <dd><span th:text="${notice.view_count}"></span></dd>
                         </dl>
                     </div>
-                    <div class="view_cont">
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다<br>
-                        글 내용이 들어갑니다
+                    <div class="view_cont" >
+                        <span th:text="${notice.content}"></span>
+
                     </div>
                 </div>
                 <div class="bt_wrap">
-                    <a href="notice.html" class="on">목록</a>
-                    <a href="write.html">수정</a>
+                    <a th:href="@{'/board/notice'}" class="on">목록</a>
+
                 </div>
             </div>
         </div>
