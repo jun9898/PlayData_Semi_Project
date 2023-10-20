@@ -118,35 +118,51 @@
         B.user_seq as writer_seq,
         D.name as writer_name,
         count(B.review_seq) as review_count,
+        avg(B.star) as star_avg,
         M.market_seq,
         ST_X(M.point_xy) as x,
         ST_Y(M.point_xy) as y,
-        ST_DISTANCE_SPHERE(POINT(@lon,@lat),M.point_xy) as distance
+        ST_DISTANCE_SPHERE(POINT(#{latitude},#{longitude}),M.point_xy) as distance
         from
         market M
         left join sigungu_cd SG ON M.sigungu_cd = SG.sigungu_cd
         left join sido_cd SD ON SG.sido_cd = SD.sido_cd
         left join review B ON M.market_seq = B.market_seq
+        <if test="tags != null and tags.size() > 0">
+             join review_tag RT ON B.review_seq = RT.review_seq
+        </if>
         left join follower A ON
-        A.follower_user_seq = @USER_SEQ
+        A.follower_user_seq = #{user_seq}
         AND
         A.following_user_seq = B.user_seq
         left join user D ON B.user_seq = D.user_seq
         left join market E ON B.market_seq = E.market_seq
         where
         MBRContains(
-            ST_GeomFromText(CONCAT('POLYGON((',
-                @ha, ' ', @qa, ',',
-                @oa, ' ', @qa, ',',
-                @oa, ' ', @pa, ',',
-                @ha, ' ', @pa, ',',
-                @ha, ' ', @qa,
-            '))'))
+        ST_GeomFromText(CONCAT('POLYGON((',
+        #{ha}, ' ', #{qa}, ',',
+        #{oa}, ' ', #{qa}, ',',
+        #{oa}, ' ', #{pa}, ',',
+        #{ha}, ' ', #{pa}, ',',
+        #{ha}, ' ', #{qa},
+        '))'))
         ,M.point_xy) = 1
+        <if test="query !=null and !query.equals('')">
+            AND
+            (
+            SD.cd_name like CONCAT('%', #{query},'%')
+            OR
+            SG.gungu_name like CONCAT('%', #{query},'%')
+            OR
+            M.address_name like CONCAT('%', #{query},'%')
+            OR
+            M.name like CONCAT('%', #{query},'%')
+            )
+        </if>
         group by M.market_seq
-        order by count(B.review_seq),distance
-        limit 40
-        ;
+        order by count(B.review_seq)
+        -- ,distance
+        limit 20
     </select>
 
     <select id="getTagList" resultType="TagDTO">
