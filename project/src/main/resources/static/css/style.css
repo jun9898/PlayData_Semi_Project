@@ -632,7 +632,7 @@ body {
 }
 
 .cs-feed-card .card-body{
-  height:150px;
+  height:180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
