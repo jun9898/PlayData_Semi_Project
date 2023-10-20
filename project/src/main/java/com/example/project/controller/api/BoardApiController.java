@@ -4,6 +4,7 @@ import com.example.project.dto.TagDto;
 import com.example.project.dto.request.feed.RequestContentDTO;
 import com.example.project.dto.request.map.SearchMapDTO;
 import com.example.project.dto.response.feed.ContentDTO;
+import com.example.project.dto.response.map.AreaReviewCountDTO;
 import com.example.project.dto.response.map.MarketReviewDTO;
 import com.example.project.dto.response.user.UserDTO;
 import com.example.project.service.BoardService;
@@ -36,9 +37,24 @@ public class BoardApiController {
     }
 
     @GetMapping("/map")
-    public List<MarketReviewDTO> searchMarketAndReview(@ModelAttribute SearchMapDTO dto){
+    public List<MarketReviewDTO> searchMarketAndReview(@ModelAttribute SearchMapDTO dto, HttpSession session){
+        UserDTO user = (UserDTO)session.getAttribute("user");
+        if(user != null){
+            dto.setUser_seq(user.getUser_seq());
+        }
         return service.getMarketAndReviewList(dto);
     }
+    @GetMapping("/map/area-count")
+    public List<AreaReviewCountDTO> searchAreaReviewCount(@ModelAttribute SearchMapDTO dto, HttpSession session){
+        UserDTO user = (UserDTO)session.getAttribute("user");
+        if(user != null){
+            dto.setUser_seq(user.getUser_seq());
+        }
+        return null;
+    }
+
+
+
     @GetMapping("/tag")
     public List<TagDto> getTagList(){
         return service.getTagList();

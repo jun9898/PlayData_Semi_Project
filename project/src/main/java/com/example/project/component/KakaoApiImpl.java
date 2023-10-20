@@ -37,9 +37,7 @@ public class KakaoApiImpl implements KakaoApi{
         headers.add("Authorization", "KakaoAK " + API_KEY);
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(URL_PREFIX + "/keyword.json")
                 .queryParam("category_group_code",SEARCH_CATEGORY_GROUP_CODE)
-                .queryParam("x", dto.getLongitude())
-                .queryParam("y", dto.getLatitude())
-                .queryParam("radius", dto.getRadius())
+                .queryParam("rect", dto.getRect())
                 .queryParam("query", dto.getQuery())
                 .queryParam("page",SEARCH_CONTENT_PER_PAGE);
 
@@ -60,9 +58,7 @@ public class KakaoApiImpl implements KakaoApi{
         headers.add("Authorization", "KakaoAK " + API_KEY);
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(URL_PREFIX + "/category.json")
                 .queryParam("category_group_code",SEARCH_CATEGORY_GROUP_CODE)
-                .queryParam("x", dto.getLongitude())
-                .queryParam("y", dto.getLatitude())
-                .queryParam("radius", dto.getRadius())
+                .queryParam("rect", dto.getRect())
                 .queryParam("page",SEARCH_CONTENT_PER_PAGE);
 
         HttpEntity req = new HttpEntity(headers);

@@ -31,8 +31,23 @@ public class BoardRepositoryImpl implements BoardRepository{
     }
 
     @Override
+    public int createTmpMarketList() {
+        return boardMapper.createTmpMarketList();
+    }
+
+    @Override
+    public int insertTmpMarketList(List<MarketDocumentDTO> dto) {
+        return boardMapper.insertTmpMarketList(dto);
+    }
+
+    @Override
     public int upsertMarketList(List<MarketDocumentDTO> dto) {
         return boardMapper.upsertMarketList(dto);
+    }
+
+    @Override
+    public int dropTmpMarketList() {
+        return boardMapper.dropTmpMarketList();
     }
 
     @Override

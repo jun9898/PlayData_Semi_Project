@@ -13,7 +13,11 @@ public interface BoardRepository {
 
     List<ContentDTO> getContentList(RequestContentDTO dao);
     List<ContentDTO> getFollowContentList(RequestContentDTO dao);
+    int createTmpMarketList();
+    int insertTmpMarketList(List<MarketDocumentDTO> dto);
     int upsertMarketList(List<MarketDocumentDTO> dto);
+    int dropTmpMarketList();
+
     List<MarketReviewDTO> getMarketAndReviewList(SearchMapDTO dto);
     List<TagDto> getTagList();
 }
