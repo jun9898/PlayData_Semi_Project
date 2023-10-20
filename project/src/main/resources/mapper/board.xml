@@ -124,7 +124,11 @@
         left join sido_cd SD ON SG.sido_cd = SD.sido_cd
         left join review B ON M.market_seq = B.market_seq
         <if test="tags != null and tags.size() > 0">
-             join review_tag RT ON B.review_seq = RT.review_seq
+             join review_tag RT ON B.review_seq = RT.review_seq AND
+            <foreach item="id" index="index" collection="tags" open="(" separator=" or " close=")">
+                RT.review_seq = #{id}
+            </foreach>
+
         </if>
         left join follower A ON
         A.follower_user_seq = #{user_seq}
