@@ -1,0 +1,28 @@
+package com.example.project.dto.response.market;
+
+import lombok.*;
+import org.apache.ibatis.type.Alias;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Alias("ShopContentBoardDTO")
+public class ShopContentBoardDTO {
+    private Long market_seq;
+    private Long market_id;
+    private String name;
+    private Double longitude;
+
+    private Double latitude;
+    private Long category_cd;
+    private String phone_num;
+
+    private String url;
+    private String address_name;
+    private String road_address_name;
+
+    private String place_url;
+    private String sigungu_cd;
+}
