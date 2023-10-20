@@ -295,7 +295,7 @@ window.addEventListener('load', () => {
             } = row;
             return `
         <div class="card m-1"  >
-          <a href="/content/feed/${market_seq}">
+          <a href="/market/${market_seq}">
           <div class="row g-0">
             <div class="col-md-4">
               <img
