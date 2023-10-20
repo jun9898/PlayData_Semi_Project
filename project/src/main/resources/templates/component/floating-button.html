@@ -3,7 +3,7 @@
   <div class="cs-floating-sub-buttons">
 <!--    a태그 qna마이페이지글쓰기-->
     <a th:href="@{'/user/profile/'} + ${session.user.id}"><button class="cs-sub-btn" style="background-color: #fdd835;"><i class="fas fa-user"></i></button></a>
-    <button class="cs-sub-btn"  style="background-color: #4caf50;"><i class="fa-solid fa-pencil"></i></button>
+      <a th:href="@{'/content/feed/write'}"><button class="cs-sub-btn"  style="background-color: #4caf50;"><i class="fa-solid fa-pencil"></i></button></a>
     <a th:href="@{/board/qna}"><button class="cs-sub-btn " style="background-color: #2196f3;"><i class="fa-solid fa-question"></i></button></a>
   </div>
   <!-- 메인 플로팅 버튼 -->
