@@ -2,7 +2,7 @@
 <th:block th:replace="layout/main-layout :: layout(white,none)">
 
     <th:block th:fragment="add_header">
-        <title>공지사항</title>
+        <title>QnA</title>
         <link rel="stylesheet" href="">
     </th:block>
 
@@ -21,27 +21,27 @@
             <div class="board_view_wrap">
                 <div class="board_view">
                     <div class="view_title">
-                        <strong>제목</strong>
+                        <strong th:text="${qna.title}">제목</strong>
                     </div>
                     <div class="view_info">
                         <dl>
                             <dt>NO</dt>
-                            <dd>59</dd>
+                            <dd th:text="${qna.qna_board_seq}">59</dd>
                         </dl>
                         <dl>
                             <dt>WRITER</dt>
-                            <dd>작성자</dd>
+                            <dd th:text="${qna.user_seq}">작성자</dd>
                         </dl>
                         <dl>
                             <dt>DATE</dt>
-                            <dd>2023.09.20</dd>
+                            <dd th:text="${qna.answer_at}">2023.09.20</dd>
                         </dl>
                         <dl>
                             <dt>조회</dt>
-                            <dd>1234</dd>
+                            <dd></dd>
                         </dl>
                     </div>
-                    <div class="view_cont">
+                    <div class="view_cont" th:text="${qna.content}">
                         글 내용이 들어갑니다<br>
                         글 내용이 들어갑니다<br>
                         글 내용이 들어갑니다<br>
@@ -51,15 +51,11 @@
                         글 내용이 들어갑니다<br>
                         글 내용이 들어갑니다
                     </div>
-                    <div class="answer">
-
-
-
+                    <div class="answer" th:text="${qna.answer}">
                     </div>
                 </div>
                 <div class="bt_wrap">
-                    <a href="notice.html" class="on">목록</a>
-                    <a href="write.html">수정</a>
+                    <a href="notice.html" class="on" th:href="@{'/board/qna'}">목록</a>
                 </div>
             </div>
         </div>

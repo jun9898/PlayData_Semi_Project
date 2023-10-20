@@ -17,25 +17,57 @@
 
       <div class="cs-list-cover justify-content-center">
         <div class="cs-list-content">
-
+          <div th:if="${following} != null">
           <ul class="list-group list-group-light">
-
-            <li class="list-group-item d-flex justify-content-between align-items-center" th:each="user : ${list}">
+            <li class="list-group-item d-flex justify-content-between align-items-center" th:each="follow : ${following}">
               <div class="d-flex align-items-center">
                 <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
                      style="width: 45px; height: 45px" class="rounded-circle" />
                 <div class="ms-3">
-                  <p class="fw-bold mb-1" th:text="${user.name}"></p>
-                  <p class="text-muted mb-0" th:text="${user.email}"></p>
+                  <a th:href="@{'/user/profile/'} + ${follow.id}"><p class="fw-bold mb-1" th:text="${follow.name}"></p></a>
+                  <p class="text-muted mb-0" th:text="${follow.email}"></p>
                 </div>
               </div>
-              <a class="btn btn-danger btn-rounded" href="#" role="button">삭제</a>
+              <div th:if="${session.user.user_seq == this_user}">
+              <a class="btn btn-danger btn-rounded"
+                 th:href="@{'/user/profile/' + ${follow.id} + '/list_un_following'}"
+                 role="button">삭제</a>
+              </div>
+<!--              <form th:action="@{'/user/list/' + ${follow.id} + '/un_following'}"-->
+<!--                    method="post" style="display:inline;">-->
+<!--                <button type="submit" class="btn btn-danger btn-rounded">삭제</button>-->
+<!--              </form>-->
             </li>
-
           </ul>
+          </div>
+          <div th:if="${follower} != null">
+            <ul class="list-group list-group-light">
+              <li class="list-group-item d-flex justify-content-between align-items-center" th:each="follow : ${follower}">
+                <div class="d-flex align-items-center">
+                  <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                       style="width: 45px; height: 45px" class="rounded-circle" />
+                  <div class="ms-3">
+                    <a th:href="@{'/user/profile/'} + ${follow.id}"><p class="fw-bold mb-1" th:text="${follow.name}"></p></a>
+                    <p class="text-muted mb-0" th:text="${follow.email}"></p>
+                  </div>
+                </div>
+                <div th:if="${session.user.user_seq == follow.user_seq}">
+                <a class="btn btn-danger btn-rounded"
+                   th:href="@{'/user/profile/' + ${follow.id} + '/list_un_follower'}"
+                   role="button">삭제</a>
+                </div>
+                <!--              <form th:action="@{'/user/list/' + ${follow.id} + '/un_following'}"-->
+                <!--                    method="post" style="display:inline;">-->
+                <!--                <button type="submit" class="btn btn-danger btn-rounded">삭제</button>-->
+                <!--              </form>-->
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <th:block th:fragment="add_bottom">

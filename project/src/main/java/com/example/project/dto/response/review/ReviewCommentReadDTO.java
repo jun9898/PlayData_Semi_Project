@@ -17,6 +17,7 @@ public class ReviewCommentReadDTO {
     private Long user_seq;
     private String content;
     private String name;
+    private String id;
     private String created_at;
     private String recommend_count;
 }

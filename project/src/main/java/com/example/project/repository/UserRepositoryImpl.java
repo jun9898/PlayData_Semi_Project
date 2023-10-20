@@ -3,12 +3,12 @@ package com.example.project.repository;
 import com.example.project.dto.request.user.CreateUserDTO;
 import com.example.project.dto.request.user.FollowDTO;
 import com.example.project.dto.request.user.LoginUserDTO;
-import com.example.project.dto.response.user.LoginResultDTO;
-import com.example.project.dto.response.user.ProfileDTO;
-import com.example.project.dto.response.user.UserDTO;
+import com.example.project.dto.response.user.*;
 import com.example.project.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -59,6 +59,21 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public ProfileDTO findProfile(String id) {
         return mapper.findProfile(id);
+    }
+
+    @Override
+    public List<UserfeedDTO> feedList(String id) {
+        return mapper.myfeedlist(id);
+    }
+
+    @Override
+    public List<FollowlistDTO> readfollowingList(Long follower_user_seq) {
+        return mapper.followinglist(follower_user_seq);
+    }
+
+    @Override
+    public List<FollowlistDTO> readfollowerList(Long following_user_seq) {
+        return mapper.followerlist(following_user_seq);
     }
 
 }

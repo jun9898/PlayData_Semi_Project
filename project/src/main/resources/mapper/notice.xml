@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.project.mapper.NoticeMapper">
+
+    <!-- 공지사항 작성 -->
+    <insert id="insertNotice" parameterType="NoticeDTO">
+        insert into notice (
+        create_admin_seq,
+        title,
+        content,
+        view_count
+        )
+        values (
+        #{create_admin_seq},
+        #{title},
+        #{content},
+        #{view_count}
+        )
+    </insert>
+
+    <!-- 공지사항 조회 -->
+    <select id="getNotice" parameterType="Long" resultType="NoticeReadDTO">
+        select * from notice where seq = #{seq}
+    </select>
+
+    <select id="getNoticeList" parameterType="NoticeDTO" resultType="NoticeReadDTO">
+        select * from notice
+    </select>
+
+    <!-- 공지사항 수정 -->
+    <update id="updateNotice" parameterType="NoticeDTO">
+        update notice
+        set
+        title = #{title},
+        content = #{content},
+        where seq = #{seq}
+    </update>
+
+    <!-- 게시물 삭제 -->
+    <delete id="deleteNotice" parameterType="Long">
+        delete from notice where seq = #{seq}
+    </delete>
+
+    <!-- qna 작성-->
+    <insert id="insertQna" parameterType="QnaDTO">
+        insert into qna_board (
+        title,
+        content,
+        user_seq,
+        answer
+        )
+        values (
+        #{title},
+        #{content},
+        #{user_seq},
+        #{answer}
+        )
+    </insert>
+
+    <!-- qna 조회 -->
+    <select id="getQna" parameterType="Long" resultType="QnaReadDTO">
+        select * from qna_board where qna_board_seq = #{qna_board_seq}
+    </select>
+
+    <!-- qna 조회 list -->
+    <select id="getQnaList" parameterType="QnaDTO" resultType="QnaReadDTO">
+        select * from qna_board
+    </select>
+
+</mapper>
+
