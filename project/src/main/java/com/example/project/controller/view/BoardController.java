@@ -38,6 +38,11 @@ public class BoardController {
         return "board/map";
     }
 
+    @GetMapping("/feed/write")
+    public String writeFeedView(){
+        return "board/write";
+    }
+
     //게시판 상세보기
     @GetMapping("/feed/{review_seq}")
     public String getReviewDetail(@PathVariable("review_seq") Long review_seq, Model model) {

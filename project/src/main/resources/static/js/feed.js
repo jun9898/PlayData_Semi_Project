@@ -116,6 +116,7 @@ window.addEventListener("load",async function(){
                           <div class="card cs-feed-card">
                           <img
                           src="/download/${img_1}"
+                          onerror="this.src='/asset/no-image.png'" 
                           class="card-img-top img-fluid"
                           alt=""
                           />
