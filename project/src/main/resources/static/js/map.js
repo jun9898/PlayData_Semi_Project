@@ -66,7 +66,8 @@ window.addEventListener('load', () => {
             } = row;
             return {
                 content: `<div>
-                                 <img src="${market_img}" style="height:50px;" >
+                                 <img src="${market_img ? market_img : ''}" onerror="this.src='/asset/no-image.png'"  
+                                 style="max-width:100px;height:100px;" >
                                     <h3>${market_name}</h3>
                                     <p>
                                     ${review_count > 0 ?
@@ -292,14 +293,14 @@ window.addEventListener('load', () => {
                 star_avg,
                 x, y
             } = row;
-        }).join('');
-        return `
-        <div class="card m-1" >
+            return `
+        <div class="card m-1"  >
           <a href="/content/feed/${market_seq}">
           <div class="row g-0">
             <div class="col-md-4">
               <img
                   src="${AppProperty.path}${market_img}"
+                  onerror="this.src='/asset/no-image.png'"
                   alt="${address_name}"
                   class="img-fluid rounded-start"
               />
@@ -309,8 +310,8 @@ window.addEventListener('load', () => {
                 <h5 class="card-title">${market_name}</h5>
                 <p class="card-text">
                       ${review_count > 0 ?
-            `별점 평균 : ${star_avg}</br>리뷰 개수 : ${review_count}`
-            :   `작성된 리뷰가 없습니다.`}
+                `별점 평균 : ${star_avg}</br>리뷰 개수 : ${review_count}`
+                :   `작성된 리뷰가 없습니다.`}
                 </p>
                 <p class="card-text">
                   <small class="text-muted">
@@ -323,6 +324,9 @@ window.addEventListener('load', () => {
           </a>
         </div>
         `
+
+        }).join('');
+
         this.$div_market_list.html(html);
     }
 
