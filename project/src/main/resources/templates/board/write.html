@@ -5,7 +5,7 @@
 <th:block th:replace="layout/main-layout :: layout(white,none)">
 
     <th:block th:fragment="add_header">
-        <title>공지사항</title>
+        <title>글작성</title>
 
         <script th:src="@{/css/summernote-lite.css}"></script>
         <script th:src="@{/js/summernote-lite.js}"></script>
@@ -29,8 +29,7 @@
 
         <div class="board_wrap">
             <div class="board_title">
-                <strong>QnA</strong>
-                <p>무엇이든 물어보세요</p>
+                <strong>글작성</strong>
             </div>
         </div>
 
@@ -45,26 +44,20 @@
                                 <dd><input type="text" placeholder="제목 입력" style="border: none;"></dd>
                             </dl>
                         </div>
-
-                        <div class="write_name">
+                        <div class="write_title">
                             <dl>
-                                <dt><strong>이름</strong></dt>
-                                <dd><input type="text" placeholder="작성자 입력" style="border: none;"></dd>
+                                <dt><strong>제목</strong></dt>
+                                <dd><input type="text" placeholder="제목 입력" style="border: none;"></dd>
+                            </dl>
+                        </div>
+                        <div class="write_title">
+                            <dl>
+                                <dt><strong>제목</strong></dt>
+                                <dd><input type="text" placeholder="제목 입력" style="border: none;"></dd>
                             </dl>
                         </div>
 
-                        <div class="write_pass">
-                            <dl>
-                                <dt><strong>번호</strong></dt>
-                                <dd><input type="password" placeholder="비밀번호 입력" style="border: none;"></dd>
-                            </dl>
-                        </div>
 
-
-
-                        <div class="write_upload">
-                            <div id="summernote"></div>
-                        </div>
 
                         <!--<div class="write_cont">
                             <dl>
@@ -74,28 +67,6 @@
                         </div>-->
                     </div>
                 </div>
-                <div class="bt_wrap">
-                    <a href="view.html" class="on">등록</a>
-                    <a href="notice.html">취소</a>
-                    <script type="text/javascript" th:lnline="javascript">
-
-                        $('#summernote').summernote({
-                       placeholder: 'Hello stand alone ui',
-                       tabsize: 2,
-                       height: 500,
-                        toolbar: [
-                          ['style', ['style']],
-                          ['font', ['bold', 'underline', 'clear']],
-                          ['color', ['color']],
-                          ['para', ['ul', 'ol', 'paragraph']],
-                          ['table', ['table']],
-                          ['insert', ['link', 'picture', 'video']],
-                          ['view', ['fullscreen', 'codeview', 'help']]
-                        ]
-
-                      });
-                    </script>
-                </div>
             </div>
         </div>
 
@@ -103,7 +74,7 @@
 
     <th:block th:fragment="add_bottom">
 
-        <script type="text/javascript" th:src="@{/js/summt.js}"></script>
+        <script type="text/javascript" th:src="@{/js/feed-write.js}"></script>
 
     </th:block>
 
