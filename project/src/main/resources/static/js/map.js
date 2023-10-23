@@ -47,12 +47,15 @@ window.addEventListener('load', () => {
     }
     Map.prototype.ClearMarker = function () {
         this.marker_list.map(marker=>{
-            marker.setMap(null);
+            marker.mark.setMap(null);
+            marker.infowindow.close();
         })
         return this;
     }
     Map.prototype.DrawMarkerView = function (data) {
         console.log('마커로 표시..')
+        let current_marker = null
+        let _this = this;
         let map_positions = data.map((row, index) => {
             let {
                 address_name, distance, market_id,
@@ -96,14 +99,20 @@ window.addEventListener('load', () => {
             // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
             // 이벤트 리스너로는 클로저를 만들어 등록합니다
             // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(this.map, marker, infowindow));
-            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow))
-            return marker;
+            kakao.maps.event.addListener(marker, 'click', makeOverListener(this.map, marker, infowindow));
+
+          //  kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow))
+            return { mark : marker, infowindow };
         });
 
         // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
         function makeOverListener(map, marker, infowindow) {
             return function () {
+                if(current_marker){
+                    _this.marker_list.filter(row => row.mark == current_marker)[0]?.infowindow.close();
+                }
+
+                current_marker = marker;
                 infowindow.open(map, marker);
             };
         }
