@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.project.mapper.RankMapper">
+    <!--  insert -->
+    <insert id="insertRank" parameterType="ReviewRankDTO">
+        INSERT INTO review_rank_batch (review_seq,cur_date,review_count,recommand_count,sigungu_cd,sido_cd,user_seq)
+        VALUES (#{review_seq},#{cur_date},#{review_count},#{recommand_count},#{sigungu_cd},#{category_cd},
+                #{sido_cd},#{user_seq})
+    </insert>
+    <resultMap type="UserDTO" id="UserDTO">
+        <result column="user_seq" property="user_seq"/>
+        <result column="email" property="email"/>
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sigungu_cd" property="sigungu_cd"/>
+    </resultMap>
+    <resultMap type="MarketRankDTO" id="MarketRankDTO">
+        <result column="user_seq" property="user_seq"/>
+        <result column="market_seq" property="market_seq"/>
+        <result column="name" property="view_count"/>
+        <result column="url" property="star"/>
+        <result column="review_count" property="review_count"/>
+        <result column="star_count" property="star_count"/>
+        <result column="created_at" property="created_at"/>
+        <collection property="UserDTO" resultMap="UserDTO"/>
+    </resultMap>
+
+    <!--  select  -->
+    <select id="reviewRank" resultType="ReviewRankDTO" parameterType="ReviewRankDTO">
+        select u.user_seq,
+        u.name,
+        u.img_url,
+        u.email,
+        count(r.user_seq) as reommand_count,
+        count(r.review_seq) as review_count,
+        r.created_at
+        from user u
+        join review r
+        on u.user_seq = r.user_seq
+        where r.created_at >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
+        group by u.user_seq, u.name, u.img_url, u.email;
+    </select>
+
+
+
+    <select id="marketRank" resultType="MarketRankDTO" parameterType="MarketRankDTO">
+        select m.market_seq,
+        m.name,
+        m.url,
+        count(r.market_seq) as review_count,
+        count(r.star) as star_count,
+        r.created_at
+        from market m
+        join review r
+        on m.market_seq = r.market_seq
+        where r.created_at >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
+        group by m.market_seq, m.name, m.url
+    </select>
+
+
+    <!--  update  -->
+    <update id="updateRank" parameterType="ReviewRankDTO">
+        update review_rank_batch
+        set review_count=#{review_count},recommand_count=#{recommand_count},sigungu_cd=#{sigungu_cd},user_seq=#{user_seq}
+        where review_seq = #{review_seq}
+    </update>
+
+    <!--  delete  -->
+    <delete id="deleteRank" parameterType="Long">
+        delete from review_rank_batch
+        where review_seq=#{review_seq}
+    </delete>
+
+</mapper>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.project.mapper.MarketMapper">
+   <!-- insert -->
+    <insert id="insertMarket" parameterType="InsertTestMarketDTO">
+        INSERT INTO market (market_id, name, longitude, latitude, phone_num,category_cd, url, address_name, road_address_name, sigungu_cd)
+        VALUES (#{market_id},#{name},#{longitude},#{latitude},#{phone_num},#{category_cd},#{url},#{address_name},#{road_address_name},#{sigungu_cd})
+    </insert>
+
+    <!--  select  -->
+    <select id="contentMarket" resultType="ShopContentBoardDTO" parameterType="Long">
+        select * from market
+        where market_seq = #{market_seq}
+    </select>
+    <select id="commentList" resultType="ReviewViewDTO" parameterType="Long">
+        select
+        u.name,
+        u.img_url,
+        r.review_seq,
+        r.title,
+        r.star,
+        r.created_at
+        <!--count(r.market_seq) as recommand_count-->
+        from user u
+        join review r on u.user_seq = r.user_seq
+        where market_seq = #{market_seq}
+
+    </select>
+
+    <select id="starAVG" resultType="String" parameterType="Long">
+        select round(AVG(star),1) from review where market_seq = #{market_seq}
+    </select>
+
+    <select id="getFile" resultType="ReviewPostDTO" parameterType="Long">
+        select * from Review
+        where market_seq=#{market_seq} and img_1=#{img_1},img_2=#{img_2},img_3=#{img_3},img_4=#{img_4},img_5=#{img_5}
+    </select>
+
+    <!--  update  -->
+    <update id="updateMarket" parameterType="ShopContentBoardDTO">
+        update market
+        set market_id=#{market_id},name=#{name},longitude=#{longitude},latitude=#{latitude},category_cd=#{category_cd},
+            phone_num=#{phone_num},url=#{url},address_name=#{address_name},road_address_name=#{road_address_name},
+            sigungu_cd=#{sigungu_cd})
+        where market_seq = #{market_seq}
+    </update>
+
+    <!--  delete  -->
+    <delete id="deleteMarket" parameterType="Long">
+        delete from market
+        where market_seq=#{market_seq}
+    </delete>
+</mapper>
+
