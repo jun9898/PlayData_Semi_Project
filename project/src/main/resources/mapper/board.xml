@@ -104,6 +104,7 @@
         place_url = place_url,
         updated_at = now();
     </insert>
+
     <select id="getMarketAndReviewList" resultType="MarketReviewDTO">
         select
         M.name as market_name,
@@ -167,5 +168,46 @@
     <select id="getTagList" resultType="TagDTO">
         select code,cd_name,use_yn from tag_cd where use_yn = 'Y'
     </select>
+
+    <insert id="insertBoardWrite"  parameterType="BoardWriteDTO">
+<!--        <selectKey>-->
+<!--            <if test="market_seq == null or market_seq == 0">-->
+<!--                select market_seq from market where name = #{name}-->
+<!--            </if>-->
+<!--        </selectKey>-->
+        insert into review ( user_seq, market_seq, title, content, star, img_1, img_2, img_3, img_4, img_5 )
+        values ( #{user_seq}, #{market_seq}, #{title}, #{content}, #{star}, #{img_1}, #{img_2}, #{img_3}, #{img_4}, #{img_5} )
+    </insert >
+    <insert id="fileinsert" parameterType="java.util.List">
+        insert
+        into image (originalFilename,storeFilename,boardFileorder) values
+        <foreach collection="list" item="a" separator=" , ">
+           (#{a.originalFilename},#{a.storeFilename},#{a.boardFileorder})
+        </foreach>
+
+    </insert>
+
+    <select id="selectMarketSeq" resultType="BoardWriteDTO" parameterType="String">
+        select market_seq from market
+        where name = #{name}
+    </select>
+
+    <update id="updateBoardWrite" parameterType="BoardWriteDTO">
+        update review
+        set
+        market_seq = #{market_seq},
+        title = #{title},
+        content = #{content},
+        star = #{star},
+        img_1 = #{img1},
+        img_2 = #{img2},
+        img_3 = #{img3},
+        img_4 = #{img4},
+        img_5 = #{img5}
+        where review_seq = #{review_seq}
+    </update>
+    <delete id="deleteBoardWrite" parameterType="Long">
+        delete from review where review_seq = #{review_seq}
+    </delete>
 </mapper>
 

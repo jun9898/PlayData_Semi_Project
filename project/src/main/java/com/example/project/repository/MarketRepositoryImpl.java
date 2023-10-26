@@ -23,8 +23,12 @@ public class MarketRepositoryImpl implements MarketRepository{
 
     @Override
     public ShopContentBoardDTO getMarketInfo(Long market_seq) {
-        return mapper.contentMarket(market_seq);
+
+       ShopContentBoardDTO dto = mapper.contentMarket(market_seq);
+        System.out.println("dto ====================================================== " + dto);
+       return dto;
     }
+
 
 
     @Override

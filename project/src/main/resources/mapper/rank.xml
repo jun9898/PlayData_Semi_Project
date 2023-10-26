@@ -33,7 +33,7 @@
         u.name,
         u.img_url,
         u.email,
-        count(r.user_seq) as reommand_count,
+        count(r.user_seq) as recommand_count,
         count(r.review_seq) as review_count,
         r.created_at
         from user u
@@ -48,7 +48,7 @@
     <select id="marketRank" resultType="MarketRankDTO" parameterType="MarketRankDTO">
         select m.market_seq,
         m.name,
-        m.url,
+        m.image_url,
         count(r.market_seq) as review_count,
         count(r.star) as star_count,
         r.created_at
@@ -56,7 +56,7 @@
         join review r
         on m.market_seq = r.market_seq
         where r.created_at >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
-        group by m.market_seq, m.name, m.url
+        group by m.market_seq, m.name, m.image_url
     </select>
 
 

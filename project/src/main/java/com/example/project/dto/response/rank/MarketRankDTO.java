@@ -15,7 +15,7 @@ public class MarketRankDTO {
    private Long user_seq;
    private Long market_seq;
    private String name;
-   private String url;
+   private String image_url;
    private Long review_count;
    private String star_count;
    private Timestamp created_at;

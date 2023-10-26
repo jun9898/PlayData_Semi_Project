@@ -1,9 +1,7 @@
 package com.example.project.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import lombok.*;
 import org.apache.ibatis.type.Alias;
 
 import java.sql.Timestamp;
@@ -12,6 +10,7 @@ import java.sql.Timestamp;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
 
 public class ReviewEntity {
     private Long review_seq;

@@ -11,7 +11,20 @@
 
     <!--  select  -->
     <select id="contentMarket" resultType="ShopContentBoardDTO" parameterType="Long">
-        select * from market
+        select
+        market_seq,
+        market_id,
+        name,
+        ST_X(point_xy) as x,
+        ST_Y(point_xy) as y,
+        category_cd,
+        phone_num,
+        image_url,
+        address_name,
+        road_address_name,
+        place_url,
+        sigungu_cd
+        from market
         where market_seq = #{market_seq}
     </select>
     <select id="commentList" resultType="ReviewViewDTO" parameterType="Long">
@@ -36,6 +49,10 @@
     <select id="getFile" resultType="ReviewPostDTO" parameterType="Long">
         select * from Review
         where market_seq=#{market_seq} and img_1=#{img_1},img_2=#{img_2},img_3=#{img_3},img_4=#{img_4},img_5=#{img_5}
+    </select>
+    <select id="selectMarketSeq" resultType="ShopContentBoardDTO" parameterType="String">
+        select market_seq from market
+        where name = #{name]
     </select>
 
     <!--  update  -->

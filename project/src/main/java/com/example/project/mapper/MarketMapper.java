@@ -11,7 +11,7 @@ import java.util.List;
 public interface MarketMapper {
     void insertMarket(ShopContentBoardDTO market);
     ShopContentBoardDTO contentMarket(Long market_seq);
-
+    ShopContentBoardDTO selectMarketSeq(String name);
     List<ReviewViewDTO> commentList(Long market_seq);
 
     String starAVG(Long market_seq);

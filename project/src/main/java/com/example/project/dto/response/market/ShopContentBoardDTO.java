@@ -13,13 +13,12 @@ public class ShopContentBoardDTO {
     private Long market_seq;
     private Long market_id;
     private String name;
-    private Double longitude;
-
-    private Double latitude;
+    private Double x;
+    private Double y;
     private Long category_cd;
     private String phone_num;
 
-    private String url;
+    private String image_url;
     private String address_name;
     private String road_address_name;
 

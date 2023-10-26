@@ -5,15 +5,19 @@ import com.example.project.dto.request.review.ReviewCommentRecommandDTO;
 import com.example.project.dto.request.review.ReviewRecommandDTO;
 import com.example.project.dto.response.review.ReviewCommentReadDTO;
 import com.example.project.dto.response.review.ReviewPostReadDTO;
-import com.example.project.service.BoardService;
-import com.example.project.service.ReviewCommentService;
-import com.example.project.service.ReviewPostService;
+import com.example.project.dto.response.write.BoardWriteDTO;
+import com.example.project.dto.response.write.BoardWriteFileDTO;
+import com.example.project.service.*;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.WebUtils;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -26,6 +30,8 @@ public class BoardController {
     private final BoardService service;
     private final ReviewPostService postservice;
     private final ReviewCommentService commentservice;
+    private final BoardWriteService writeService;
+    private final BoardWriteFileUploadService boardWriteFileUploadService;
 
     @GetMapping("/feed")
     public String feedView(){
@@ -41,6 +47,26 @@ public class BoardController {
     @GetMapping("/feed/write")
     public String writeFeedView(){
         return "board/write";
+    }
+    @PostMapping("/feed/write")
+    public String writeFeedInsert(@ModelAttribute BoardWriteDTO board,String name,HttpSession session) throws IllegalAccessError, IOException {
+        System.out.println("board = " + board);
+        List<MultipartFile> files = board.getFiles();
+        System.out.println("controller==============files = " + files);
+        List<BoardWriteFileDTO> boardfiledtolist =boardWriteFileUploadService.uploadFiles(files);
+
+        writeService.selectMarketSeq(name);
+        System.out.println("board controller1= " + board);
+        writeService.insert(board,name,boardfiledtolist);
+        System.out.println("board controller2==================================================== " + board);
+
+
+        return "redirect:/content/feed";
+    }
+    @GetMapping("/feed/delete")
+    public String delete(Long review_seq) {
+        writeService.delete(review_seq);
+        return "redirect:/content/feed";
     }
 
     //게시판 상세보기

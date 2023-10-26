@@ -12,7 +12,7 @@ public interface BoardService {
 
     List<ContentDTO> getContentList(RequestContentDTO dto);
     List<MarketReviewDTO> getMarketAndReviewList(SearchMapDTO dto);
-
     List<TagDto> getTagList();
+
 
 }

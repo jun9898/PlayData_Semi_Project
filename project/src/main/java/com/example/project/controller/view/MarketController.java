@@ -26,6 +26,7 @@ public class MarketController {
         List<ReviewViewDTO> list = service.list(market_seq);
         String avg = service.starAVG(market_seq);
         model.addAttribute("market",board);
+        System.out.println("board controller=========================== " + board);
         model.addAttribute("list",list);
         model.addAttribute("avg",avg);
 

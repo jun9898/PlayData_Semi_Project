@@ -3,6 +3,7 @@ package com.example.project.entity;
 import lombok.*;
 //@Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserEntity {

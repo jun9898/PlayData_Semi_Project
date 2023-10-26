@@ -4,8 +4,7 @@ const categorySelect = document.getElementById("categorySelect");
 
 async function reviewRank() {
 
-    let rank = {"user_seq":7,"img_url":"user.png","name":"nametest","email":"email",
-                    "review_seq":null,"review_count":5,"recommand_count": null};
+    let rank = [{"user_seq":1,"img_url":null,"name":"넘졸령","email":"jun98@gmail.com","review_seq":null,"review_count":2,"recommand_count" :2,"createde_at":null},{"user_seq":2,"img_url":null,"name":"jun","email":"jun98@aaaa.com","review_seq":null," review_count":4,"recommand_count":4,"createde_at":null},{"user_seq":4,"img_url":null,"name":"냠냠","email":"h2@test.com" ,"review_seq":null,"review_count":4,"recommand_count":4,"createde_at":null},{"user_seq":5,"img_url":null,"name":"test","email" :"test@gmail.com","review_seq":null,"review_count":3,"recommand_count":3,"createde_at":null},{"user_seq":7,"img_url":null,"name" :"어린이보호구역안전운전라이더천 현지","email":"testestsset@test.com","review_seq":null,"review_count":1,"recommand_count":1,"createde_at":null},{ "user_seq":8,"img_url":null,"name":"오늘도중고나라에서바쁘게벽돌을배송하는소경민","email":"testsetset@testest.ctest","review_seq":null,"review_count ":1,"recommand_count":1,"createde_at":null}]
     try {
         let response = await axios.get("/api/content/rank");
 

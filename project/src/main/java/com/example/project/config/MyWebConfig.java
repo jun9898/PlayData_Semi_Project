@@ -19,8 +19,8 @@ public class MyWebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //특정 path로 요청하는 경우 실제 파일이 저장된 위치를 연결해서 리소스를 가져올 수 있도록 처리
-        registry.addResourceHandler(RESOURCE_REQUEST_PATH)     // /download/**
-                .addResourceLocations(RESOURCE_REAL_PATH); // file:///C:/javaweb/upload/
+        registry.addResourceHandler("/download/**")     // /download/**
+                .addResourceLocations("file://C:/javaweb/upload/"); // file:///C:/javaweb/upload/
     }
 
 
