@@ -25,5 +25,4 @@ public class SearchMapDTO {
     private Long user_seq;
     private List<Integer> tags;
 
-
 }
